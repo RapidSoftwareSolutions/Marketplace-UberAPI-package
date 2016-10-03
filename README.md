@@ -1,33 +1,140 @@
-# GoogleGeocodingAPI Package
-This service involves geocoding static addresses for the purpose of placement of application content on a map.
-* Domain: google.com
-* Credentials: api_key
+# UberAPI Package
+The mission of the Uber API is to make it easy for developers to unlock the power of our logistical network that runs across cities.
+* Domain: uber.com
+* Credentials: accessToken
 
 ## How to get credentials: 
-0. Go to [Google Developers Console](https://console.developers.google.com/?authuser=1);
-1. Select a project, or create a new one.
-2. Press **Continue** to activate API key.
-3. In the sidebar on the left, select **Credentials**.
-4. If your project has no API key for the server, create it now - **Add credentials > API key > Server key**;
+0. Item one 
+1. Item two
 
 ## TOC: 
-* [addressToCoordinates](#addressToCoordinates)
-* [getAddressComponents](#getAddressComponents)
-* [coordinatesToAddress](#coordinatesToAddress)
+* [requestDelivery](#requestDelivery)
+* [getDelivery](#getDelivery)
+* [cancelDelivery](#cancelDelivery)
+* [getDeliveries](#getDeliveries)
+* [getQuote](#getQuote)
+* [getUser](#getUser)
+* [getUserActivity](#getUserActivity)
+* [getProductDetails](#getProductDetails)
+* [getCurrentRide](#getCurrentRide)
+* [getRide](#getRide)
+* [getProductsByLocation](#getProductsByLocation)
+* [getProductsPrices](#getProductsPrices)
+* [getProductsTimeEstimates](#getProductsTimeEstimates)
+* [getUserAddress](#getUserAddress)
+* [updateUserAddress](#updateUserAddress)
+* [getUserPaymentMethods](#getUserPaymentMethods)
+* [createReminder](#createReminder)
+* [getReminder](#getReminder)
+* [updateReminder](#updateReminder)
+* [requestRide](#requestRide)
+* [updateCurrentRide](#updateCurrentRide)
+* [cancelCurrentRide](#cancelCurrentRide)
+* [getRideEstimate](#getRideEstimate)
+* [updateRide](#updateRide)
+* [cancelRide](#cancelRide)
+* [getRideMap](#getRideMap)
+* [getReceipt](#getReceipt)
  
-<a name="addressToCoordinates"/>
-## GoogleGeocodingAPI.addressToCoordinates
-Convert a free form address to a set of coordinates (latitude, longitude).
+<a name="requestDelivery"/>
+## UberAPI.requestDelivery
+Method description
 
-| Field  | Type  | Description
-|--------|-------|----------
-| api_key| String| The API key obtained from Google APIs.
-| address| String| The exact address that you want to geocode, in the format used by the respective country's postal service.
+| Field                               | Type  | Description
+|-------------------------------------|-------|----------
+| accessToken                         | String| The access token obtained from Uber API.
+| itemsTitle                          | String| The title of the item. Limited to 128 characters.
+| itemsQuantity                       | String| The number of this item.
+| itemsPrice                          | String| The price of the item.
+| itemsCurrencyCode                   | String| The currency code of the item price. The currency code follows the ISO 4217 standard.
+| pickupLocationAddress               | String| The top address line of the delivery pickup location.
+| pickupLocationCity                  | String| The city of the delivery pickup location.
+| pickupLocationState                 | String| The state of the delivery pickup location such as "CA".
+| pickupLocationPostalCode            | String| The postal code of the delivery pickup location.
+| pickupLocationCountry               | String| The country of the pickup location such as "US".
+| pickupContactFirstName              | String| The first name of the contact. This field is optional if pickup.contact.company_name is provided. Limited to 128 characters.
+| pickupContactLastName               | String| The last name of the contact. This field is optional if pickup.contact.company_name is provided. Limited to 128 characters.
+| pickupContactEmail                  | String| The email of the contact.
+| pickupContactPhoneNumber            | String| The phone number of the contact. Phone number should start with + followed by the country code and then the local number (e.g., +18005555555).
+| dropoffLocationAddress              | String| The top address line of the delivery drop-off location.
+| dropoffLocationAddress2             | String| The second address line of the delivery drop-off location such as the apartment number. Limited to 128 characters.
+| dropoffLocationCity                 | String| The city of the delivery drop-off location.
+| dropoffLocationState                | String| The state of the delivery drop-off location such as "CA".
+| dropoffLocationPostalCode           | String| The postal code of the delivery drop-off location.
+| dropoffLocationCountry              | String| The country of the delivery pickup location such as "US".
+| dropoffContactFirstName             | String| The first name of the contact. Limited to 128 characters.
+| dropoffContactLastName              | String| The last name of the contact. Limited to 128 characters.
+| dropoffContactEmail                 | String| The email of the contact.
+| dropoffContactPhoneNumber           | String| The phone number of the contact.
+| dropoffContactPhoneSmsEnabled       | String| If the phone has SMS capabilities. True or false.
+| quoteId                             | String| Optional: The ID of the quoted price of the delivery. This field is optional. If missing, the fee for the delivery will be determined at the time of request.
+| orderReferenceId                    | String| Optional: The merchant-supplied order reference identifier. This field is optional. Limited to 256 characters.
+| itemsWidth                          | String| Optional: The width of the item in inches.
+| itemsHeight                         | String| Optional: The height of the item in inches.
+| itemsLength                         | String| Optional: The length of the item in inches.
+| itemsWeight                         | String| Optional: The weight of the item in pounds.
+| itemsIsFragile                      | String| Optional: If the item is fragile. True or false. Default to false.
+| pickupLocationAddress2              | String| Optional: The second address line of the delivery pickup location such as the apartment number. Limited to 128 characters.
+| pickupLocationLatitude              | String| Optional: Latitude of the pickup location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
+| pickupLocationLongitude             | String| Optional: Longitude of the pickup location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
+| pickupContactCompanyName            | String| Optional: The company name of the contact. Limited to 128 characters.
+| pickupContactPhoneSmsEnabled        | String| Optional: If the phone has SMS capabilities. True or false.
+| pickupSpecialInstructions           | String| Optional: Special instructions for the pickup. Limited to 256 characters.
+| dropoffLocationLatitude             | String| Optional: Latitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
+| dropoffLocationLongitude            | String| Optional: Longitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
+| dropoffContactSendEmailNotifications| String| Optional: If Uber should send email delivery notifications. True or false. Default to true.
+| dropoffContactSendSmsNotifications  | String| Optional: If Uber should send SMS delivery notifications. True or false. Default to true.
+| dropoffSpecialInstructions          | String| Optional: Special instructions for the drop-off. Limited to 256 characters.
+| dropoffSignatureRequired            | String| Optional: If signature is required for drop-off. True or false. Default to false.
+| includesAlcohol                     | String| Optional: Indicates if the delivery includes alcohol. True or false. This feature is only available to whitelisted businesses.
 
 #### Request example
 ```json
-{	"api_key": "...",
-	"address": "..."
+{	"accessToken": "...",
+	"itemsTitle": "...",
+	"itemsQuantity": "...",
+	"itemsPrice": "...",
+	"itemsCurrencyCode": "...",
+	"pickupLocationAddress": "...",
+	"pickupLocationCity": "...",
+	"pickupLocationState": "...",
+	"pickupLocationPostalCode": "...",
+	"pickupLocationCountry": "...",
+	"pickupContactFirstName": "...",
+	"pickupContactLastName": "...",
+	"pickupContactEmail": "...",
+	"pickupContactPhoneNumber": "...",
+	"dropoffLocationAddress": "...",
+	"dropoffLocationAddress2": "...",
+	"dropoffLocationCity": "...",
+	"dropoffLocationState": "...",
+	"dropoffLocationPostalCode": "...",
+	"dropoffLocationCountry": "...",
+	"dropoffContactFirstName": "...",
+	"dropoffContactLastName": "...",
+	"dropoffContactEmail": "...",
+	"dropoffContactPhoneNumber": "...",
+	"dropoffContactPhoneSmsEnabled": "...",
+	"quoteId": "...",
+	"orderReferenceId": "...",
+	"itemsWidth": "...",
+	"itemsHeight": "...",
+	"itemsLength": "...",
+	"itemsWeight": "...",
+	"itemsIsFragile": "...",
+	"pickupLocationAddress2": "...",
+	"pickupLocationLatitude": "...",
+	"pickupLocationLongitude": "...",
+	"pickupContactCompanyName": "...",
+	"pickupContactPhoneSmsEnabled": "...",
+	"pickupSpecialInstructions": "...",
+	"dropoffLocationLatitude": "...",
+	"dropoffLocationLongitude": "...",
+	"dropoffContactSendEmailNotifications": "...",
+	"dropoffContactSendSmsNotifications": "...",
+	"dropoffSpecialInstructions": "...",
+	"dropoffSignatureRequired": "...",
+	"includesAlcohol": "..."
 }
 ```
 #### Response example
@@ -36,28 +143,25 @@ Convert a free form address to a set of coordinates (latitude, longitude).
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"{
-                            'lat' : 37.4224764,
-                            'lng' : -122.0842499
-                            }"
+			"to":"..."
 		}
 	}
 }
 ```
 
-<a name="getAddressComponents"/>
-## GoogleGeocodingAPI.getAddressComponents
-Convert a free form address string to an object with it's different properties (street number, route, country, etc...).
+<a name="getDelivery"/>
+## UberAPI.getDelivery
+Method description
 
-| Field  | Type  | Description
-|--------|-------|----------
-| api_key| String| The API key obtained from Google APIs.
-| address| String| The exact address that you want to geocode, in the format used by the respective country's postal service.
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token key obtained from Uber API.
+| deliveryId | String| Unique identifier representing a Delivery.
 
 #### Request example
 ```json
-{	"api_key": "...",
-	"address": "..."
+{	"accessToken": "...",
+	"deliveryId": "..."
 }
 ```
 #### Response example
@@ -66,30 +170,273 @@ Convert a free form address string to an object with it's different properties (
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"{
-                            'street_number': '1600',
-                            'route' : 'Amphitheatre Pkwy',
-                            'locality': 'Mountain View',
-                            'administrative_area_level_2' : 'Santa Clara County'
-                            }"
+			"to":"..."
 		}
 	}
 }
 ```
 
-<a name="coordinatesToAddress"/>
-## GoogleGeocodingAPI.coordinatesToAddress
-Convert a location's coordinates on the map to an address string.
+<a name="cancelDelivery"/>
+## UberAPI.cancelDelivery
+Method description
 
-| Field    | Type  | Description
-|----------|-------|----------
-| api_key  | String| The API key obtained from Google APIs.
-| latitude | String| The latitude find the place
-| longitude| String| The longitude find the place
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token key obtained from Uber API.
+| deliveryId | String| Unique identifier representing a Delivery.
 
 #### Request example
 ```json
-{	"api_key": "...",
+{	"accessToken": "...",
+	"deliveryId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getDeliveries"/>
+## UberAPI.getDeliveries
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token key obtained from Uber API.
+| offset     | String| Offset the list of returned results by this amount.
+| limit      | String| Number of items to retrieve. Maximum is 50.
+| status     | String| A status value to filter for. List of status strings can be found https://developer.uber.com/docs/rush/statuses. Additionally supports a value of active that will return all ongoing deliveries. A delivery is considered active if the status field value is either en_route_to_pickup, at_pickup, en_route_to_dropoff or at_dropoff.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"offset": "...",
+	"limit": "...",
+	"status": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getQuote"/>
+## UberAPI.getQuote
+Method description
+
+| Field                    | Type  | Description
+|--------------------------|-------|----------
+| accessToken              | String| The access token obtained from Uber API.
+| pickupLocationAddress    | String| The top address line of the delivery pickup location.
+| pickupLocationCity       | String| The city of the delivery pickup location.
+| pickupLocationState      | String| The state of the delivery pickup location such as "CA".
+| pickupLocationPostalCode | String| The postal code of the delivery pickup location.
+| pickupLocationCountry    | String| The country of the pickup location such as "US".
+| dropoffLocationAddress   | String| The top address line of the delivery drop-off location.
+| dropoffLocationAddress2  | String| The second address line of the delivery drop-off location such as the apartment number. Limited to 128 characters.
+| dropoffLocationCity      | String| The city of the delivery drop-off location.
+| dropoffLocationState     | String| The state of the delivery drop-off location such as "CA".
+| dropoffLocationPostalCode| String| The postal code of the delivery drop-off location.
+| dropoffLocationCountry   | String| The country of the delivery pickup location such as "US".
+| pickupLocationAddress2   | String| Optional: The second address line of the delivery pickup location such as the apartment number. Limited to 128 characters.
+| pickupLocationLatitude   | String| Optional: Latitude of the pickup location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
+| pickupLocationLongitude  | String| Optional: Longitude of the pickup location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
+| dropoffLocationLatitude  | String| Optional: Latitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
+| dropoffLocationLongitude | String| Optional: Longitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"pickupLocationAddress": "...",
+	"pickupLocationCity": "...",
+	"pickupLocationState": "...",
+	"pickupLocationPostalCode": "...",
+	"pickupLocationCountry": "...",
+	"dropoffLocationAddress": "...",
+	"dropoffLocationAddress2": "...",
+	"dropoffLocationCity": "...",
+	"dropoffLocationState": "...",
+	"dropoffLocationPostalCode": "...",
+	"dropoffLocationCountry": "...",
+	"pickupLocationAddress2": "...",
+	"pickupLocationLatitude": "...",
+	"pickupLocationLongitude": "...",
+	"dropoffLocationLatitude": "...",
+	"dropoffLocationLongitude": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getUser"/>
+## UberAPI.getUser
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+
+#### Request example
+```json
+{	"accessToken": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getUserActivity"/>
+## UberAPI.getUserActivity
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| offset     | String| Optional: Offset the list of returned results by this amount. Default is zero.
+| limit      | String| Optional: Number of items to retrieve. Default is 5, maximum is 50.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"offset": "...",
+	"limit": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getProductDetails"/>
+## UberAPI.getProductDetails
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| productId  | String| Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"productId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getCurrentRide"/>
+## UberAPI.getCurrentRide
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+
+#### Request example
+```json
+{	"accessToken": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getRide"/>
+## UberAPI.getRide
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| requestId  | String| Unique identifier representing a Request.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"requestId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getProductsByLocation"/>
+## UberAPI.getProductsByLocation
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| latitude   | String| Latitude component of location.
+| longitude  | String| Longitude component of location.
+
+#### Request example
+```json
+{	"accessToken": "...",
 	"latitude": "...",
 	"longitude": "..."
 }
@@ -100,718 +447,549 @@ Convert a location's coordinates on the map to an address string.
 	"callback":"success",
 	"contextWrites":{
 		"#":{
-			"to":"{
-                            'results': [{
-                                    'address_components': [{
-                                            'long_name': 'New York City Hall',
-                                            'short_name': 'New York City Hall',
-                                            'types': ['premise']
-                                        }, {
-                                            'long_name': 'Lower Manhattan',
-                                            'short_name': 'Lower Manhattan',
-                                            'types': ['neighborhood', 'political']
-                                        }, {
-                                            'long_name': 'Manhattan',
-                                            'short_name': 'Manhattan',
-                                            'types': ['political', 'sublocality', 'sublocality_level_1']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }, {
-                                            'long_name': '10007',
-                                            'short_name': '10007',
-                                            'types': ['postal_code']
-                                        }],
-                                    'formatted_address': 'New York City Hall, New York, NY 10007, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 40.71302010000001,
-                                                'lng': -74.00556569999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7124477,
-                                                'lng': -74.0064356
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7127461,
-                                            'lng': -74.00597399999999
-                                        },
-                                        'location_type': 'ROOFTOP',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.71408288029151,
-                                                'lng': -74.00465166970849
-                                            },
-                                            'southwest': {
-                                                'lat': 40.71138491970851,
-                                                'lng': -74.0073496302915
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJMfxeDCJawokRaUdk7prx_pY',
-                                    'types': ['premise']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': '230',
-                                            'short_name': '230',
-                                            'types': ['street_number']
-                                        }, {
-                                            'long_name': 'Broadway',
-                                            'short_name': 'Broadway',
-                                            'types': ['route']
-                                        }, {
-                                            'long_name': 'Lower Manhattan',
-                                            'short_name': 'Lower Manhattan',
-                                            'types': ['neighborhood', 'political']
-                                        }, {
-                                            'long_name': 'Manhattan',
-                                            'short_name': 'Manhattan',
-                                            'types': ['political', 'sublocality', 'sublocality_level_1']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }, {
-                                            'long_name': '10007',
-                                            'short_name': '10007',
-                                            'types': ['postal_code']
-                                        }],
-                                    'formatted_address': '230 Broadway, New York, NY 10007, USA',
-                                    'geometry': {
-                                        'location': {
-                                            'lat': 40.7127655,
-                                            'lng': -74.00599369999999
-                                        },
-                                        'location_type': 'ROOFTOP',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.7141144802915,
-                                                'lng': -74.00464471970849
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7114165197085,
-                                                'lng': -74.0073426802915
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJVzXOjBhawokRSp5VqCM4F9Q',
-                                    'types': ['street_address']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'NYC Department of Education',
-                                            'short_name': 'NYC Department of Education',
-                                            'types': ['establishment', 'point_of_interest']
-                                        }, {
-                                            'long_name': '52',
-                                            'short_name': '52',
-                                            'types': ['street_number']
-                                        }, {
-                                            'long_name': 'Chambers Street',
-                                            'short_name': 'Chambers St',
-                                            'types': ['route']
-                                        }, {
-                                            'long_name': 'Lower Manhattan',
-                                            'short_name': 'Lower Manhattan',
-                                            'types': ['neighborhood', 'political']
-                                        }, {
-                                            'long_name': 'Manhattan',
-                                            'short_name': 'Manhattan',
-                                            'types': ['political', 'sublocality', 'sublocality_level_1']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }, {
-                                            'long_name': '10007',
-                                            'short_name': '10007',
-                                            'types': ['postal_code']
-                                        }],
-                                    'formatted_address': 'NYC Department of Education, 52 Chambers St, New York, NY 10007, USA',
-                                    'geometry': {
-                                        'location': {
-                                            'lat': 40.713473,
-                                            'lng': -74.0054961
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.7148219802915,
-                                                'lng': -74.00414711970849
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7121240197085,
-                                                'lng': -74.00684508029151
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJhZDxHiJawokR7NkW5vFe-No',
-                                    'types': ['establishment', 'point_of_interest', 'political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'Civic Center',
-                                            'short_name': 'Civic Center',
-                                            'types': ['neighborhood', 'political']
-                                        }, {
-                                            'long_name': 'Manhattan',
-                                            'short_name': 'Manhattan',
-                                            'types': ['political', 'sublocality', 'sublocality_level_1']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'Civic Center, New York, NY, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 40.71776149999999,
-                                                'lng': -73.9982199
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7097756,
-                                                'lng': -74.00873419999999
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7140519,
-                                            'lng': -74.00283639999999
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.71776149999999,
-                                                'lng': -73.9982199
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7097756,
-                                                'lng': -74.00873419999999
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJEZaa1SNawokRXvMbRrc0HC8',
-                                    'types': ['neighborhood', 'political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'Financial District',
-                                            'short_name': 'Financial District',
-                                            'types': ['neighborhood', 'political']
-                                        }, {
-                                            'long_name': 'Manhattan',
-                                            'short_name': 'Manhattan',
-                                            'types': ['political', 'sublocality', 'sublocality_level_1']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'Financial District, New York, NY, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 40.7170449,
-                                                'lng': -73.99938779999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7005852,
-                                                'lng': -74.0164805
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7074909,
-                                            'lng': -74.0112764
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.7170449,
-                                                'lng': -73.99938779999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7005852,
-                                                'lng': -74.0164805
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJB8iKMxhawokRs5oRixSsKwA',
-                                    'types': ['neighborhood', 'political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'Lower Manhattan',
-                                            'short_name': 'Lower Manhattan',
-                                            'types': ['neighborhood', 'political']
-                                        }, {
-                                            'long_name': 'Manhattan',
-                                            'short_name': 'Manhattan',
-                                            'types': ['political', 'sublocality', 'sublocality_level_1']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'Lower Manhattan, New York, NY, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 40.7425263,
-                                                'lng': -73.97164459999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7004631,
-                                                'lng': -74.01933500000001
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7230084,
-                                            'lng': -74.00063279999999
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.7425263,
-                                                'lng': -73.97164459999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.7004631,
-                                                'lng': -74.01933500000001
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJi4MZVIhZwokRPNvWbi-c0wI',
-                                    'types': ['neighborhood', 'political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'Manhattan',
-                                            'short_name': 'Manhattan',
-                                            'types': ['political', 'sublocality', 'sublocality_level_1']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'Manhattan, New York, NY, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 40.882214,
-                                                'lng': -73.907
-                                            },
-                                            'southwest': {
-                                                'lat': 40.6803955,
-                                                'lng': -74.047285
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7830603,
-                                            'lng': -73.9712488
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.820045,
-                                                'lng': -73.90331300000001
-                                            },
-                                            'southwest': {
-                                                'lat': 40.698078,
-                                                'lng': -74.03514899999999
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJYeZuBI9YwokRjMDs_IEyCwo',
-                                    'types': ['political', 'sublocality', 'sublocality_level_1']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'New York, NY, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 40.9152555,
-                                                'lng': -73.70027209999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.496044,
-                                                'lng': -74.255735
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7127837,
-                                            'lng': -74.0059413
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.9152555,
-                                                'lng': -73.70027209999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.496044,
-                                                'lng': -74.255735
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJOwg_06VPwokRYv534QaPC8g',
-                                    'types': ['locality', 'political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': '10007',
-                                            'short_name': '10007',
-                                            'types': ['postal_code']
-                                        }, {
-                                            'long_name': 'Lower Manhattan',
-                                            'short_name': 'Lower Manhattan',
-                                            'types': ['neighborhood', 'political']
-                                        }, {
-                                            'long_name': 'Manhattan',
-                                            'short_name': 'Manhattan',
-                                            'types': ['political', 'sublocality', 'sublocality_level_1']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'New York',
-                                            'types': ['locality', 'political']
-                                        }, {
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'New York, NY 10007, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 40.717076,
-                                                'lng': -74.0001781
-                                            },
-                                            'southwest': {
-                                                'lat': 40.709806,
-                                                'lng': -74.01375399999999
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7136487,
-                                            'lng': -74.0087126
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.717076,
-                                                'lng': -74.0001781
-                                            },
-                                            'southwest': {
-                                                'lat': 40.709806,
-                                                'lng': -74.01375399999999
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJwbJsUhhawokRuCRdc8piF8c',
-                                    'types': ['postal_code']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'New York County',
-                                            'short_name': 'New York County',
-                                            'types': ['administrative_area_level_2', 'political']
-                                        }, {
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'New York County, NY, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 40.87927800000001,
-                                                'lng': -73.907
-                                            },
-                                            'southwest': {
-                                                'lat': 40.6838815,
-                                                'lng': -74.04723679999999
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7830603,
-                                            'lng': -73.9712488
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 40.87927800000001,
-                                                'lng': -73.907
-                                            },
-                                            'southwest': {
-                                                'lat': 40.6838815,
-                                                'lng': -74.04723679999999
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJOwE7_GTtwokRFq0uOwLSE9g',
-                                    'types': ['administrative_area_level_2', 'political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'New York-Northern New Jersey-Long Island, NY-NJ-PA',
-                                            'short_name': 'New York-Northern New Jersey-Long Island, NY-NJ-PA',
-                                            'types': ['political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'New York-Northern New Jersey-Long Island, NY-NJ-PA, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 41.6018065,
-                                                'lng': -71.85621399999999
-                                            },
-                                            'southwest': {
-                                                'lat': 39.49853299999999,
-                                                'lng': -75.3585939
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.9590293,
-                                            'lng': -74.0300122
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 41.6018065,
-                                                'lng': -71.85621399999999
-                                            },
-                                            'southwest': {
-                                                'lat': 39.49853299999999,
-                                                'lng': -75.3585939
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJ3YJV4PRWwokRFFI21ZrHXtQ',
-                                    'types': ['political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'New York Metropolitan Area',
-                                            'short_name': 'New York Metropolitan Area',
-                                            'types': ['political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'New York Metropolitan Area, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 42.0809059,
-                                                'lng': -71.777491
-                                            },
-                                            'southwest': {
-                                                'lat': 39.475198,
-                                                'lng': -75.3587649
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 40.7127761,
-                                            'lng': -74.00595439999999
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 42.0809059,
-                                                'lng': -71.777491
-                                            },
-                                            'southwest': {
-                                                'lat': 39.475198,
-                                                'lng': -75.3587649
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJ-5Z24NaGwokRiMh4Rj8FNMo',
-                                    'types': ['political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'New York',
-                                            'short_name': 'NY',
-                                            'types': ['administrative_area_level_1', 'political']
-                                        }, {
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'New York, USA',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 45.0158651,
-                                                'lng': -71.85620639999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.4960911,
-                                                'lng': -79.7621439
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 43.2994285,
-                                            'lng': -74.21793260000001
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 45.0156274,
-                                                'lng': -71.85620639999999
-                                            },
-                                            'southwest': {
-                                                'lat': 40.4960911,
-                                                'lng': -79.7621439
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJqaUj8fBLzEwRZ5UY3sHGz90',
-                                    'types': ['administrative_area_level_1', 'political']
-                                }, {
-                                    'address_components': [{
-                                            'long_name': 'United States',
-                                            'short_name': 'US',
-                                            'types': ['country', 'political']
-                                        }],
-                                    'formatted_address': 'United States',
-                                    'geometry': {
-                                        'bounds': {
-                                            'northeast': {
-                                                'lat': 71.3867745,
-                                                'lng': -66.9502861
-                                            },
-                                            'southwest': {
-                                                'lat': 18.910677,
-                                                'lng': 172.4458955
-                                            }
-                                        },
-                                        'location': {
-                                            'lat': 37.09024,
-                                            'lng': -95.712891
-                                        },
-                                        'location_type': 'APPROXIMATE',
-                                        'viewport': {
-                                            'northeast': {
-                                                'lat': 49.38,
-                                                'lng': -66.94
-                                            },
-                                            'southwest': {
-                                                'lat': 25.82,
-                                                'lng': -124.39
-                                            }
-                                        }
-                                    },
-                                    'place_id': 'ChIJCzYy5IS16lQRQrfeQ5K5Oxw',
-                                    'types': ['country', 'political']
-                                }],
-                            'status': 'OK'
-                        } "
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getProductsPrices"/>
+## UberAPI.getProductsPrices
+Method description
+
+| Field         | Type  | Description
+|---------------|-------|----------
+| accessToken   | String| The access token obtained from Uber API.
+| startLatitude | String| Latitude component of start location.
+| startLongitude| String| Longitude component of start location.
+| endLatitude   | String| Latitude component of end location.
+| endLongitude  | String| Longitude component of end location.
+| seatCount     | String| Optional: The number of seats required for uberPOOL. Default and maximum value is 2.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"startLatitude": "...",
+	"startLongitude": "...",
+	"endLatitude": "...",
+	"endLongitude": "...",
+	"seatCount": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getProductsTimeEstimates"/>
+## UberAPI.getProductsTimeEstimates
+Method description
+
+| Field         | Type  | Description
+|---------------|-------|----------
+| accessToken   | String| The access token obtained from Uber API.
+| startLatitude | String| Latitude component.
+| startLongitude| String| Longitude component.
+| productId     | String| Optional: Unique identifier representing a specific product for a given latitude & longitude.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"startLatitude": "...",
+	"startLongitude": "...",
+	"productId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getUserAddress"/>
+## UberAPI.getUserAddress
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| placeName  | String| The name of the place to retrieve. Only home and work are acceptable.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"placeName": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="updateUserAddress"/>
+## UberAPI.updateUserAddress
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| placeName  | String| The name of the place to retrieve. Only home and work are acceptable.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"placeName": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getUserPaymentMethods"/>
+## UberAPI.getUserPaymentMethods
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+
+#### Request example
+```json
+{	"accessToken": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="createReminder"/>
+## UberAPI.createReminder
+Method description
+
+| Field                      | Type  | Description
+|----------------------------|-------|----------
+| accessToken                | String| The access token obtained from Uber API. This endpoint only supports server_token.
+| reminderTime               | String| Unix UTC timestamp of when the reminder will occur.
+| phoneNumber                | String| Phone number of the individual to remind. Must be in the E.164 format.
+| eventTime                  | String| Unix UTC timestamp of the event time.
+| eventName                  | String| Optional: Formatted name of the event, which appears in the reminder notification. Alphanumeric up to 50 characters. Defaults to “Your event” if no name is provided.
+| eventLocation              | String| Optional: Location of the event, which appears in the Uber app destination field. This does not need to be the entire address string since we rely on the event lat/long to set the destination pin, i.e., “Coit Tower” is sufficient instead of "Coit Tower, 1 Telegraph Hill Blvd, San Francisco, CA 94133".
+| eventLatitude              | String| Optional: Latitude of the event location. Required to set destination pin.
+| eventLongitude             | String| Optional: Longitude of the event location. Required to set destination pin.
+| eventProductId             | String| Optional: Product ID of the Uber product to request. This overrides the product selected by the latitude / longitude pair. Required to set destination pin.
+| tripBrandingLinkText       | String| Optional: Call-to-action text for the deeplink to your app. Used for trip branding and personalization.
+| tripBrandingPartnerDeeplink| String| Optional: Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"reminderTime": "...",
+	"phoneNumber": "...",
+	"eventTime": "...",
+	"eventName": "...",
+	"eventLocation": "...",
+	"eventLatitude": "...",
+	"eventLongitude": "...",
+	"eventProductId": "...",
+	"tripBrandingLinkText": "...",
+	"tripBrandingPartnerDeeplink": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getReminder"/>
+## UberAPI.getReminder
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API. This endpoint only supports server_token.
+| reminderId | String| The reminder ID.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"reminderId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="updateReminder"/>
+## UberAPI.updateReminder
+Method description
+
+| Field                      | Type  | Description
+|----------------------------|-------|----------
+| accessToken                | String| The access token obtained from Uber API. This endpoint only supports server_token.
+| reminderId                 | String| The reminder ID.
+| reminderTime               | String| Unix UTC timestamp of when the reminder will occur.
+| phoneNumber                | String| Phone number of the individual to remind. Must be in the E.164 format.
+| eventTime                  | String| Unix UTC timestamp of the event time.
+| eventName                  | String| Optional: Formatted name of the event, which appears in the reminder notification. Alphanumeric up to 50 characters. Defaults to “Your event” if no name is provided.
+| eventLocation              | String| Optional: Location of the event, which appears in the Uber app destination field. This does not need to be the entire address string since we rely on the event lat/long to set the destination pin, i.e., “Coit Tower” is sufficient instead of "Coit Tower, 1 Telegraph Hill Blvd, San Francisco, CA 94133".
+| eventLatitude              | String| Optional: Latitude of the event location. Required to set destination pin.
+| eventLongitude             | String| Optional: Longitude of the event location. Required to set destination pin.
+| eventProductId             | String| Optional: Product ID of the Uber product to request. This overrides the product selected by the latitude / longitude pair. Required to set destination pin.
+| tripBrandingLinkText       | String| Optional: Call-to-action text for the deeplink to your app. Used for trip branding and personalization.
+| tripBrandingPartnerDeeplink| String| Optional: Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"reminderId": "...",
+	"reminderTime": "...",
+	"phoneNumber": "...",
+	"eventTime": "...",
+	"eventName": "...",
+	"eventLocation": "...",
+	"eventLatitude": "...",
+	"eventLongitude": "...",
+	"eventProductId": "...",
+	"tripBrandingLinkText": "...",
+	"tripBrandingPartnerDeeplink": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="requestRide"/>
+## UberAPI.requestRide
+Method description
+
+| Field              | Type  | Description
+|--------------------|-------|----------
+| accessToken        | String| The access token obtained from Uber API.
+| startLatitude      | String| The beginning or “pickup” latitude. Either this or startPlaceId must be specified.
+| startLongitude     | String| The beginning or “pickup” longitude. Either this or startPlaceId must be specified.
+| endLatitude        | String| The final or destination latitude. Either this or endPlaceId may be specified. If requesting POOL, this parameter is required.
+| endLongitude       | String| The final or destination longitude. Either this or endPlaceId may be specified. If requesting POOL, this parameter is required.
+| startPlace_id      | String| Optional: The beginning or “pickup” place ID. This is the name of an Uber saved place. Only “home” or “work” is acceptable. Either this or startLatitude and startLongitude must be specified.
+| endPlace_id        | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is acceptable. Either this or endLatitude and endLongitude may be specified.
+| startNickname      | String| Optional: The beginning or “pickup” nickname label.
+| endNickname        | String| Optional: The final or destination nickname label.
+| startAddress       | String| Optional: The beginning or “pickup” address.
+| endAddress         | String| Optional: The final or destination address.
+| productId          | String| Optional: The unique ID of the product being requested. If none is provided, it will default to the cheapest product for the given location.
+| surgeConfirmationId| String| Optional: The unique identifier of the surge session for a user. Required when returned from a 409 Conflict response on previous POST attempt.
+| paymentMethodId    | String| Optional: The unique identifier of the payment method selected by a user. If set, the trip will be requested using this payment method. If not set, the trip will be requested using the user’s last used payment method.
+| seatCount          | String| Optional: The number of seats required for uberPOOL. Default and maximum value is 2.
+| fareId             | String| Optional: The key for the upfront price of an uberPOOL ride. Required if we want to use a previously retrieved price estimate for POOL. If it is missed, we will automatically issue a new upfront price for the ride request.
+| expenseCode        | String| Optional: An alphanumeric identifier for expense reporting policies. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.
+| expenseMemo        | String| Optional: A free text field to describe the purpose of the trip for expense reporting. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"startLatitude": "...",
+	"startLongitude": "...",
+	"endLatitude": "...",
+	"endLongitude": "...",
+	"startPlace_id": "...",
+	"endPlace_id": "...",
+	"startNickname": "...",
+	"endNickname": "...",
+	"startAddress": "...",
+	"endAddress": "...",
+	"productId": "...",
+	"surgeConfirmationId": "...",
+	"paymentMethodId": "...",
+	"seatCount": "...",
+	"fareId": "...",
+	"expenseCode": "...",
+	"expenseMemo": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="updateCurrentRide"/>
+## UberAPI.updateCurrentRide
+Method description
+
+| Field       | Type  | Description
+|-------------|-------|----------
+| accessToken | String| The access token obtained from Uber API.
+| endLatitude | String| Optional: The final or destination latitude. Either this or endPlaceId must be specified.
+| endLongitude| String| Optional: The final or destination longitude. Either this or endPlaceId must be specified.
+| endAddress  | String| Optional: The final or destination address.
+| endNickname | String| Optional: The final or destination nickname label.
+| endPlaceId  | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is accepted. Either this or endLatitude and endLongitude must be specified.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"endLatitude": "...",
+	"endLongitude": "...",
+	"endAddress": "...",
+	"endNickname": "...",
+	"endPlaceId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="cancelCurrentRide"/>
+## UberAPI.cancelCurrentRide
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+
+#### Request example
+```json
+{	"accessToken": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getRideEstimate"/>
+## UberAPI.getRideEstimate
+Method description
+
+| Field         | Type  | Description
+|---------------|-------|----------
+| accessToken   | String| The access token obtained from Uber API.
+| productId     | String| Optional: The unique ID of the product being requested. If none is provided, it will default to the cheapest product for the given location.
+| startLatitude | String| Optional: The beginning or "pickup" latitude. Either this or startPlaceId must be specified.
+| startLongitude| String| Optional: The beginning or "pickup" longitude. Either this or startPlaceId must be specified.
+| startPlaceId  | String| Optional: The beginning or “pickup” place ID. This is the name of an Uber saved place. Only “home” or “work” is acceptable. Either this or startLatitude and startLongitude must be specified.
+| endLatitude   | String| Optional: The final or destination latitude. If not included, only the pickup ETA and details of surge pricing will be included.
+| endLongitude  | String| Optional: The final or destination longitude. If not included, only the pickup ETA and details of surge pricing will be included.
+| endPlaceId    | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is acceptable. Either this or endLatitude and endLongitude may be specified.
+| seatCount     | String| Optional: The number of seats required for uberPOOL. Default and maximum value is 2.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"productId": "...",
+	"startLatitude": "...",
+	"startLongitude": "...",
+	"startPlaceId": "...",
+	"endLatitude": "...",
+	"endLongitude": "...",
+	"endPlaceId": "...",
+	"seatCount": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="updateRide"/>
+## UberAPI.updateRide
+Method description
+
+| Field       | Type  | Description
+|-------------|-------|----------
+| accessToken | String| The access token obtained from Uber API.
+| requesttId  | String| Unique identifier representing a Request.
+| endLatitude | String| Optional: The final or destination latitude. Either this or endPlaceId must be specified.
+| endLongitude| String| Optional: The final or destination latitude. Either this or endPlaceId must be specified.
+| endAddress  | String| Optional: The final or destination address.
+| endNickname | String| Optional: The final or destination nickname label.
+| endPlaceId  | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is accepted. Either this or endLatitude and end_Longitude must be specified.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"requesttId": "...",
+	"endLatitude": "...",
+	"endLongitude": "...",
+	"endAddress": "...",
+	"endNickname": "...",
+	"endPlaceId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="cancelRide"/>
+## UberAPI.cancelRide
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| requesttId | String| Unique identifier representing a Request.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"requesttId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getRideMap"/>
+## UberAPI.getRideMap
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| requesttId | String| Unique identifier representing a Request.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"requesttId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
+		}
+	}
+}
+```
+
+<a name="getReceipt"/>
+## UberAPI.getReceipt
+Method description
+
+| Field      | Type  | Description
+|------------|-------|----------
+| accessToken| String| The access token obtained from Uber API.
+| requesttId | String| Unique identifier representing a Request.
+
+#### Request example
+```json
+{	"accessToken": "...",
+	"requesttId": "..."
+}
+```
+#### Response example
+```json
+{
+	"callback":"success",
+	"contextWrites":{
+		"#":{
+			"to":"..."
 		}
 	}
 }
