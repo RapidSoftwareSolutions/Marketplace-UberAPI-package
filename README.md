@@ -1101,8 +1101,8 @@ The Places endpoint allows retrieving the home and work addresses from an Uber u
 	"contextWrites":{
 		"#":{
 			"to":"{
-                            'address": "685 Market St, San Francisco, CA 94103, USA'
-                         }"
+                    'address': '685 Market St, San Francisco, CA 94103, USA'
+                 }"
 		}
 	}
 }
