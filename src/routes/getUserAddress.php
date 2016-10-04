@@ -45,8 +45,7 @@ $app->post('/api/UberAPI/getUserAddress', function ($request, $response, $args) 
 
         $resp = $client->get( $query_str, 
             [
-                'headers' => $headers,
-                'query' => $query
+                'headers' => $headers
             ]);
         $responseBody = $resp->getBody()->getContents();
         $code = $resp->getStatusCode();

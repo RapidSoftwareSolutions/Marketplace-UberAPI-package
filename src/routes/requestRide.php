@@ -36,6 +36,7 @@ $app->post('/api/UberAPI/requestRide', function ($request, $response, $args) {
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
     $headers['Content-Type'] = 'application/json'; 
     
+    $body = [];
     if(!empty($post_data['args']['startPlace_id'])) {
         $body['start_place_id'] = $post_data['args']['startPlace_id'];
     }

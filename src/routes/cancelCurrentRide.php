@@ -37,8 +37,7 @@ $app->post('/api/UberAPI/cancelCurrentRide', function ($request, $response, $arg
 
         $resp = $client->delete( $query_str, 
             [
-                'headers' => $headers,
-                'body'=> json_encode($body)
+                'headers' => $headers
             ]);
         $responseBody = $resp->getBody()->getContents();
         $code = $resp->getStatusCode();

@@ -22,9 +22,7 @@ $app->post('/api/UberAPI/getUserActivity', function ($request, $response, $args)
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
-    $headers['Content-Type'] = 'application/json';
-    
-    $query['delivery_id'] = $post_data['args']['deliveryId'];  
+    $headers['Content-Type'] = 'application/json'; 
 
     if($post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1.2/history';

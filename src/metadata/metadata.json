@@ -702,6 +702,11 @@
                     "name": "placeName",
                     "type": "String",
                     "info": "The name of the place to retrieve. Only home and work are acceptable."
+                },
+                {
+                    "name": "address",
+                    "type": "String",
+                    "info": "The address of the place that should be tied to the given placeName."
                 }
             ],
             "callbacks":[
