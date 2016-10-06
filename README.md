@@ -46,7 +46,7 @@ The Delivery endpoint allows a delivery to be requested given the delivery infor
 
 | Field                               | Type  | Description
 |-------------------------------------|-------|----------
-| accessToken                         | String| The access token obtained from Uber API.
+| accessToken                         | credentials| The access token obtained from Uber API.
 | itemsTitle                          | String| The title of the item. Limited to 128 characters.
 | itemsQuantity                       | String| The number of this item.
 | itemsPrice                          | String| The price of the item.
@@ -240,7 +240,7 @@ Get the real time status of an ongoing delivery that was created using the Deliv
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token key obtained from Uber API.
+| accessToken| credentials| The access token key obtained from Uber API.
 | deliveryId | String| Unique identifier representing a Delivery.
 
 #### Request example
@@ -363,7 +363,7 @@ Cancels an existing delivery.
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token key obtained from Uber API.
+| accessToken| credentials| The access token key obtained from Uber API.
 | deliveryId | String| Unique identifier representing a Delivery.
 
 #### Request example
@@ -390,7 +390,7 @@ Get a list of all deliveries, ordered chronologically by time of creation.
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token key obtained from Uber API.
+| accessToken| credentials| The access token key obtained from Uber API.
 | offset     | String| Offset the list of returned results by this amount.
 | limit      | String| Number of items to retrieve. Maximum is 50.
 | status     | String| A status value to filter for. List of status strings can be found https://developer.uber.com/docs/rush/statuses. Additionally supports a value of active that will return all ongoing deliveries. A delivery is considered active if the status field value is either en_route_to_pickup, at_pickup, en_route_to_dropoff or at_dropoff.
@@ -434,7 +434,7 @@ Generate a delivery quote, given a pickup and dropoff location. On-demand and sc
 
 | Field                    | Type  | Description
 |--------------------------|-------|----------
-| accessToken              | String| The access token obtained from Uber API.
+| accessToken              | credentials| The access token obtained from Uber API.
 | pickupLocationAddress    | String| The top address line of the delivery pickup location.
 | pickupLocationCity       | String| The city of the delivery pickup location.
 | pickupLocationState      | String| The state of the delivery pickup location such as "CA".
@@ -533,7 +533,7 @@ The User Profile endpoint returns information about the Uber user that has autho
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 
 #### Request example
 ```json
@@ -566,7 +566,7 @@ The User Activity endpoint returns a limited amount of data about a user’s lif
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | offset     | String| Optional: Offset the list of returned results by this amount. Default is zero.
 | limit      | String| Optional: Number of items to retrieve. Default is 5, maximum is 50.
 
@@ -615,7 +615,7 @@ The Products Detail endpoint returns information about a specific Uber product. 
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | productId  | String| Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles.
 
 #### Request example
@@ -659,7 +659,7 @@ The Ride Request endpoint allows retrieving real-time details for an ongoing tri
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 
 #### Request example
 ```json
@@ -751,7 +751,7 @@ The Ride Request endpoint allows retrieving the status of an ongoing or complete
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | requestId  | String| Unique identifier representing a Request.
 
 #### Request example
@@ -845,7 +845,7 @@ The Products endpoint returns information about the Uber products offered at a g
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | latitude   | String| Latitude component of location.
 | longitude  | String| Longitude component of location.
 
@@ -934,7 +934,7 @@ The Price Estimates endpoint returns an estimated price range for each product o
 
 | Field         | Type  | Description
 |---------------|-------|----------
-| accessToken   | String| The access token obtained from Uber API.
+| accessToken   | credentials| The access token obtained from Uber API.
 | startLatitude | String| Latitude component of start location.
 | startLongitude| String| Longitude component of start location.
 | endLatitude   | String| Latitude component of end location.
@@ -1027,7 +1027,7 @@ The Time Estimates endpoint returns ETAs for all products currently available at
 
 | Field         | Type  | Description
 |---------------|-------|----------
-| accessToken   | String| The access token obtained from Uber API.
+| accessToken   | credentials| The access token obtained from Uber API.
 | startLatitude | String| Latitude component.
 | startLongitude| String| Longitude component.
 | productId     | String| Optional: Unique identifier representing a specific product for a given latitude & longitude.
@@ -1085,7 +1085,7 @@ The Places endpoint allows retrieving the home and work addresses from an Uber u
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | placeName  | String| The name of the place to retrieve. Only home and work are acceptable.
 
 #### Request example
@@ -1114,7 +1114,7 @@ The Places endpoint allows updating the home and work addresses from an Uber use
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | placeName  | String| The name of the place to retrieve. Only home and work are acceptable.
 | address    | String| The address of the place that should be tied to the given placeName.
 
@@ -1145,7 +1145,7 @@ The Payment Methods endpoint allows retrieving the list of the user’s availabl
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 
 #### Request example
 ```json
@@ -1194,7 +1194,7 @@ The Reminders endpoint allows developers to set a reminder for a future trip.
 
 | Field                      | Type  | Description
 |----------------------------|-------|----------
-| accessToken                | String| The access token obtained from Uber API. This endpoint only supports server_token.
+| accessToken                | credentials| The access token obtained from Uber API. This endpoint only supports server_token.
 | reminderTime               | String| Unix UTC timestamp of when the reminder will occur.
 | phoneNumber                | String| Phone number of the individual to remind. Must be in the E.164 format.
 | eventTime                  | String| Unix UTC timestamp of the event time.
@@ -1255,7 +1255,7 @@ The Reminders endpoint allows you to get the status of an existing ride reminder
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API. This endpoint only supports server_token.
+| accessToken| credentials| The access token obtained from Uber API. This endpoint only supports server_token.
 | reminderId | String| The reminder ID.
 
 #### Request example
@@ -1298,7 +1298,7 @@ The Reminders endpoint allows you to update an existing reminder.
 
 | Field                      | Type  | Description
 |----------------------------|-------|----------
-| accessToken                | String| The access token obtained from Uber API. This endpoint only supports server_token.
+| accessToken                | credentials| The access token obtained from Uber API. This endpoint only supports server_token.
 | reminderId                 | String| The reminder ID.
 | reminderTime               | String| Unix UTC timestamp of when the reminder will occur.
 | phoneNumber                | String| Phone number of the individual to remind. Must be in the E.164 format.
@@ -1361,7 +1361,7 @@ The Reminders endpoint allows you to remove any reminder in the pending state fr
 
 | Field                      | Type  | Description
 |----------------------------|-------|----------
-| accessToken                | String| The access token obtained from Uber API. This endpoint only supports server_token.
+| accessToken                | credentials| The access token obtained from Uber API. This endpoint only supports server_token.
 | reminderId                 | String| The reminder ID.
 
 #### Request example
@@ -1388,7 +1388,7 @@ The Ride Request endpoint allows a ride to be requested on behalf of an Uber use
 
 | Field              | Type  | Description
 |--------------------|-------|----------
-| accessToken        | String| The access token obtained from Uber API.
+| accessToken        | credentials| The access token obtained from Uber API.
 | startLatitude      | String| The beginning or “pickup” latitude. Either this or startPlaceId must be specified.
 | startLongitude     | String| The beginning or “pickup” longitude. Either this or startPlaceId must be specified.
 | endLatitude        | String| The final or destination latitude. Either this or endPlaceId may be specified. If requesting POOL, this parameter is required.
@@ -1456,7 +1456,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination.
 
 | Field       | Type  | Description
 |-------------|-------|----------
-| accessToken | String| The access token obtained from Uber API.
+| accessToken | credentials| The access token obtained from Uber API.
 | endLatitude | String| Optional: The final or destination latitude. Either this or endPlaceId must be specified.
 | endLongitude| String| Optional: The final or destination longitude. Either this or endPlaceId must be specified.
 | endAddress  | String| Optional: The final or destination address.
@@ -1491,7 +1491,7 @@ The Ride Request endpoint allows cancellation of the user's current trip.
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 
 #### Request example
 ```json
@@ -1516,7 +1516,7 @@ The Request Estimate endpoint allows a ride to be estimated given the desired pr
 
 | Field         | Type  | Description
 |---------------|-------|----------
-| accessToken   | String| The access token obtained from Uber API.
+| accessToken   | credentials| The access token obtained from Uber API.
 | productId     | String| Optional: The unique ID of the product being requested. If none is provided, it will default to the cheapest product for the given location.
 | startLatitude | String| Optional: The beginning or "pickup" latitude. Either this or startPlaceId must be specified.
 | startLongitude| String| Optional: The beginning or "pickup" longitude. Either this or startPlaceId must be specified.
@@ -1606,7 +1606,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination usi
 
 | Field       | Type  | Description
 |-------------|-------|----------
-| accessToken | String| The access token obtained from Uber API.
+| accessToken | credentials| The access token obtained from Uber API.
 | requesttId  | String| Unique identifier representing a Request.
 | endLatitude | String| Optional: The final or destination latitude. Either this or endPlaceId must be specified.
 | endLongitude| String| Optional: The final or destination latitude. Either this or endPlaceId must be specified.
@@ -1643,7 +1643,7 @@ The Ride Request endpoint allows cancellation of an ongoing Request on behalf of
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | requesttId | String| Unique identifier representing a Request.
 
 #### Request example
@@ -1670,7 +1670,7 @@ The Ride Request endpoint getting a map with a visual representation of a Reques
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | requesttId | String| Unique identifier representing a Request.
 
 #### Request example
@@ -1700,7 +1700,7 @@ The Ride Request endpoint allows getting the receipt information of the complete
 
 | Field      | Type  | Description
 |------------|-------|----------
-| accessToken| String| The access token obtained from Uber API.
+| accessToken| credentials| The access token obtained from Uber API.
 | requesttId | String| Unique identifier representing a Request.
 
 #### Request example
