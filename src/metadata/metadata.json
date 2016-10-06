@@ -15,7 +15,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -255,7 +255,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token key obtained from Uber API."
                 },
                 {
@@ -280,7 +280,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token key obtained from Uber API."
                 },
                 {
@@ -305,7 +305,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token key obtained from Uber API."
                 },
                 {
@@ -340,7 +340,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -440,7 +440,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 }
             ],
@@ -460,7 +460,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -490,7 +490,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -515,7 +515,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 }
             ],
@@ -535,7 +535,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -560,7 +560,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -590,7 +590,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -635,7 +635,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -670,7 +670,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -695,7 +695,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -725,7 +725,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 }
             ],
@@ -745,7 +745,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API. This endpoint only supports server_token."
                 },
                 {
@@ -815,7 +815,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API. This endpoint only supports server_token."
                 },
                 {
@@ -840,7 +840,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API. This endpoint only supports server_token."
                 },
                 {
@@ -915,7 +915,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -1020,7 +1020,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -1065,7 +1065,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 }
             ],
@@ -1085,7 +1085,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -1145,7 +1145,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -1195,7 +1195,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -1220,7 +1220,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
@@ -1245,7 +1245,7 @@
             "args":[
                 {
                     "name": "accessToken",
-                    "type": "String",
+                    "type": "credentials",
                     "info": "The access token obtained from Uber API."
                 },
                 {
