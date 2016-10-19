@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/UberAPI/getUser', function ($request, $response, $args) {
+$app->post('/api/Uber/getUser', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();

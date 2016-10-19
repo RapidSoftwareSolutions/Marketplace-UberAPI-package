@@ -1,4 +1,4 @@
-# UberAPI Package
+# Uber Package
 The mission of the Uber API is to make it easy for developers to unlock the power of our logistical network that runs across cities.
 * Domain: uber.com
 * Credentials: accessToken
@@ -41,7 +41,7 @@ The mission of the Uber API is to make it easy for developers to unlock the powe
 * [getReceipt](#getReceipt)
  
 <a name="requestDelivery"/>
-## UberAPI.requestDelivery
+## Uber.requestDelivery
 The Delivery endpoint allows a delivery to be requested given the delivery information and quote ID.
 
 | Field                               | Type  | Description
@@ -235,7 +235,7 @@ The Delivery endpoint allows a delivery to be requested given the delivery infor
 ```
 
 <a name="getDelivery"/>
-## UberAPI.getDelivery
+## Uber.getDelivery
 Get the real time status of an ongoing delivery that was created using the Delivery endpoint.
 
 | Field      | Type  | Description
@@ -358,7 +358,7 @@ Get the real time status of an ongoing delivery that was created using the Deliv
 ```
 
 <a name="cancelDelivery"/>
-## UberAPI.cancelDelivery
+## Uber.cancelDelivery
 Cancels an existing delivery.
 
 | Field      | Type  | Description
@@ -385,7 +385,7 @@ Cancels an existing delivery.
 ```
 
 <a name="getDeliveries"/>
-## UberAPI.getDeliveries
+## Uber.getDeliveries
 Get a list of all deliveries, ordered chronologically by time of creation.
 
 | Field      | Type  | Description
@@ -429,7 +429,7 @@ Get a list of all deliveries, ordered chronologically by time of creation.
 ```
 
 <a name="getQuote"/>
-## UberAPI.getQuote
+## Uber.getQuote
 Generate a delivery quote, given a pickup and dropoff location. On-demand and scheduled delivery quotes will be returned.
 
 | Field                    | Type  | Description
@@ -528,7 +528,7 @@ Generate a delivery quote, given a pickup and dropoff location. On-demand and sc
 ```
 
 <a name="getUser"/>
-## UberAPI.getUser
+## Uber.getUser
 The User Profile endpoint returns information about the Uber user that has authorized with the application.
 
 | Field      | Type  | Description
@@ -561,7 +561,7 @@ The User Profile endpoint returns information about the Uber user that has autho
 ```
 
 <a name="getUserActivity"/>
-## UberAPI.getUserActivity
+## Uber.getUserActivity
 The User Activity endpoint returns a limited amount of data about a user’s lifetime activity with Uber. The response will include pickup and dropoff times, the city the trips took place in, the distance of past requests, and information about which products were requested.
 
 | Field      | Type  | Description
@@ -610,7 +610,7 @@ The User Activity endpoint returns a limited amount of data about a user’s lif
 ```
 
 <a name="getProductDetails"/>
-## UberAPI.getProductDetails
+## Uber.getProductDetails
 The Products Detail endpoint returns information about a specific Uber product. The response includes the display name and other details about the product.
 
 | Field      | Type  | Description
@@ -654,7 +654,7 @@ The Products Detail endpoint returns information about a specific Uber product. 
 ```
 
 <a name="getCurrentRide"/>
-## UberAPI.getCurrentRide
+## Uber.getCurrentRide
 The Ride Request endpoint allows retrieving real-time details for an ongoing trip.
 
 | Field      | Type  | Description
@@ -746,7 +746,7 @@ The Ride Request endpoint allows retrieving real-time details for an ongoing tri
 ```
 
 <a name="getRide"/>
-## UberAPI.getRide
+## Uber.getRide
 The Ride Request endpoint allows retrieving the status of an ongoing or completed trip that was created by your app.
 
 | Field      | Type  | Description
@@ -840,7 +840,7 @@ The Ride Request endpoint allows retrieving the status of an ongoing or complete
 ```
 
 <a name="getProductsByLocation"/>
-## UberAPI.getProductsByLocation
+## Uber.getProductsByLocation
 The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order. Some products, such as uberEATS, are not returned by this endpoint.
 
 | Field      | Type  | Description
@@ -929,7 +929,7 @@ The Products endpoint returns information about the Uber products offered at a g
 ```
 
 <a name="getProductsPrices"/>
-## UberAPI.getProductsPrices
+## Uber.getProductsPrices
 The Price Estimates endpoint returns an estimated price range for each product offered at a given location. The price estimate is provided as a formatted string with the full price range and the localized currency symbol.
 
 | Field         | Type  | Description
@@ -1022,7 +1022,7 @@ The Price Estimates endpoint returns an estimated price range for each product o
 ```
 
 <a name="getProductsTimeEstimates"/>
-## UberAPI.getProductsTimeEstimates
+## Uber.getProductsTimeEstimates
 The Time Estimates endpoint returns ETAs for all products currently available at a given location, with the ETA for each product expressed as integers in seconds.
 
 | Field         | Type  | Description
@@ -1080,7 +1080,7 @@ The Time Estimates endpoint returns ETAs for all products currently available at
 ```
 
 <a name="getUserAddress"/>
-## UberAPI.getUserAddress
+## Uber.getUserAddress
 The Places endpoint allows retrieving the home and work addresses from an Uber user's profile.
 
 | Field      | Type  | Description
@@ -1109,7 +1109,7 @@ The Places endpoint allows retrieving the home and work addresses from an Uber u
 ```
 
 <a name="updateUserAddress"/>
-## UberAPI.updateUserAddress
+## Uber.updateUserAddress
 The Places endpoint allows updating the home and work addresses from an Uber user's profile.
 
 | Field      | Type  | Description
@@ -1140,7 +1140,7 @@ The Places endpoint allows updating the home and work addresses from an Uber use
 ```
 
 <a name="getUserPaymentMethods"/>
-## UberAPI.getUserPaymentMethods
+## Uber.getUserPaymentMethods
 The Payment Methods endpoint allows retrieving the list of the user’s available payment methods.
 
 | Field      | Type  | Description
@@ -1189,7 +1189,7 @@ The Payment Methods endpoint allows retrieving the list of the user’s availabl
 ```
 
 <a name="createReminder"/>
-## UberAPI.createReminder
+## Uber.createReminder
 The Reminders endpoint allows developers to set a reminder for a future trip.
 
 | Field                      | Type  | Description
@@ -1250,7 +1250,7 @@ The Reminders endpoint allows developers to set a reminder for a future trip.
 ```
 
 <a name="getReminder"/>
-## UberAPI.getReminder
+## Uber.getReminder
 The Reminders endpoint allows you to get the status of an existing ride reminder.
 
 | Field      | Type  | Description
@@ -1293,7 +1293,7 @@ The Reminders endpoint allows you to get the status of an existing ride reminder
 ```
 
 <a name="updateReminder"/>
-## UberAPI.updateReminder
+## Uber.updateReminder
 The Reminders endpoint allows you to update an existing reminder.
 
 | Field                      | Type  | Description
@@ -1356,7 +1356,7 @@ The Reminders endpoint allows you to update an existing reminder.
 ```
 
 <a name="deleteReminder"/>
-## UberAPI.deleteReminder
+## Uber.deleteReminder
 The Reminders endpoint allows you to remove any reminder in the pending state from being sent.
 
 | Field                      | Type  | Description
@@ -1383,7 +1383,7 @@ The Reminders endpoint allows you to remove any reminder in the pending state fr
 ```
 
 <a name="requestRide"/>
-## UberAPI.requestRide
+## Uber.requestRide
 The Ride Request endpoint allows a ride to be requested on behalf of an Uber user.
 
 | Field              | Type  | Description
@@ -1451,7 +1451,7 @@ The Ride Request endpoint allows a ride to be requested on behalf of an Uber use
 ```
 
 <a name="updateCurrentRide"/>
-## UberAPI.updateCurrentRide
+## Uber.updateCurrentRide
 The Ride Request endpoint allows updating an ongoing request’s destination.
 
 | Field       | Type  | Description
@@ -1486,7 +1486,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination.
 ```
 
 <a name="cancelCurrentRide"/>
-## UberAPI.cancelCurrentRide
+## Uber.cancelCurrentRide
 The Ride Request endpoint allows cancellation of the user's current trip.
 
 | Field      | Type  | Description
@@ -1511,7 +1511,7 @@ The Ride Request endpoint allows cancellation of the user's current trip.
 ```
 
 <a name="getRideEstimate"/>
-## UberAPI.getRideEstimate
+## Uber.getRideEstimate
 The Request Estimate endpoint allows a ride to be estimated given the desired product, start, and end locations.
 
 | Field         | Type  | Description
@@ -1601,7 +1601,7 @@ The Request Estimate endpoint allows a ride to be estimated given the desired pr
 ```
 
 <a name="updateRide"/>
-## UberAPI.updateRide
+## Uber.updateRide
 The Ride Request endpoint allows updating an ongoing request’s destination using the Ride Request endpoint.
 
 | Field       | Type  | Description
@@ -1638,7 +1638,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination usi
 ```
 
 <a name="cancelRide"/>
-## UberAPI.cancelRide
+## Uber.cancelRide
 The Ride Request endpoint allows cancellation of an ongoing Request on behalf of a rider.
 
 | Field      | Type  | Description
@@ -1665,7 +1665,7 @@ The Ride Request endpoint allows cancellation of an ongoing Request on behalf of
 ```
 
 <a name="getRideMap"/>
-## UberAPI.getRideMap
+## Uber.getRideMap
 The Ride Request endpoint getting a map with a visual representation of a Request.
 
 | Field      | Type  | Description
@@ -1695,7 +1695,7 @@ The Ride Request endpoint getting a map with a visual representation of a Reques
 ```
 
 <a name="getReceipt"/>
-## UberAPI.getReceipt
+## Uber.getReceipt
 The Ride Request endpoint allows getting the receipt information of the completed request.
 
 | Field      | Type  | Description

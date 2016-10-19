@@ -2,7 +2,7 @@
 
 namespace Tests\Functional;
 
-class UberAPITest extends BaseTestCase
+class UberTest extends BaseTestCase
 {
     public function testRequestDelivery() {
         
@@ -39,7 +39,7 @@ class UberAPITest extends BaseTestCase
         }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/requestDelivery', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/requestDelivery', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -58,7 +58,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getDelivery', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getDelivery', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -77,7 +77,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/cancelDelivery', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/cancelDelivery', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('null', json_decode($response->getBody())->contextWrites->to);
@@ -98,7 +98,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getDeliveries', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getDeliveries', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -127,7 +127,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getQuote', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getQuote', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -145,7 +145,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getUser', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getUser', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -163,7 +163,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getUserActivity', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getUserActivity', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -182,7 +182,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getProductDetails', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getProductDetails', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -200,7 +200,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getCurrentRide', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getCurrentRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
@@ -219,7 +219,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getRide', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
@@ -239,7 +239,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getProductsByLocation', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getProductsByLocation', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -261,7 +261,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getProductsPrices', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getProductsPrices', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -281,7 +281,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getProductsTimeEstimates', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getProductsTimeEstimates', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -300,7 +300,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getUserAddress', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getUserAddress', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -320,7 +320,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/updateUserAddress', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/updateUserAddress', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -338,7 +338,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getUserPaymentMethods', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getUserPaymentMethods', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -359,7 +359,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/createReminder', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/createReminder', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -380,7 +380,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getReminder', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getReminder', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -401,7 +401,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/updateReminder', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/updateReminder', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertNotEmpty($response->getBody());
@@ -420,7 +420,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/deleteReminder', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/deleteReminder', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
@@ -442,7 +442,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/requestRide', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/requestRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
@@ -460,7 +460,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/updateCurrentRide', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/updateCurrentRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
@@ -478,7 +478,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/cancelCurrentRide', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/cancelCurrentRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('success', json_decode($response->getBody())->callback);
@@ -496,7 +496,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getRideEstimate', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getRideEstimate', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
@@ -515,7 +515,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/updateRide', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/updateRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
@@ -534,7 +534,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/cancelRide', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/cancelRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('success', json_decode($response->getBody())->callback);
@@ -553,7 +553,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getRideMap', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getRideMap', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
@@ -572,7 +572,7 @@ class UberAPITest extends BaseTestCase
                 }';
         $post_data = json_decode($var, true);
         
-        $response = $this->runApp('POST', '/api/UberAPI/getReceipt', $post_data);
+        $response = $this->runApp('POST', '/api/Uber/getReceipt', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);

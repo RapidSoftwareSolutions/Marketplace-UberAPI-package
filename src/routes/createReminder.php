@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/UberAPI/createReminder', function ($request, $response, $args) {
+$app->post('/api/Uber/createReminder', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();

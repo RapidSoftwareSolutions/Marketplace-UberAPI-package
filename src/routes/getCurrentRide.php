@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/UberAPI/getCurrentRide', function ($request, $response, $args) {
+$app->post('/api/Uber/getCurrentRide', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();

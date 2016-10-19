@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/UberAPI/cancelRide', function ($request, $response, $args) {
+$app->post('/api/Uber/cancelRide', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();

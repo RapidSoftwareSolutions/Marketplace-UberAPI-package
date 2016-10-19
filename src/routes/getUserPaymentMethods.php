@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/UberAPI/getUserPaymentMethods', function ($request, $response, $args) {
+$app->post('/api/Uber/getUserPaymentMethods', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();
