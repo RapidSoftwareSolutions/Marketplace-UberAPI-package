@@ -11,245 +11,250 @@
         ]
     },
     "blocks": [{
-            "name":"requestDelivery",
-            "args":[
-                {
-                    "name": "accessToken",
-                    "type": "credentials",
-                    "info": "The access token obtained from Uber API."
-                },
-                {
-                    "name": "itemsTitle",
-                    "type": "String",
-                    "info": "The title of the item. Limited to 128 characters."
-                },
-                {
-                    "name": "itemsQuantity",
-                    "type": "String",
-                    "info": "The number of this item."
-                },
-                {
-                    "name": "itemsPrice",
-                    "type": "String",
-                    "info": "The price of the item."
-                },
-                {
-                    "name": "itemsCurrencyCode",
-                    "type": "String",
-                    "info": "The currency code of the item price. The currency code follows the ISO 4217 standard."
-                },
-                {
-                    "name": "pickupLocationAddress",
-                    "type": "String",
-                    "info": "The top address line of the delivery pickup location."
-                },
-                {
-                    "name": "pickupLocationCity",
-                    "type": "String",
-                    "info": "The city of the delivery pickup location."
-                },
-                {
-                    "name": "pickupLocationState",
-                    "type": "String",
-                    "info": "The state of the delivery pickup location such as \"CA\"."
-                },
-                {
-                    "name": "pickupLocationPostalCode",
-                    "type": "String",
-                    "info": "The postal code of the delivery pickup location."
-                },
-                {
-                    "name": "pickupLocationCountry",
-                    "type": "String",
-                    "info": "The country of the pickup location such as \"US\"."
-                },
-                {
-                    "name": "pickupContactFirstName",
-                    "type": "String",
-                    "info": "The first name of the contact. This field is optional if pickup.contact.company_name is provided. Limited to 128 characters."
-                },
-                {
-                    "name": "pickupContactLastName",
-                    "type": "String",
-                    "info": "The last name of the contact. This field is optional if pickup.contact.company_name is provided. Limited to 128 characters."
-                },
-                {
-                    "name": "pickupContactEmail",
-                    "type": "String",
-                    "info": "The email of the contact."
-                },
-                {
-                    "name": "pickupContactPhoneNumber",
-                    "type": "String",
-                    "info": "The phone number of the contact. Phone number should start with + followed by the country code and then the local number (e.g., +18005555555)."
-                },
-                {
-                    "name": "dropoffLocationAddress",
-                    "type": "String",
-                    "info": "The top address line of the delivery drop-off location."
-                },
-                {
-                    "name": "dropoffLocationAddress2",
-                    "type": "String",
-                    "info": "The second address line of the delivery drop-off location such as the apartment number. Limited to 128 characters."
-                },
-                {
-                    "name": "dropoffLocationCity",
-                    "type": "String",
-                    "info": "The city of the delivery drop-off location."
-                },
-                {
-                    "name": "dropoffLocationState",
-                    "type": "String",
-                    "info": "The state of the delivery drop-off location such as \"CA\"."
-                },
-                {
-                    "name": "dropoffLocationPostalCode",
-                    "type": "String",
-                    "info": "The postal code of the delivery drop-off location."
-                },
-                {
-                    "name": "dropoffLocationCountry",
-                    "type": "String",
-                    "info": "The country of the delivery pickup location such as \"US\"."
-                },
-                {
-                    "name": "dropoffContactFirstName",
-                    "type": "String",
-                    "info": "The first name of the contact. Limited to 128 characters."
-                },
-                {
-                    "name": "dropoffContactLastName",
-                    "type": "String",
-                    "info": "The last name of the contact. Limited to 128 characters."
-                },
-                {
-                    "name": "dropoffContactEmail",
-                    "type": "String",
-                    "info": "The email of the contact."
-                },
-                {
-                    "name": "dropoffContactPhoneNumber",
-                    "type": "String",
-                    "info": "The phone number of the contact."
-                },
-                {
-                    "name": "dropoffContactPhoneSmsEnabled",
-                    "type": "String",
-                    "info": "If the phone has SMS capabilities. True or false."
-                },
-                {
-                    "name": "quoteId",
-                    "type": "String",
-                    "info": "Optional: The ID of the quoted price of the delivery. This field is optional. If missing, the fee for the delivery will be determined at the time of request."
-                },
-                {
-                    "name": "orderReferenceId",
-                    "type": "String",
-                    "info": "Optional: The merchant-supplied order reference identifier. This field is optional. Limited to 256 characters."
-                },
-                {
-                    "name": "itemsWidth",
-                    "type": "String",
-                    "info": "Optional: The width of the item in inches."
-                },
-                {
-                    "name": "itemsHeight",
-                    "type": "String",
-                    "info": "Optional: The height of the item in inches."
-                },
-                {
-                    "name": "itemsLength",
-                    "type": "String",
-                    "info": "Optional: The length of the item in inches."
-                },
-                {
-                    "name": "itemsWeight",
-                    "type": "String",
-                    "info": "Optional: The weight of the item in pounds."
-                },
-                {
-                    "name": "itemsIsFragile",
-                    "type": "String",
-                    "info": "Optional: If the item is fragile. True or false. Default to false."
-                },
-                {
-                    "name": "pickupLocationAddress2",
-                    "type": "String",
-                    "info": "Optional: The second address line of the delivery pickup location such as the apartment number. Limited to 128 characters."
-                },
-                {
-                    "name": "pickupLocationLatitude",
-                    "type": "String",
-                    "info": "Optional: Latitude of the pickup location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
-                },
-                {
-                    "name": "pickupLocationLongitude",
-                    "type": "String",
-                    "info": "Optional: Longitude of the pickup location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
-                },
-                {
-                    "name": "pickupContactCompanyName",
-                    "type": "String",
-                    "info": "Optional: The company name of the contact. Limited to 128 characters."
-                },
-                {
-                    "name": "pickupContactPhoneSmsEnabled",
-                    "type": "String",
-                    "info": "Optional: If the phone has SMS capabilities. True or false."
-                },
-                {
-                    "name": "pickupSpecialInstructions",
-                    "type": "String",
-                    "info": "Optional: Special instructions for the pickup. Limited to 256 characters."
-                },
-                {
-                    "name": "dropoffLocationLatitude",
-                    "type": "String",
-                    "info": "Optional: Latitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
-                },
-                {
-                    "name": "dropoffLocationLongitude",
-                    "type": "String",
-                    "info": "Optional: Longitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
-                },
-                {
-                    "name": "dropoffContactSendEmailNotifications",
-                    "type": "String",
-                    "info": "Optional: If Uber should send email delivery notifications. True or false. Default to true."
-                },
-                {
-                    "name": "dropoffContactSendSmsNotifications",
-                    "type": "String",
-                    "info": "Optional: If Uber should send SMS delivery notifications. True or false. Default to true."
-                },
-                {
-                    "name": "dropoffSpecialInstructions",
-                    "type": "String",
-                    "info": "Optional: Special instructions for the drop-off. Limited to 256 characters."
-                },
-                {
-                    "name": "dropoffSignatureRequired",
-                    "type": "String",
-                    "info": "Optional: If signature is required for drop-off. True or false. Default to false."
-                },
-                {
-                    "name": "includesAlcohol",
-                    "type": "String",
-                    "info": "Optional: Indicates if the delivery includes alcohol. True or false. This feature is only available to whitelisted businesses."
-                }
-            ],
-            "callbacks":[
-                {
-                    "name":"error",
-                    "info": "Error"
-                },
-                {
-                    "name":"success",
-                    "info": "Success => channels: Array <string>"
-                }
-            ]
-        },
+        "name":"requestDelivery",
+        "args":[
+            {
+                "name": "accessToken",
+                "type": "credentials",
+                "info": "The access token obtained from Uber API."
+            },
+            {
+                "name": "itemsTitle",
+                "type": "String",
+                "info": "The title of the item. Limited to 128 characters."
+            },
+            {
+                "name": "itemsQuantity",
+                "type": "String",
+                "info": "The number of this item."
+            },
+            {
+                "name": "itemsPrice",
+                "type": "String",
+                "info": "The price of the item."
+            },
+            {
+                "name": "itemsCurrencyCode",
+                "type": "String",
+                "info": "The currency code of the item price. The currency code follows the ISO 4217 standard."
+            },
+            {
+                "name": "pickupLocationAddress",
+                "type": "String",
+                "info": "The top address line of the delivery pickup location."
+            },
+            {
+                "name": "pickupLocationCity",
+                "type": "String",
+                "info": "The city of the delivery pickup location."
+            },
+            {
+                "name": "pickupLocationState",
+                "type": "String",
+                "info": "The state of the delivery pickup location such as \"CA\"."
+            },
+            {
+                "name": "pickupLocationPostalCode",
+                "type": "String",
+                "info": "The postal code of the delivery pickup location."
+            },
+            {
+                "name": "pickupLocationCountry",
+                "type": "String",
+                "info": "The country of the pickup location such as \"US\"."
+            },
+            {
+                "name": "pickupContactFirstName",
+                "type": "String",
+                "info": "The first name of the contact. This field is optional if pickup.contact.company_name is provided. Limited to 128 characters."
+            },
+            {
+                "name": "pickupContactLastName",
+                "type": "String",
+                "info": "The last name of the contact. This field is optional if pickup.contact.company_name is provided. Limited to 128 characters."
+            },
+            {
+                "name": "pickupContactEmail",
+                "type": "String",
+                "info": "The email of the contact."
+            },
+            {
+                "name": "pickupContactPhoneNumber",
+                "type": "String",
+                "info": "The phone number of the contact. Phone number should start with + followed by the country code and then the local number (e.g., +18005555555)."
+            },
+            {
+                "name": "dropoffLocationAddress",
+                "type": "String",
+                "info": "The top address line of the delivery drop-off location."
+            },
+            {
+                "name": "dropoffLocationAddress2",
+                "type": "String",
+                "info": "The second address line of the delivery drop-off location such as the apartment number. Limited to 128 characters."
+            },
+            {
+                "name": "dropoffLocationCity",
+                "type": "String",
+                "info": "The city of the delivery drop-off location."
+            },
+            {
+                "name": "dropoffLocationState",
+                "type": "String",
+                "info": "The state of the delivery drop-off location such as \"CA\"."
+            },
+            {
+                "name": "dropoffLocationPostalCode",
+                "type": "String",
+                "info": "The postal code of the delivery drop-off location."
+            },
+            {
+                "name": "dropoffLocationCountry",
+                "type": "String",
+                "info": "The country of the delivery pickup location such as \"US\"."
+            },
+            {
+                "name": "dropoffContactFirstName",
+                "type": "String",
+                "info": "The first name of the contact. Limited to 128 characters."
+            },
+            {
+                "name": "dropoffContactLastName",
+                "type": "String",
+                "info": "The last name of the contact. Limited to 128 characters."
+            },
+            {
+                "name": "dropoffContactEmail",
+                "type": "String",
+                "info": "The email of the contact."
+            },
+            {
+                "name": "dropoffContactPhoneNumber",
+                "type": "String",
+                "info": "The phone number of the contact."
+            },
+            {
+                "name": "dropoffContactPhoneSmsEnabled",
+                "type": "String",
+                "info": "If the phone has SMS capabilities. True or false."
+            },
+            {
+                "name": "quoteId",
+                "type": "String",
+                "info": "Optional: The ID of the quoted price of the delivery. This field is optional. If missing, the fee for the delivery will be determined at the time of request."
+            },
+            {
+                "name": "orderReferenceId",
+                "type": "String",
+                "info": "Optional: The merchant-supplied order reference identifier. This field is optional. Limited to 256 characters."
+            },
+            {
+                "name": "itemsWidth",
+                "type": "String",
+                "info": "Optional: The width of the item in inches."
+            },
+            {
+                "name": "itemsHeight",
+                "type": "String",
+                "info": "Optional: The height of the item in inches."
+            },
+            {
+                "name": "itemsLength",
+                "type": "String",
+                "info": "Optional: The length of the item in inches."
+            },
+            {
+                "name": "itemsWeight",
+                "type": "String",
+                "info": "Optional: The weight of the item in pounds."
+            },
+            {
+                "name": "itemsIsFragile",
+                "type": "String",
+                "info": "Optional: If the item is fragile. True or false. Default to false."
+            },
+            {
+                "name": "pickupLocationAddress2",
+                "type": "String",
+                "info": "Optional: The second address line of the delivery pickup location such as the apartment number. Limited to 128 characters."
+            },
+            {
+                "name": "pickupLocationLatitude",
+                "type": "String",
+                "info": "Optional: Latitude of the pickup location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
+            },
+            {
+                "name": "pickupLocationLongitude",
+                "type": "String",
+                "info": "Optional: Longitude of the pickup location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
+            },
+            {
+                "name": "pickupContactCompanyName",
+                "type": "String",
+                "info": "Optional: The company name of the contact. Limited to 128 characters."
+            },
+            {
+                "name": "pickupContactPhoneSmsEnabled",
+                "type": "String",
+                "info": "Optional: If the phone has SMS capabilities. True or false."
+            },
+            {
+                "name": "pickupSpecialInstructions",
+                "type": "String",
+                "info": "Optional: Special instructions for the pickup. Limited to 256 characters."
+            },
+            {
+                "name": "dropoffLocationLatitude",
+                "type": "String",
+                "info": "Optional: Latitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
+            },
+            {
+                "name": "dropoffLocationLongitude",
+                "type": "String",
+                "info": "Optional: Longitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
+            },
+            {
+                "name": "dropoffContactSendEmailNotifications",
+                "type": "String",
+                "info": "Optional: If Uber should send email delivery notifications. True or false. Default to true."
+            },
+            {
+                "name": "dropoffContactSendSmsNotifications",
+                "type": "String",
+                "info": "Optional: If Uber should send SMS delivery notifications. True or false. Default to true."
+            },
+            {
+                "name": "dropoffSpecialInstructions",
+                "type": "String",
+                "info": "Optional: Special instructions for the drop-off. Limited to 256 characters."
+            },
+            {
+                "name": "dropoffSignatureRequired",
+                "type": "String",
+                "info": "Optional: If signature is required for drop-off. True or false. Default to false."
+            },
+            {
+                "name": "includesAlcohol",
+                "type": "String",
+                "info": "Optional: Indicates if the delivery includes alcohol. True or false. This feature is only available to whitelisted businesses."
+            },
+            {
+                "name": "sandbox",
+                "type": "String",
+                "info": "UberAPI Sandbox: True || False"
+            }
+        ],
+        "callbacks":[
+            {
+                "name":"error",
+                "info": "Error"
+            },
+            {
+                "name":"success",
+                "info": "Success => channels: Array <string>"
+            }
+        ]
+    },
         {
             "name":"getDelivery",
             "args":[
@@ -262,6 +267,11 @@
                     "name": "deliveryId",
                     "type": "String",
                     "info": "Unique identifier representing a Delivery."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -287,6 +297,11 @@
                     "name": "deliveryId",
                     "type": "String",
                     "info": "Unique identifier representing a Delivery."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -322,6 +337,11 @@
                     "name": "status",
                     "type": "String",
                     "info": "A status value to filter for. List of status strings can be found https://developer.uber.com/docs/rush/statuses. Additionally supports a value of active that will return all ongoing deliveries. A delivery is considered active if the status field value is either en_route_to_pickup, at_pickup, en_route_to_dropoff or at_dropoff."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -422,6 +442,11 @@
                     "name": "dropoffLocationLongitude",
                     "type": "String",
                     "info": "Optional: Longitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -432,6 +457,11 @@
                 {
                     "name":"success",
                     "info": "Success => channels: Array <string>"
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ]
         },
@@ -442,6 +472,11 @@
                     "name": "accessToken",
                     "type": "credentials",
                     "info": "The access token obtained from Uber API."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -472,6 +507,11 @@
                     "name": "limit",
                     "type": "String",
                     "info": "Optional: Number of items to retrieve. Default is 5, maximum is 50."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -497,6 +537,11 @@
                     "name": "productId",
                     "type": "String",
                     "info": "Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -517,6 +562,11 @@
                     "name": "accessToken",
                     "type": "credentials",
                     "info": "The access token obtained from Uber API."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -542,6 +592,11 @@
                     "name": "requestId",
                     "type": "String",
                     "info": "Unique identifier representing a Request."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -572,6 +627,11 @@
                     "name": "longitude",
                     "type": "String",
                     "info": "Longitude component of location."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -617,6 +677,11 @@
                     "name": "seatCount",
                     "type": "String",
                     "info": "Optional: The number of seats required for uberPOOL. Default and maximum value is 2."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -652,6 +717,11 @@
                     "name": "productId",
                     "type": "String",
                     "info": "Optional: Unique identifier representing a specific product for a given latitude & longitude."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -677,6 +747,11 @@
                     "name": "placeName",
                     "type": "String",
                     "info": "The name of the place to retrieve. Only home and work are acceptable."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -707,6 +782,11 @@
                     "name": "address",
                     "type": "String",
                     "info": "The address of the place that should be tied to the given placeName."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -727,6 +807,11 @@
                     "name": "accessToken",
                     "type": "credentials",
                     "info": "The access token obtained from Uber API."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -797,6 +882,11 @@
                     "name": "tripBrandingPartnerDeeplink",
                     "type": "String",
                     "info": "Optional: Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -822,6 +912,11 @@
                     "name": "reminderId",
                     "type": "String",
                     "info": "The reminder ID."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -832,6 +927,11 @@
                 {
                     "name":"success",
                     "info": "Success => channels: Array <string>"
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ]
         },
@@ -897,6 +997,11 @@
                     "name": "tripBrandingPartnerDeeplink",
                     "type": "String",
                     "info": "Optional: Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -1002,6 +1107,11 @@
                     "name": "expenseMemo",
                     "type": "String",
                     "info": "Optional: A free text field to describe the purpose of the trip for expense reporting. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -1047,6 +1157,11 @@
                     "name": "endPlaceId",
                     "type": "String",
                     "info": "Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is accepted. Either this or endLatitude and endLongitude must be specified."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -1067,6 +1182,11 @@
                     "name": "accessToken",
                     "type": "credentials",
                     "info": "The access token obtained from Uber API."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -1127,6 +1247,11 @@
                     "name": "seatCount",
                     "type": "String",
                     "info": "Optional: The number of seats required for uberPOOL. Default and maximum value is 2."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -1177,6 +1302,11 @@
                     "name": "endPlaceId",
                     "type": "String",
                     "info": "Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is accepted. Either this or endLatitude and end_Longitude must be specified."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -1202,6 +1332,11 @@
                     "name": "requesttId",
                     "type": "String",
                     "info": "Unique identifier representing a Request."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -1227,6 +1362,11 @@
                     "name": "requesttId",
                     "type": "String",
                     "info": "Unique identifier representing a Request."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
@@ -1252,6 +1392,11 @@
                     "name": "requesttId",
                     "type": "String",
                     "info": "Unique identifier representing a Request."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
                 }
             ],
             "callbacks":[
