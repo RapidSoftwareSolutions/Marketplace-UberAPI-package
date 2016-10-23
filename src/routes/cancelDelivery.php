@@ -29,7 +29,7 @@ $app->post('/api/Uber/cancelDelivery', function ($request, $response, $args) {
     
     $query['delivery_id'] = $post_data['args']['deliveryId'];  
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/deliveries/' . $query['delivery_id'] .'/cancel';
     } else {
         $query_str = 'https://api.uber.com/v1/deliveries/' . $query['delivery_id'] .'/cancel';
