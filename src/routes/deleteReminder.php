@@ -27,7 +27,7 @@ $app->post('/api/Uber/deleteReminder', function ($request, $response, $args) {
     $headers['Authorization'] = "Token " . $post_data['args']['accessToken'];
     $headers['Content-Type'] = 'application/json'; 
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/reminders/' . $post_data['args']['reminderId'];
     } else {
         $query_str = 'https://api.uber.com/v1/reminders/' . $post_data['args']['reminderId'];
