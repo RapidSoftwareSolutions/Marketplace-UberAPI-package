@@ -33,7 +33,7 @@ $app->post('/api/Uber/getProductsByLocation', function ($request, $response, $ar
     $query['latitude'] = $post_data['args']['latitude'];
     $query['longitude'] = $post_data['args']['longitude'];
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/products';
     } else {
         $query_str = 'https://api.uber.com/v1/products';
