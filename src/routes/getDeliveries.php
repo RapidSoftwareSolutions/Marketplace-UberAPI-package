@@ -37,7 +37,7 @@ $app->post('/api/Uber/getDeliveries', function ($request, $response, $args) {
     $query['limit'] = $post_data['args']['limit'];
     $query['status'] = $post_data['args']['status'];
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/deliveries';
     } else {
         $query_str = 'https://api.uber.com/v1/deliveries';
