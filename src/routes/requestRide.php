@@ -78,7 +78,7 @@ $app->post('/api/Uber/requestRide', function ($request, $response, $args) {
     }
 
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/requests';
     } else {
         $query_str = 'https://api.uber.com/v1/requests';
