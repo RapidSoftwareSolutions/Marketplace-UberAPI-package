@@ -27,7 +27,7 @@ $app->post('/api/Uber/getRide', function ($request, $response, $args) {
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
     $headers['Content-Type'] = 'application/json'; 
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/requests/' . $post_data['args']['requestId'];
     } else {
         $query_str = 'https://api.uber.com/v1/requests/' . $post_data['args']['requestId'];
