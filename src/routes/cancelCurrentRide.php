@@ -25,7 +25,7 @@ $app->post('/api/Uber/cancelCurrentRide', function ($request, $response, $args) 
     $headers['Content-Type'] = 'application/json'; 
 
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/requests/current';
     } else {
         $query_str = 'https://api.uber.com/v1/requests/current';
