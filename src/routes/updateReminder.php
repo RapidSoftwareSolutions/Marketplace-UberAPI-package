@@ -62,7 +62,7 @@ $app->post('/api/Uber/updateReminder', function ($request, $response, $args) {
         $body['trip_branding']['partner_deeplink'] = $post_data['args']['tripBrandingPartnerDeeplink'];
     }
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/reminders/' . $post_data['args']['reminderId'];
     } else {
         $query_str = 'https://api.uber.com/v1/reminders/' . $post_data['args']['reminderId'];
