@@ -36,7 +36,7 @@ $app->post('/api/Uber/getProductsTimeEstimates', function ($request, $response, 
         $query['product_id'] = $post_data['args']['productId'];
     }
 
-    if($post_data['args']['sandbox'] == 1) {
+    if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/estimates/time';
     } else {
         $query_str = 'https://api.uber.com/v1/estimates/time';
