@@ -1016,6 +1016,36 @@
             ]
         },
         {
+            "name":"deleteReminder",
+            "args":[
+                {
+                    "name": "accessToken",
+                    "type": "credentials",
+                    "info": "The access token obtained from Uber API. This endpoint only supports server_token."
+                },
+                {
+                    "name": "reminderId",
+                    "type": "String",
+                    "info": "The reminder ID."
+                },
+                {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False"
+                }
+            ],
+            "callbacks":[
+                {
+                    "name":"error",
+                    "info": "Error"
+                },
+                {
+                    "name":"success",
+                    "info": "Success => channels: Array <string>"
+                }
+            ]
+        },
+        {
             "name":"requestRide",
             "args":[
                 {
@@ -1274,7 +1304,7 @@
                     "info": "The access token obtained from Uber API."
                 },
                 {
-                    "name": "requesttId",
+                    "name": "requestId",
                     "type": "String",
                     "info": "Unique identifier representing a Request."
                 },
@@ -1329,7 +1359,7 @@
                     "info": "The access token obtained from Uber API."
                 },
                 {
-                    "name": "requesttId",
+                    "name": "requestId",
                     "type": "String",
                     "info": "Unique identifier representing a Request."
                 },
@@ -1359,7 +1389,7 @@
                     "info": "The access token obtained from Uber API."
                 },
                 {
-                    "name": "requesttId",
+                    "name": "requestId",
                     "type": "String",
                     "info": "Unique identifier representing a Request."
                 },
@@ -1389,7 +1419,7 @@
                     "info": "The access token obtained from Uber API."
                 },
                 {
-                    "name": "requesttId",
+                    "name": "requestId",
                     "type": "String",
                     "info": "Unique identifier representing a Request."
                 },

@@ -4,10 +4,14 @@ $app->post('/api/Uber/requestRide', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();
-    $post_data = json_decode($data, true);
-    if(!isset($post_data['args'])) {
-        $data = $request->getParsedBody();
-        $post_data = $data;
+
+    if($data=='') {
+        $post_data = $request->getParsedBody();
+    } else {
+        $toJson = $this->toJson;
+        $data = $toJson->normalizeJson($data); 
+        $data = str_replace('\"', '"', $data);
+        $post_data = json_decode($data, true);
     }
         
     $error = [];
@@ -36,7 +40,10 @@ $app->post('/api/Uber/requestRide', function ($request, $response, $args) {
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
     $headers['Content-Type'] = 'application/json'; 
     
-    $body = [];
+    $body['start_latitude'] = $post_data['args']['startLatitude'];
+    $body['start_longitude'] = $post_data['args']['startLongitude'];
+    $body['end_latitude'] = $post_data['args']['endLatitude'];
+    $body['end_longitude'] = $post_data['args']['endLongitude'];
     if(!empty($post_data['args']['startPlace_id'])) {
         $body['start_place_id'] = $post_data['args']['startPlace_id'];
     }
@@ -91,29 +98,37 @@ $app->post('/api/Uber/requestRide', function ($request, $response, $args) {
         $resp = $client->post( $query_str, 
             [
                 'headers' => $headers,
-                'body'=> json_encode($body)
+                'json'=> $body
             ]);
         $responseBody = $resp->getBody()->getContents();
-        $code = $resp->getStatusCode();
-        $res = json_decode($responseBody);
         
-        if($code == '202') { 
+        if($resp->getStatusCode() == '202') {
             $result['callback'] = 'success';
-            $result['contextWrites']['to'] = json_encode($res);   
+            $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
         } else {
             $result['callback'] = 'error';
-            $result['contextWrites']['to'] = json_encode($res);
+            $result['contextWrites']['to'] = is_array($responseBody) ? $responseBody : json_decode($responseBody);
         }
 
     } catch (\GuzzleHttp\Exception\ClientException $exception) {
 
         $responseBody = $exception->getResponse()->getBody();
         $result['callback'] = 'error';
-        $result['contextWrites']['to'] = json_encode(json_decode($responseBody));
+        $result['contextWrites']['to'] = json_decode($responseBody);
+
+    } catch (GuzzleHttp\Exception\ServerException $exception) {
+
+        $responseBody = $exception->getResponse()->getBody(true);
+        $result['callback'] = 'error';
+        $result['contextWrites']['to'] = json_decode($responseBody);
+
+    } catch (GuzzleHttp\Exception\BadResponseException $exception) {
+
+        $responseBody = $exception->getResponse()->getBody(true);
+        $result['callback'] = 'error';
+        $result['contextWrites']['to'] = json_decode($responseBody);
 
     }
-    
-    
 
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
 });

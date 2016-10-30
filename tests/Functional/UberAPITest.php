@@ -2,7 +2,7 @@
 
 namespace Tests\Functional;
 
-class UberTest extends BaseTestCase
+class UberAPITest extends BaseTestCase
 {
     public function testRequestDelivery() {
         
@@ -22,12 +22,12 @@ class UberTest extends BaseTestCase
                   "pickupContactLastName": "Osipchuk",
                   "pickupContactEmail": "triongroup@gmail.com",
                   "pickupContactPhoneNumber": "+381234567890",
-                  "dropoffLocationAddress": "Basseyna st",
-                  "dropoffLocationAddress2": "Basseyna st",
-                  "dropoffLocationCity": "Kyiv",
-                  "dropoffLocationState": "Kyiv",
-                  "dropoffLocationPostalCode": "50001",
-                  "dropoffLocationCountry": "Ukraine",
+                  "dropoffLocationAddress": "9 Doyers St #1",
+                  "dropoffLocationAddress2": "9 Doyers St #1",
+                  "dropoffLocationCity": "New York",
+                  "dropoffLocationState": "NY",
+                  "dropoffLocationPostalCode": "10013",
+                  "dropoffLocationCountry": "USA",
                   "dropoffContactFirstName": "Test",
                   "dropoffContactLastName": "Testov",
                   "dropoffContactEmail": "test@site.com",
@@ -61,8 +61,8 @@ class UberTest extends BaseTestCase
         $response = $this->runApp('POST', '/api/Uber/getDelivery', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertNotEmpty($response->getBody());
-        $this->assertEquals('success', json_decode($response->getBody())->callback);
+        $this->assertEquals('error', json_decode($response->getBody())->callback);
+        $this->assertContains('No delivery found', json_decode($response->getBody())->contextWrites->to->message);
         
     }
     
@@ -80,8 +80,8 @@ class UberTest extends BaseTestCase
         $response = $this->runApp('POST', '/api/Uber/cancelDelivery', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('null', json_decode($response->getBody())->contextWrites->to);
-        $this->assertEquals('success', json_decode($response->getBody())->callback);
+        $this->assertEquals('error', json_decode($response->getBody())->callback);
+        $this->assertContains('No delivery found', json_decode($response->getBody())->contextWrites->to->message);
         
     }
     
@@ -116,12 +116,12 @@ class UberTest extends BaseTestCase
                           "pickupLocationState": "NY",
                           "pickupLocationPostalCode": "10002",
                           "pickupLocationCountry": "USA",
-                          "dropoffLocationAddress": "Basseyna st",
-                          "dropoffLocationAddress2": "Basseyna st",
-                          "dropoffLocationCity": "Kyiv",
-                          "dropoffLocationState": "Kyiv",
-                          "dropoffLocationPostalCode": "50001",
-                          "dropoffLocationCountry": "Ukraine",
+                          "dropoffLocationAddress": "9 Doyers St #1",
+                          "dropoffLocationAddress2": "9 Doyers St #1",
+                          "dropoffLocationCity": "New York",
+                          "dropoffLocationState": "NY",
+                          "dropoffLocationPostalCode": "10013",
+                          "dropoffLocationCountry": "USA",
                           "sandbox": "1"
                         }
                 }';
@@ -204,7 +204,7 @@ class UberTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('User is not currently on a trip', json_decode($response->getBody())->contextWrites->to);
+        $this->assertContains('User is not currently on a trip', json_decode($response->getBody())->contextWrites->to->errors[0]->title);
         
     }
     
@@ -223,7 +223,7 @@ class UberTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('cannot find trip', json_decode($response->getBody())->contextWrites->to);
+        $this->assertContains('cannot find trip', json_decode($response->getBody())->contextWrites->to->message);
         
     }
     
@@ -351,9 +351,9 @@ class UberTest extends BaseTestCase
         $var = '{
                         "args": {
                           "accessToken": "6s3mJZacwayfSNS9FcnHv_ibiDUM5j8zrCi1s19E",
-                          "reminderTime": "1475677105",
+                          "reminderTime": "1514592000",
                           "phoneNumber": "+380931234567",
-                          "eventTime": "1475677105",
+                          "eventTime": "1514592000",
                           "sandbox": "1"
                         }
                 }';
@@ -395,7 +395,7 @@ class UberTest extends BaseTestCase
                           "accessToken": "6s3mJZacwayfSNS9FcnHv_ibiDUM5j8zrCi1s19E",
                           "reminderId": "99950679-cfb4-4ca8-8270-5acc8822c231",
                           "phoneNumber": "+380931234567",
-                          "eventTime": "1475677105",
+                          "eventTime": "1514592000",
                           "sandbox": "1"
                         }
                 }';
@@ -424,7 +424,7 @@ class UberTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('No reminder found', json_decode($response->getBody())->contextWrites->to);
+        $this->assertContains('No reminder found', json_decode($response->getBody())->contextWrites->to->message);
         
     }
     
@@ -445,8 +445,8 @@ class UberTest extends BaseTestCase
         $response = $this->runApp('POST', '/api/Uber/requestRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('validation_failed', json_decode($response->getBody())->contextWrites->to);
+        $this->assertNotEmpty($response->getBody());
+        $this->assertEquals('success', json_decode($response->getBody())->callback);
         
     }
     
@@ -455,6 +455,8 @@ class UberTest extends BaseTestCase
         $var = '{
                         "args": {
                           "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOlsicmVxdWVzdCIsImFsbF90cmlwcyIsImhpc3RvcnkiXSwic3ViIjoiYzcxNmQ3Y2ItMWE1ZC00Y2JhLTk0MDktNDMxNDFiNjBhYzg4IiwiaXNzIjoidWJlci11czEiLCJqdGkiOiI0Yzg1YTgzNy1mMTc5LTQ1OTEtYTNkOC1iZmIxYTgwODk5MTAiLCJleHAiOjE0NzgwOTkxOTIsImlhdCI6MTQ3NTUwNzE5MiwidWFjdCI6ImN2YUZQcW1nTFB0QmFvRlBUTEJWaXp2UzFXajBVZSIsIm5iZiI6MTQ3NTUwNzEwMiwiYXVkIjoiMHIxLWJHenpQa2lQa19LdmwtczZHVjFpM3BqTUFuT2UifQ.GHKkFy5BuQRbg3uqJXgPBy0PbiLq9_p2O0HpqpPX80SA8anzioHxM6bNfy-OG7d4gmZiD7fR2ACW2_8HwioMCwFYQxbdIK5QEJ86WTfWCfAK4ocxlPljccNPM0fcoWRZiXs1pHyzSfTehKXapGloBck5Q4oLd241sIOqyBRR4AQIx7A4MXwHmuHExFzHstPq61mGBS9ApTprdGYrrqB4ke0C8EVna1Ox86oYaBEfD_kz8Vty9WfepgmwDxOWAaRydjeTKUb2ANMckBYMU2jRowfUq4ZwEUwD9ERMVeJXguHyjbq2_4sC1G0kxISkYy1Bg6H1iqmVxxnFQKR4M6KmPw",
+                          "endLatitude": "37.726394",
+                          "endLongitude": "-123.476348",
                           "sandbox": "1"
                         }
                 }';
@@ -463,8 +465,8 @@ class UberTest extends BaseTestCase
         $response = $this->runApp('POST', '/api/Uber/updateCurrentRide', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('validation_failed', json_decode($response->getBody())->contextWrites->to);
+        $this->assertNotEmpty($response->getBody());
+        $this->assertEquals('success', json_decode($response->getBody())->callback);
         
     }
     
@@ -482,7 +484,7 @@ class UberTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('success', json_decode($response->getBody())->callback);
-        $this->assertEquals('null', json_decode($response->getBody())->contextWrites->to);
+        $this->assertEquals('canceled', json_decode($response->getBody())->contextWrites->to);
         
     }
     
@@ -491,6 +493,10 @@ class UberTest extends BaseTestCase
         $var = '{
                         "args": {
                           "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOlsicmVxdWVzdCIsImFsbF90cmlwcyIsImhpc3RvcnkiXSwic3ViIjoiYzcxNmQ3Y2ItMWE1ZC00Y2JhLTk0MDktNDMxNDFiNjBhYzg4IiwiaXNzIjoidWJlci11czEiLCJqdGkiOiI0Yzg1YTgzNy1mMTc5LTQ1OTEtYTNkOC1iZmIxYTgwODk5MTAiLCJleHAiOjE0NzgwOTkxOTIsImlhdCI6MTQ3NTUwNzE5MiwidWFjdCI6ImN2YUZQcW1nTFB0QmFvRlBUTEJWaXp2UzFXajBVZSIsIm5iZiI6MTQ3NTUwNzEwMiwiYXVkIjoiMHIxLWJHenpQa2lQa19LdmwtczZHVjFpM3BqTUFuT2UifQ.GHKkFy5BuQRbg3uqJXgPBy0PbiLq9_p2O0HpqpPX80SA8anzioHxM6bNfy-OG7d4gmZiD7fR2ACW2_8HwioMCwFYQxbdIK5QEJ86WTfWCfAK4ocxlPljccNPM0fcoWRZiXs1pHyzSfTehKXapGloBck5Q4oLd241sIOqyBRR4AQIx7A4MXwHmuHExFzHstPq61mGBS9ApTprdGYrrqB4ke0C8EVna1Ox86oYaBEfD_kz8Vty9WfepgmwDxOWAaRydjeTKUb2ANMckBYMU2jRowfUq4ZwEUwD9ERMVeJXguHyjbq2_4sC1G0kxISkYy1Bg6H1iqmVxxnFQKR4M6KmPw",
+                          "startLatitude": "37.733259",
+                          "startLongitude": "-122.429254",
+                          "endLatitude": "37.726394",
+                          "endLongitude": "-122.476348",
                           "sandbox": "1"
                         }
                 }';
@@ -499,8 +505,8 @@ class UberTest extends BaseTestCase
         $response = $this->runApp('POST', '/api/Uber/getRideEstimate', $post_data);
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('validation_failed', json_decode($response->getBody())->contextWrites->to);
+        $this->assertNotEmpty($response->getBody());
+        $this->assertEquals('success', json_decode($response->getBody())->callback);
         
     }
     
@@ -510,6 +516,8 @@ class UberTest extends BaseTestCase
                         "args": {
                           "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOlsicmVxdWVzdCIsImFsbF90cmlwcyIsImhpc3RvcnkiXSwic3ViIjoiYzcxNmQ3Y2ItMWE1ZC00Y2JhLTk0MDktNDMxNDFiNjBhYzg4IiwiaXNzIjoidWJlci11czEiLCJqdGkiOiI0Yzg1YTgzNy1mMTc5LTQ1OTEtYTNkOC1iZmIxYTgwODk5MTAiLCJleHAiOjE0NzgwOTkxOTIsImlhdCI6MTQ3NTUwNzE5MiwidWFjdCI6ImN2YUZQcW1nTFB0QmFvRlBUTEJWaXp2UzFXajBVZSIsIm5iZiI6MTQ3NTUwNzEwMiwiYXVkIjoiMHIxLWJHenpQa2lQa19LdmwtczZHVjFpM3BqTUFuT2UifQ.GHKkFy5BuQRbg3uqJXgPBy0PbiLq9_p2O0HpqpPX80SA8anzioHxM6bNfy-OG7d4gmZiD7fR2ACW2_8HwioMCwFYQxbdIK5QEJ86WTfWCfAK4ocxlPljccNPM0fcoWRZiXs1pHyzSfTehKXapGloBck5Q4oLd241sIOqyBRR4AQIx7A4MXwHmuHExFzHstPq61mGBS9ApTprdGYrrqB4ke0C8EVna1Ox86oYaBEfD_kz8Vty9WfepgmwDxOWAaRydjeTKUb2ANMckBYMU2jRowfUq4ZwEUwD9ERMVeJXguHyjbq2_4sC1G0kxISkYy1Bg6H1iqmVxxnFQKR4M6KmPw",
                           "requestId": "1",
+                          "endLatitude": "37.726394",
+                          "endLongitude": "-122.476348",
                           "sandbox": "1"
                         }
                 }';
@@ -519,7 +527,7 @@ class UberTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('validation_failed', json_decode($response->getBody())->contextWrites->to);
+        $this->assertContains('Forbidden', json_decode($response->getBody())->contextWrites->to->message);
         
     }
     
@@ -538,7 +546,7 @@ class UberTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('success', json_decode($response->getBody())->callback);
-        $this->assertEquals('null', json_decode($response->getBody())->contextWrites->to);
+        $this->assertEquals('canceled', json_decode($response->getBody())->contextWrites->to);
         
     }
     
@@ -557,7 +565,7 @@ class UberTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('conflict', json_decode($response->getBody())->contextWrites->to);
+        $this->assertContains('conflict', json_decode($response->getBody())->contextWrites->to->code);
         
     }
     
@@ -576,7 +584,7 @@ class UberTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('error', json_decode($response->getBody())->callback);
-        $this->assertContains('Invalid request_id', json_decode($response->getBody())->contextWrites->to);
+        $this->assertContains('Invalid request_id', json_decode($response->getBody())->contextWrites->to->message);
         
     }
 
