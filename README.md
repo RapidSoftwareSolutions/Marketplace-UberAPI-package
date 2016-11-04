@@ -1607,7 +1607,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination usi
 | Field       | Type  | Description
 |-------------|-------|----------
 | accessToken | credentials| The access token obtained from Uber API.
-| requesttId  | String| Unique identifier representing a Request.
+| requestId  | String| Unique identifier representing a Request.
 | endLatitude | String| Optional: The final or destination latitude. Either this or endPlaceId must be specified.
 | endLongitude| String| Optional: The final or destination latitude. Either this or endPlaceId must be specified.
 | endAddress  | String| Optional: The final or destination address.
@@ -1617,7 +1617,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination usi
 #### Request example
 ```json
 {	"accessToken": "...",
-	"requesttId": "...",
+	"requestId": "...",
 	"endLatitude": "...",
 	"endLongitude": "...",
 	"endAddress": "...",
@@ -1644,12 +1644,12 @@ The Ride Request endpoint allows cancellation of an ongoing Request on behalf of
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| credentials| The access token obtained from Uber API.
-| requesttId | String| Unique identifier representing a Request.
+| requestId | String| Unique identifier representing a Request.
 
 #### Request example
 ```json
 {	"accessToken": "...",
-	"requesttId": "..."
+	"requestId": "..."
 }
 ```
 #### Response example
@@ -1671,12 +1671,12 @@ The Ride Request endpoint getting a map with a visual representation of a Reques
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| credentials| The access token obtained from Uber API.
-| requesttId | String| Unique identifier representing a Request.
+| requestId | String| Unique identifier representing a Request.
 
 #### Request example
 ```json
 {	"accessToken": "...",
-	"requesttId": "..."
+	"requestId": "..."
 }
 ```
 #### Response example
@@ -1701,12 +1701,12 @@ The Ride Request endpoint allows getting the receipt information of the complete
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| credentials| The access token obtained from Uber API.
-| requesttId | String| Unique identifier representing a Request.
+| requestId | String| Unique identifier representing a Request.
 
 #### Request example
 ```json
 {	"accessToken": "...",
-	"requesttId": "..."
+	"requestId": "..."
 }
 ```
 #### Response example
