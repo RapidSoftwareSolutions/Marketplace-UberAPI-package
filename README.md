@@ -10,37 +10,7 @@ The mission of the Uber API is to make it easy for developers to unlock the powe
 3. Create UberRush accessToken [HowTo documentation](https://developer.uber.com/docs/rush/authentication)
 4. Create an Rides app to retrive server_token
 
-## TOC: 
-* [requestDelivery](#requestDelivery)
-* [getDelivery](#getDelivery)
-* [cancelDelivery](#cancelDelivery)
-* [getDeliveries](#getDeliveries)
-* [getQuote](#getQuote)
-* [getUser](#getUser)
-* [getUserActivity](#getUserActivity)
-* [getProductDetails](#getProductDetails)
-* [getCurrentRide](#getCurrentRide)
-* [getRide](#getRide)
-* [getProductsByLocation](#getProductsByLocation)
-* [getProductsPrices](#getProductsPrices)
-* [getProductsTimeEstimates](#getProductsTimeEstimates)
-* [getUserAddress](#getUserAddress)
-* [updateUserAddress](#updateUserAddress)
-* [getUserPaymentMethods](#getUserPaymentMethods)
-* [createReminder](#createReminder)
-* [getReminder](#getReminder)
-* [updateReminder](#updateReminder)
-* [deleteReminder](#deleteReminder)
-* [requestRide](#requestRide)
-* [updateCurrentRide](#updateCurrentRide)
-* [cancelCurrentRide](#cancelCurrentRide)
-* [getRideEstimate](#getRideEstimate)
-* [updateRide](#updateRide)
-* [cancelRide](#cancelRide)
-* [getRideMap](#getRideMap)
-* [getReceipt](#getReceipt)
- 
-<a name="requestDelivery"/>
+
 ## Uber.requestDelivery
 The Delivery endpoint allows a delivery to be requested given the delivery information and quote ID.
 
@@ -92,149 +62,7 @@ The Delivery endpoint allows a delivery to be requested given the delivery infor
 | dropoffSignatureRequired            | String| Optional: If signature is required for drop-off. True or false. Default to false.
 | includesAlcohol                     | String| Optional: Indicates if the delivery includes alcohol. True or false. This feature is only available to whitelisted businesses.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"itemsTitle": "...",
-	"itemsQuantity": "...",
-	"itemsPrice": "...",
-	"itemsCurrencyCode": "...",
-	"pickupLocationAddress": "...",
-	"pickupLocationCity": "...",
-	"pickupLocationState": "...",
-	"pickupLocationPostalCode": "...",
-	"pickupLocationCountry": "...",
-	"pickupContactFirstName": "...",
-	"pickupContactLastName": "...",
-	"pickupContactEmail": "...",
-	"pickupContactPhoneNumber": "...",
-	"dropoffLocationAddress": "...",
-	"dropoffLocationAddress2": "...",
-	"dropoffLocationCity": "...",
-	"dropoffLocationState": "...",
-	"dropoffLocationPostalCode": "...",
-	"dropoffLocationCountry": "...",
-	"dropoffContactFirstName": "...",
-	"dropoffContactLastName": "...",
-	"dropoffContactEmail": "...",
-	"dropoffContactPhoneNumber": "...",
-	"dropoffContactPhoneSmsEnabled": "...",
-	"quoteId": "...",
-	"orderReferenceId": "...",
-	"itemsWidth": "...",
-	"itemsHeight": "...",
-	"itemsLength": "...",
-	"itemsWeight": "...",
-	"itemsIsFragile": "...",
-	"pickupLocationAddress2": "...",
-	"pickupLocationLatitude": "...",
-	"pickupLocationLongitude": "...",
-	"pickupContactCompanyName": "...",
-	"pickupContactPhoneSmsEnabled": "...",
-	"pickupSpecialInstructions": "...",
-	"dropoffLocationLatitude": "...",
-	"dropoffLocationLongitude": "...",
-	"dropoffContactSendEmailNotifications": "...",
-	"dropoffContactSendSmsNotifications": "...",
-	"dropoffSpecialInstructions": "...",
-	"dropoffSignatureRequired": "...",
-	"includesAlcohol": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-    'courier': null,
-    'created_at': 1441146983,
-    'currency_code': 'USD',
-    'delivery_id': 'b32d5374-7cee-4bc0-b588-f3820ab9b98c',
-    'dropoff': {
-        'contact': {
-            'company_name': 'Gizmo Shop',
-            'email': 'contact@uber.com',
-            'first_name': 'Calvin',
-            'last_name': 'Lee',
-            'phone': {
-                'number': '+14081234567',
-                'sms_enabled': false
-            },
-            'send_email_notifications': true,
-            'send_sms_notifications': true
-        },
-        'eta': 20,
-        'location': {
-            'address': '530 W 113th Street',
-            'address_2': 'Floor 2',
-            'city': 'New York',
-            'country': 'US',
-            'postal_code': '10025',
-            'state': 'NY'
-        },
-        'signature_required': false,
-        'special_instructions': null
-    },
-    'fee': 5.0,
-    'items': [
-        {
-            'height': 5.0,
-            'is_fragile': false,
-            'length': 14.5,
-            'price': 1.0,
-            'quantity': 1,
-            'title': 'Shoes',
-            'weight': 2.0,
-            'width': 7.0
-        },
-        {
-            'height': 5.0,
-            'is_fragile': false,
-            'length': 25.0,
-            'quantity': 1,
-            'title': 'Guitar',
-            'weight': 10.0,
-            'width': 12.0
-        }
-    ],
-    'order_reference_id': 'SDA124KA',
-    'pickup': {
-        'contact': {
-            'company_name': 'Gizmo Shop',
-            'email': 'contact@uber.com',
-            'first_name': 'Calvin',
-            'last_name': 'Lee',
-            'phone': {
-                'number': '+14081234567',
-                'sms_enabled': false
-            },
-            'send_email_notifications': true,
-            'send_sms_notifications': true
-        },
-        'eta': 5,
-        'location': {
-            'address': '636 W 28th Street',
-            'address_2': 'Floor 2',
-            'city': 'New York',
-            'country': 'US',
-            'postal_code': '10001',
-            'state': 'NY'
-        },
-        'signature_required': false,
-        'special_instructions': 'Go to pickup counter in back of shop.'
-    },
-    'quote_id': 'KEBjNGUxNjhlZmNmMDA4ZGJjNmJlY2EwOGJlN2M0ZjdmZjI2Y2VkZDdmMmQ2MDJlZDJjMTc4MzM2ODU2YzRkMzU4FYihsd4KFbiqsd4KFYD1sgwcFdD/0oQDFYfw48EFABwVyoCThQMVp/qvwQUAGANVU0QA',
-    'status': 'processing',
-    'tracking_url': null
-}"
-		}
-	}
-}
-```
 
-<a name="getDelivery"/>
 ## Uber.getDelivery
 Get the real time status of an ongoing delivery that was created using the Delivery endpoint.
 
@@ -243,121 +71,7 @@ Get the real time status of an ongoing delivery that was created using the Deliv
 | accessToken| credentials| The access token key obtained from Uber API.
 | deliveryId | String| Unique identifier representing a Delivery.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"deliveryId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-    'courier': {
-        'location': {
-            'latitude': 40.7619629893,
-            'longitude': -74.0014480227,
-            'bearing': 33
-        },
-        'name': 'Rob',
-        'phone': '+18622564699',
-        'picture_url': 'https://d297l2q4lq2ras.cloudfront.net/nomad/2014/10/16/18/479x479_id_dba13493-27db-4d39-a322-8cb5eca67b54.jpeg',
-        'vehicle': {
-            'license_plate': 'RUSHNYC',
-            'make': 'Acura',
-            'model': 'ZDX',
-            'picture_url': null
-        }
-    },
-    'created_at': 1441147296,
-    'currency_code': 'USD',
-    'delivery_id': '8b58bc58-7352-4278-b569-b5d24d8e3f76',
-    'dropoff': {
-        'contact': {
-            'company_name': 'Gizmo Shop',
-            'email': 'contact@uber.com',
-            'first_name': 'Calvin',
-            'last_name': 'Lee',
-            'phone': {
-                'number': '+14081234567',
-                'sms_enabled': false
-            },
-            'send_email_notifications': true,
-            'send_sms_notifications': true
-        },
-        'eta': 30,
-        'location': {
-            'address': '530 W 113th Street',
-            'address_2': 'Floor 2',
-            'city': 'New York',
-            'country': 'US',
-            'postal_code': '10025',
-            'state': 'NY'
-        },
-        'signature_required': false,
-        'special_instructions': null
-    },
-    'fee': 5.0,
-    'items': [
-        {
-            'height': 5.0,
-            'is_fragile': false,
-            'length': 14.5,
-            'price': 1.0,
-            'quantity': 1,
-            'title': 'Shoes',
-            'weight': 2.0,
-            'width': 7.0
-        },
-        {
-            'height': 5.0,
-            'is_fragile': false,
-            'length': 25.0,
-            'quantity': 1,
-            'title': 'Guitar',
-            'weight': 10.0,
-            'width': 12.0
-        }
-    ],
-    'order_reference_id': 'SDA124KA',
-    'pickup': {
-        'contact': {
-            'company_name': 'Gizmo Shop',
-            'email': 'contact@uber.com',
-            'first_name': 'Calvin',
-            'last_name': 'Lee',
-            'phone': {
-                'number': '+14081234567',
-                'sms_enabled': false
-            },
-            'send_email_notifications': true,
-            'send_sms_notifications': true
-        },
-        'eta': 4,
-        'location': {
-            'address': '636 W 28th Street',
-            'address_2': 'Floor 2',
-            'city': 'New York',
-            'country': 'US',
-            'postal_code': '10001',
-            'state': 'NY'
-        },
-        'signature_required': false,
-        'special_instructions': 'Go to pickup counter in back of shop.'
-    },
-    'quote_id': 'KEBiNmI4MWQ0NDIzNjUyNjE1ZmM5YzlkNDQ5NDA4MzhlNTg5MWZlNzQ5YTNmZTRkYzQxZTgxMzc4YjlkZjU0Yjc2Fbamsd4KFeavsd4KFYD1sgwcFdD/0oQDFYfw48EFABwVyoCThQMVp/qvwQUAGANVU0QA',
-    'status': 'en_route_to_pickup',
-    'tracking_url': 'https://trip.uber.com/v2/share/-JazZXXuBl'
-}"
-		}
-	}
-}
-```
 
-<a name="cancelDelivery"/>
 ## Uber.cancelDelivery
 Cancels an existing delivery.
 
@@ -366,25 +80,7 @@ Cancels an existing delivery.
 | accessToken| credentials| The access token key obtained from Uber API.
 | deliveryId | String| Unique identifier representing a Delivery.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"deliveryId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"null"
-		}
-	}
-}
-```
 
-<a name="getDeliveries"/>
 ## Uber.getDeliveries
 Get a list of all deliveries, ordered chronologically by time of creation.
 
@@ -395,40 +91,7 @@ Get a list of all deliveries, ordered chronologically by time of creation.
 | limit      | String| Number of items to retrieve. Maximum is 50.
 | status     | String| A status value to filter for. List of status strings can be found https://developer.uber.com/docs/rush/statuses. Additionally supports a value of active that will return all ongoing deliveries. A delivery is considered active if the status field value is either en_route_to_pickup, at_pickup, en_route_to_dropoff or at_dropoff.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"offset": "...",
-	"limit": "...",
-	"status": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-   'count':172,
-   'next_page':'status=completed&limit=10&offset=10',
-   'previous_page':'',
-   'deliveries':[
-      {
-        // Delivery object 1 (omitted for clarity)
-      },
-      {
-        // Delivery object 2 (omitted for clarity)
-      },
-      // ... More delivery objects
-   ]
-}"
-		}
-	}
-}
-```
 
-<a name="getQuote"/>
 ## Uber.getQuote
 Generate a delivery quote, given a pickup and dropoff location. On-demand and scheduled delivery quotes will be returned.
 
@@ -452,82 +115,7 @@ Generate a delivery quote, given a pickup and dropoff location. On-demand and sc
 | dropoffLocationLatitude  | String| Optional: Latitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
 | dropoffLocationLongitude | String| Optional: Longitude of the dropoff location. If UberRUSH cannot geocode the given address, the latitude and longitude coordinates will be used if provided.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"pickupLocationAddress": "...",
-	"pickupLocationCity": "...",
-	"pickupLocationState": "...",
-	"pickupLocationPostalCode": "...",
-	"pickupLocationCountry": "...",
-	"dropoffLocationAddress": "...",
-	"dropoffLocationAddress2": "...",
-	"dropoffLocationCity": "...",
-	"dropoffLocationState": "...",
-	"dropoffLocationPostalCode": "...",
-	"dropoffLocationCountry": "...",
-	"pickupLocationAddress2": "...",
-	"pickupLocationLatitude": "...",
-	"pickupLocationLongitude": "...",
-	"dropoffLocationLatitude": "...",
-	"dropoffLocationLongitude": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'quotes': [
-    {
-      'quote_id': 'CwACAAAAQGU0NTYwYjUyNjY4YzBjNDBiNDFjYzA4ZDdlNzE0OWM3ZmYxZjY0NTJkNDQ1NjE2NDg3NDI1ZmFkZjZiYTI1ODcIAANXHm3xCAAEVx5wSQgABQBSs-AMAAYIAAEYXJdJCAAC0_FrQwAMAAcIAAEYWt-7CAAC0_BeNAALAAgAAAADVVNEAA==',
-      'estimated_at': 1461612017,
-      'expires_at': 1461612617,
-      'fee': 5.42,
-      'currency_code': 'USD',
-      'pickup_eta': 6,
-      'dropoff_eta': 13
-    },
-    {
-      'quote_id': 'CwACAAAAQDNkMWZhMDg0ZWJiNzkwMTA4MGNmNzlkMTdlN2U1MGE2YzI1NTQ0Yzc4ZmIwOTIyNzUwMDc0ZDNjNGFhZjRlYjMIAANXHm3xCAAEVx5wSQgABQBCOSAMAAYIAAEYXJdJCAAC0_FrQwAMAAcIAAEYWt-7CAAC0_BeNAALAAgAAAADVVNECgAJAAABVE84wIAKAAoAAAFUT2-vAAoACwAAAVRPLXXgAA==',
-      'estimated_at': 1461612017,
-      'expires_at': 1461612617,
-      'start_time': 1461618000,
-      'end_time': 1461621600,
-      'fee': 4.34,
-      'currency_code': 'USD',
-      'ready_by_time': 1461617260
-    },
-    {
-      'quote_id': 'CwACAAAAQGViOWFkM2E5NTBkZDlmOWI1NjI4ODc0NTljMjc3OWFlZWY1YmVkODVhMzc4MGQ4N2RlNTI3NDAzNWU3NTIxYzUIAANXHm3xCAAEVx5wSQgABQBCOSAMAAYIAAEYXJdJCAAC0_FrQwAMAAcIAAEYWt-7CAAC0_BeNAALAAgAAAADVVNECgAJAAABVE9vrwAKAAoAAAFUT6adgAoACwAAAVRPZGRgAA==',
-      'estimated_at': 1461612017,
-      'expires_at': 1461612617,
-      'start_time': 1461621600,
-      'end_time': 1461625200,
-      'fee': 4.34,
-      'currency_code': 'USD',
-      'ready_by_time': 1461620860
-    },
-    {
-      'quote_id': 'CwACAAAAQDljOGJkZmVjZjg0NDgwNGJhY2UyNDAzYTU4NjA3OTc5MjA3NmIxMmJmMjNhOTM3YWQ0NGM3NGMwYzNjNTM4OTQIAANXHm3xCAAEVx5wSQgABQBCOSAMAAYIAAEYXJdJCAAC0_FrQwAMAAcIAAEYWt-7CAAC0_BeNAALAAgAAAADVVNECgAJAAABVE-mnYAKAAoAAAFUT92MAAoACwAAAVRPm1LgAA==',
-      'estimated_at': 1461612017,
-      'expires_at': 1461612617,
-      'start_time': 1461625200,
-      'end_time': 1461628800,
-      'fee': 4.34,
-      'currency_code': 'USD',
-      'ready_by_time': 1461624460
-    }
-  ]
-}"
-		}
-	}
-}
-```
 
-<a name="getUser"/>
 ## Uber.getUser
 The User Profile endpoint returns information about the Uber user that has authorized with the application.
 
@@ -535,32 +123,7 @@ The User Profile endpoint returns information about the Uber user that has autho
 |------------|-------|----------
 | accessToken| credentials| The access token obtained from Uber API.
 
-#### Request example
-```json
-{	"accessToken": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'first_name': 'Uber',
-  'last_name': 'Developer',
-  'email': 'developer@uber.com',
-  'picture': 'https://...',
-  'promo_code': 'teypo',
-  'mobile_verified': true,
-  'uuid': '91d81273-45c2-4b57-8124-d0165f8240c0'
-}"
-		}
-	}
-}
-```
 
-<a name="getUserActivity"/>
 ## Uber.getUserActivity
 The User Activity endpoint returns a limited amount of data about a user’s lifetime activity with Uber. The response will include pickup and dropoff times, the city the trips took place in, the distance of past requests, and information about which products were requested.
 
@@ -570,46 +133,7 @@ The User Activity endpoint returns a limited amount of data about a user’s lif
 | offset     | String| Optional: Offset the list of returned results by this amount. Default is zero.
 | limit      | String| Optional: Number of items to retrieve. Default is 5, maximum is 50.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"offset": "...",
-	"limit": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'offset': 0,
-  'limit': 1,
-  'count': 5,
-  'history': [
-    {
-     'status':'completed',
-     'distance':1.64691465,
-     'request_time':1428876188,
-     'start_time':1428876374,
-     'start_city':{
-        'display_name':'San Francisco',
-        'latitude':37.7749295,
-        'longitude':-122.4194155
-     },
-     'end_time':1428876927,
-     'request_id':'37d57a99-2647-4114-9dd2-c43bccf4c30b',
-     'product_id':'a1111c8c-c720-46c3-8534-2fcdd730040d'
-  },
-  ]
-}"
-		}
-	}
-}
-```
 
-<a name="getProductDetails"/>
 ## Uber.getProductDetails
 The Products Detail endpoint returns information about a specific Uber product. The response includes the display name and other details about the product.
 
@@ -618,42 +142,7 @@ The Products Detail endpoint returns information about a specific Uber product. 
 | accessToken| credentials| The access token obtained from Uber API.
 | productId  | String| Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"productId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-   'capacity': 4,
-   'description': 'The original Uber',
-   'price_details': {
-      'distance_unit': 'mile',
-      'cost_per_minute': 0.65,
-      'service_fees': [],
-      'minimum': 15.0,
-      'cost_per_distance': 3.75,
-      'base': 8.0,
-      'cancellation_fee': 10.0,
-      'currency_code': 'USD'
-   },
-   'image': 'http: //d1a3f4spazzrp4.cloudfront.net/car.jpg',
-   'display_name': 'UberBLACK',
-   'product_id': 'd4abaae7-f4d6-4152-91cc-77523e8165a4',
-   'shared': false
-}"
-		}
-	}
-}
-```
 
-<a name="getCurrentRide"/>
 ## Uber.getCurrentRide
 The Ride Request endpoint allows retrieving real-time details for an ongoing trip.
 
@@ -661,91 +150,7 @@ The Ride Request endpoint allows retrieving real-time details for an ongoing tri
 |------------|-------|----------
 | accessToken| credentials| The access token obtained from Uber API.
 
-#### Request example
-```json
-{	"accessToken": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'product_id': '17cb78a7-b672-4d34-a288-a6c6e44d5315',
-  'request_id': 'a1111c8c-c720-46c3-8534-2fcdd730040d',
-  'status': 'accepted',
-  'eta': 5,
-  'surge_multiplier': 1.0,
-  'shared': true,
-  'driver': {
-    'phone_number': '(555)555-5555',
-    'sms_number': '(555)555-5555',
-    'rating': 5,
-    'picture_url': 'https:\/\/d1w2poirtb3as9.cloudfront.net\/img.jpeg',
-    'name': 'Bob'
-  },
-  'vehicle': {
-    'make': 'Bugatti',
-    'model': 'Veyron',
-    'license_plate': 'I<3Uber',
-    'picture_url': 'https:\/\/d1w2poirtb3as9.cloudfront.net\/car.jpeg'
-  },
-  'location': {
-    'latitude': 37.3382129093,
-    'longitude': -121.8863287568,
-    'bearing': 328
-  },
-  'pickup': {
-    'latitude': 37.3303463,
-    'longitude': -121.8890484,
-    'eta': 5
-  },
-  'destination': {
-    'latitude': 37.6213129,
-    'longitude': -122.3789554,
-    'eta': 19
-  },
-  'waypoints': [
-    {
-       'rider_id':null,
-       'latitude':37.77508531,
-       'type':'pickup',
-       'longitude':-122.3976683872
-    },
-    {
-       'rider_id':null,
-       'latitude':37.773133,
-       'type':'dropoff',
-       'longitude':-122.415069
-    },
-    {
-       'rider_id':'8KwsIO_YG6Y2jijSMf',
-       'latitude':37.7752423,
-       'type':'dropoff',
-       'longitude':-122.4175658
-    }
-  ],
-  'riders': [
-    {
-       'rider_id':'8KwsIO_YG6Y2jijSMf',
-       'first_name':'Alec',
-       'me': true
-    },
-    {
-       'rider_id':null,
-       'first_name':'Kevin',
-       'me': false
-    }
-  ]
-}"
-		}
-	}
-}
-```
 
-<a name="getRide"/>
 ## Uber.getRide
 The Ride Request endpoint allows retrieving the status of an ongoing or completed trip that was created by your app.
 
@@ -754,92 +159,7 @@ The Ride Request endpoint allows retrieving the status of an ongoing or complete
 | accessToken| credentials| The access token obtained from Uber API.
 | requestId  | String| Unique identifier representing a Request.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"requestId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'product_id': '17cb78a7-b672-4d34-a288-a6c6e44d5315',
-  'request_id': 'a1111c8c-c720-46c3-8534-2fcdd730040d',
-  'status': 'accepted',
-  'eta': 5,
-  'surge_multiplier': 1.0,
-  'shared': true,
-  'driver': {
-    'phone_number': '(555)555-5555',
-    'sms_number': '(555)555-5555',
-    'rating': 5,
-    'picture_url': 'https:\/\/d1w2poirtb3as9.cloudfront.net\/img.jpeg',
-    'name': 'Bob'
-  },
-  'vehicle': {
-    'make': 'Bugatti',
-    'model': 'Veyron',
-    'license_plate': 'I<3Uber',
-    'picture_url': 'https:\/\/d1w2poirtb3as9.cloudfront.net\/car.jpeg'
-  },
-  'location': {
-    'latitude': 37.3382129093,
-    'longitude': -121.8863287568,
-    'bearing': 328
-  },
-  'pickup': {
-    'latitude': 37.3303463,
-    'longitude': -121.8890484,
-    'eta': 5
-  },
-  'destination': {
-    'latitude': 37.6213129,
-    'longitude': -122.3789554,
-    'eta': 19
-  },
-  'waypoints': [
-    {
-       'rider_id':null,
-       'latitude':37.77508531,
-       'type':'pickup',
-       'longitude':-122.3976683872
-    },
-    {
-       'rider_id':null,
-       'latitude':37.773133,
-       'type':'dropoff',
-       'longitude':-122.415069
-    },
-    {
-       'rider_id':'8KwsIO_YG6Y2jijSMf',
-       'latitude':37.7752423,
-       'type':'dropoff',
-       'longitude':-122.4175658
-    }
-  ],
-  'riders': [
-    {
-       'rider_id':'8KwsIO_YG6Y2jijSMf',
-       'first_name':'Alec',
-       'me': true
-    },
-    {
-       'rider_id':null,
-       'first_name':'Kevin',
-       'me': false
-    }
-  ]
-}"
-		}
-	}
-}
-```
 
-<a name="getProductsByLocation"/>
 ## Uber.getProductsByLocation
 The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order. Some products, such as uberEATS, are not returned by this endpoint.
 
@@ -849,86 +169,7 @@ The Products endpoint returns information about the Uber products offered at a g
 | latitude   | String| Latitude component of location.
 | longitude  | String| Longitude component of location.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"latitude": "...",
-	"longitude": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'products': [
-    {
-       'capacity': 2,
-       'description': 'Ride for less with uberPOOL',
-       'price_details': {},
-       'image': 'http://d1a3f4spazzrp4.cloudfront.net/car.jpg',
-       'display_name': 'POOL',
-       'product_id': '26546650-e557-4a7b-86e7-6a3942445247',
-       'shared': true,
-    },
-    {
-       'capacity': 4,
-       'description': 'The low-cost Uber',
-       'price_details': {
-          'distance_unit': 'mile',
-          'cost_per_minute': 0.26,
-          'service_fees': [
-             {
-                'fee': 1.0,
-                'name': 'Safe Rides Fee'
-             }
-          ],
-          'minimum': 5.0,
-          'cost_per_distance': 1.3,
-          'base': 2.2,
-          'cancellation_fee': 5.0,
-          'currency_code': 'USD'
-       },
-       'cash_enabled': false,
-       'image': 'http://d1a3f4spazzrp4.cloudfront.net/car.jpg',
-       'display_name': 'uberX',
-       'product_id': 'a1111c8c-c720-46c3-8534-2fcdd730040d',
-       'shared': false
-    },
-    {
-       'capacity': 6,
-       'description': 'low-cost rides for large groups',
-       'price_details': {
-          'distance_unit': 'mile',
-          'cost_per_minute': 0.45,
-          'service_fees': [
-             {
-                'fee': 1.0,
-                'name': 'Safe Rides Fee'
-             }
-          ],
-          'minimum': 8.0,
-          'cost_per_distance': 2.15,
-          'base': 5.0,
-          'cancellation_fee': 5.0,
-          'currency_code': 'USD'
-       },
-       'cash_enabled': false,
-       'image': 'http://d1a3f4spazzrp4.cloudfront.net/car.jpg',
-       'display_name': 'uberXL',
-       'product_id': '821415d8-3bd5-4e27-9604-194e4359a449',
-       'shared': false
-    }
-  ]
-}"
-		}
-	}
-}
-```
 
-<a name="getProductsPrices"/>
 ## Uber.getProductsPrices
 The Price Estimates endpoint returns an estimated price range for each product offered at a given location. The price estimate is provided as a formatted string with the full price range and the localized currency symbol.
 
@@ -941,87 +182,7 @@ The Price Estimates endpoint returns an estimated price range for each product o
 | endLongitude  | String| Longitude component of end location.
 | seatCount     | String| Optional: The number of seats required for uberPOOL. Default and maximum value is 2.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"startLatitude": "...",
-	"startLongitude": "...",
-	"endLatitude": "...",
-	"endLongitude": "...",
-	"seatCount": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'prices':
-    {
-      'product_id': '26546650-e557-4a7b-86e7-6a3942445247',
-      'currency_code': 'USD',
-      'display_name': 'POOL',
-      'estimate': '$7',
-      'low_estimate': 7,
-      'high_estimate': 7,
-      'surge_multiplier': 1,
-      'duration': 640,
-      'distance': 5.34,
-    },
-    {
-      'product_id': '08f17084-23fd-4103-aa3e-9b660223934b',
-      'currency_code': 'USD',
-      'display_name': 'UberBLACK',
-      'estimate': '$23-29',
-      'low_estimate': 23,
-      'high_estimate': 29,
-      'surge_multiplier': 1,
-      'duration': 640,
-      'distance': 5.34
-    },
-    {
-      'product_id': '9af0174c-8939-4ef6-8e91-1a43a0e7c6f6',
-      'currency_code': 'USD',
-      'display_name': 'UberSUV',
-      'estimate': '$36-44',
-      'low_estimate': 36,
-      'high_estimate': 44,
-      'surge_multiplier': 1.25,
-      'duration': 640,
-      'distance': 5.34
-    },
-    {
-      'product_id': 'aca52cea-9701-4903-9f34-9a2395253acb',
-      'currency_code': null,
-      'display_name': 'uberTAXI',
-      'estimate': 'Metered',
-      'low_estimate': null,
-      'high_estimate': null,
-      'surge_multiplier': 1,
-      'duration': 640,
-      'distance': 5.34
-    },
-    {
-      'product_id': 'a27a867a-35f4-4253-8d04-61ae80a40df5',
-      'currency_code': 'USD',
-      'display_name': 'uberX',
-      'estimate': '$15',
-      'low_estimate': 15,
-      'high_estimate': 15,
-      'surge_multiplier': 1,
-      'duration': 640,
-      'distance': 5.34
-    }
-  ]
-}"
-		}
-	}
-}
-```
 
-<a name="getProductsTimeEstimates"/>
 ## Uber.getProductsTimeEstimates
 The Time Estimates endpoint returns ETAs for all products currently available at a given location, with the ETA for each product expressed as integers in seconds.
 
@@ -1032,54 +193,7 @@ The Time Estimates endpoint returns ETAs for all products currently available at
 | startLongitude| String| Longitude component.
 | productId     | String| Optional: Unique identifier representing a specific product for a given latitude & longitude.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"startLatitude": "...",
-	"startLongitude": "...",
-	"productId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-   'times':[
-      {
-         'localized_display_name':'uberPOOL',
-         'estimate':180,
-         'display_name':'uberPOOL',
-         'product_id':'26546650-e557-4a7b-86e7-6a3942445247'
-      },
-      {
-         'localized_display_name':'uberX',
-         'estimate':180,
-         'display_name':'uberX',
-         'product_id':'a1111c8c-c720-46c3-8534-2fcdd730040d'
-      },
-      {
-         'localized_display_name':'uberXL',
-         'estimate':420,
-         'display_name':'uberXL',
-         'product_id':'821415d8-3bd5-4e27-9604-194e4359a449'
-      },
-      {
-         'localized_display_name':'UberBLACK',
-         'estimate':180,
-         'display_name':'UberBLACK',
-         'product_id':'d4abaae7-f4d6-4152-91cc-77523e8165a4'
-      }
-   ]
-}"
-		}
-	}
-}
-```
 
-<a name="getUserAddress"/>
 ## Uber.getUserAddress
 The Places endpoint allows retrieving the home and work addresses from an Uber user's profile.
 
@@ -1088,27 +202,7 @@ The Places endpoint allows retrieving the home and work addresses from an Uber u
 | accessToken| credentials| The access token obtained from Uber API.
 | placeName  | String| The name of the place to retrieve. Only home and work are acceptable.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"placeName": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-                    'address': '685 Market St, San Francisco, CA 94103, USA'
-                 }"
-		}
-	}
-}
-```
 
-<a name="updateUserAddress"/>
 ## Uber.updateUserAddress
 The Places endpoint allows updating the home and work addresses from an Uber user's profile.
 
@@ -1118,28 +212,7 @@ The Places endpoint allows updating the home and work addresses from an Uber use
 | placeName  | String| The name of the place to retrieve. Only home and work are acceptable.
 | address    | String| The address of the place that should be tied to the given placeName.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"placeName": "...",
-	"address": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-   'address': '685 Market St, San Francisco, CA 94103, USA'
-}"
-		}
-	}
-}
-```
 
-<a name="getUserPaymentMethods"/>
 ## Uber.getUserPaymentMethods
 The Payment Methods endpoint allows retrieving the list of the user’s available payment methods.
 
@@ -1147,48 +220,7 @@ The Payment Methods endpoint allows retrieving the list of the user’s availabl
 |------------|-------|----------
 | accessToken| credentials| The access token obtained from Uber API.
 
-#### Request example
-```json
-{	"accessToken": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'payment_methods': [
-    {
-      'payment_method_id': '5f384f7d-8323-4207-a297-51c571234a8c',
-      'type': 'baidu_wallet',
-      'description': '***53',
-    },
-    {
-      'payment_method_id': 'f33847de-8113-4587-c307-51c2d13a823c',
-      'type': 'alipay',
-      'description': 'ga***@uber.com',
-    },
-    {
-      'payment_method_id': 'f43847de-8113-4587-c307-51c2d13a823c',
-      'type': 'visa',
-      'description': '***23'
-    },
-    {
-      'payment_method_id': 'f53847de-8113-4587-c307-51c2d13a823c',
-      'type': 'business_account',
-      'description': 'Late Night Ride'
-    }
-  ],
-  'last_used': 'f53847de-8113-4587-c307-51c2d13a823c'
-}"
-		}
-	}
-}
-```
 
-<a name="createReminder"/>
 ## Uber.createReminder
 The Reminders endpoint allows developers to set a reminder for a future trip.
 
@@ -1206,50 +238,7 @@ The Reminders endpoint allows developers to set a reminder for a future trip.
 | tripBrandingLinkText       | String| Optional: Call-to-action text for the deeplink to your app. Used for trip branding and personalization.
 | tripBrandingPartnerDeeplink| String| Optional: Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"reminderTime": "...",
-	"phoneNumber": "...",
-	"eventTime": "...",
-	"eventName": "...",
-	"eventLocation": "...",
-	"eventLatitude": "...",
-	"eventLongitude": "...",
-	"eventProductId": "...",
-	"tripBrandingLinkText": "...",
-	"tripBrandingPartnerDeeplink": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'event': {
-    'name': 'Frisbee with friends',
-    'location': 'Dolores Park',
-    'latitude': 37.759773,
-    'longitude': -122.427063,
-    'time': 1429294463
-  },
-  'product_id': 'a1111c8c-c720-46c3-8534-2fcdd730040d',
-  'reminder_id': 'def-456',
-  'reminder_time': 1429294463,
-  'reminder_status': 'pending',
-  'trip_branding': {
-    'link_text': 'View team roster',
-    'partner_deeplink': 'partner://team/9383'
-  }
-}"
-		}
-	}
-}
-```
 
-<a name="getReminder"/>
 ## Uber.getReminder
 The Reminders endpoint allows you to get the status of an existing ride reminder.
 
@@ -1258,41 +247,7 @@ The Reminders endpoint allows you to get the status of an existing ride reminder
 | accessToken| credentials| The access token obtained from Uber API. This endpoint only supports server_token.
 | reminderId | String| The reminder ID.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"reminderId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'event': {
-    'name': 'Frisbee with friends',
-    'location': 'Dolores Park',
-    'latitude': 37.759773,
-    'longitude': -122.427063,
-    'time': 1429294463
-  },
-  'product_id': 'a1111c8c-c720-46c3-8534-2fcdd730040d',
-  'reminder_id': 'def-456',
-  'reminder_time': 1429294463,
-  'reminder_status': 'pending',
-  'trip_branding': {
-    'link_text': 'View team roster',
-    'partner_deeplink': 'partner://team/9383'
-  }
-}"
-		}
-	}
-}
-```
 
-<a name="updateReminder"/>
 ## Uber.updateReminder
 The Reminders endpoint allows you to update an existing reminder.
 
@@ -1311,51 +266,7 @@ The Reminders endpoint allows you to update an existing reminder.
 | tripBrandingLinkText       | String| Optional: Call-to-action text for the deeplink to your app. Used for trip branding and personalization.
 | tripBrandingPartnerDeeplink| String| Optional: Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"reminderId": "...",
-	"reminderTime": "...",
-	"phoneNumber": "...",
-	"eventTime": "...",
-	"eventName": "...",
-	"eventLocation": "...",
-	"eventLatitude": "...",
-	"eventLongitude": "...",
-	"eventProductId": "...",
-	"tripBrandingLinkText": "...",
-	"tripBrandingPartnerDeeplink": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'event': {
-    'name': 'Frisbee with friends',
-    'location': 'Dolores Park',
-    'latitude': 37.759773,
-    'longitude': -122.427063,
-    'time': 1429294463
-  },
-  'product_id': 'a1111c8c-c720-46c3-8534-2fcdd730040d',
-  'reminder_id': 'def-456',
-  'reminder_time': 1429294463,
-  'reminder_status': 'pending',
-  'trip_branding': {
-    'link_text': 'View team roster',
-    'partner_deeplink': 'partner://team/9383'
-  }
-}"
-		}
-	}
-}
-```
 
-<a name="deleteReminder"/>
 ## Uber.deleteReminder
 The Reminders endpoint allows you to remove any reminder in the pending state from being sent.
 
@@ -1364,25 +275,7 @@ The Reminders endpoint allows you to remove any reminder in the pending state fr
 | accessToken                | credentials| The access token obtained from Uber API. This endpoint only supports server_token.
 | reminderId                 | String| The reminder ID.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"reminderId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"[empty]"
-		}
-	}
-}
-```
 
-<a name="requestRide"/>
 ## Uber.requestRide
 The Ride Request endpoint allows a ride to be requested on behalf of an Uber user.
 
@@ -1407,50 +300,7 @@ The Ride Request endpoint allows a ride to be requested on behalf of an Uber use
 | expenseCode        | String| Optional: An alphanumeric identifier for expense reporting policies. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.
 | expenseMemo        | String| Optional: A free text field to describe the purpose of the trip for expense reporting. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"startLatitude": "...",
-	"startLongitude": "...",
-	"endLatitude": "...",
-	"endLongitude": "...",
-	"startPlace_id": "...",
-	"endPlace_id": "...",
-	"startNickname": "...",
-	"endNickname": "...",
-	"startAddress": "...",
-	"endAddress": "...",
-	"productId": "...",
-	"surgeConfirmationId": "...",
-	"paymentMethodId": "...",
-	"seatCount": "...",
-	"fareId": "...",
-	"expenseCode": "...",
-	"expenseMemo": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-   'request_id': '852b8fdd-4369-4659-9628-e122662ad257',
-   'product_id': 'a1111c8c-c720-46c3-8534-2fcdd730040d',
-   'status': 'processing',
-   'vehicle': null,
-   'driver': null,
-   'location': null,
-   'eta': 5,
-   'surge_multiplier': null
-}"
-		}
-	}
-}
-```
 
-<a name="updateCurrentRide"/>
 ## Uber.updateCurrentRide
 The Ride Request endpoint allows updating an ongoing request’s destination.
 
@@ -1463,29 +313,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination.
 | endNickname | String| Optional: The final or destination nickname label.
 | endPlaceId  | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is accepted. Either this or endLatitude and endLongitude must be specified.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"endLatitude": "...",
-	"endLongitude": "...",
-	"endAddress": "...",
-	"endNickname": "...",
-	"endPlaceId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"[empty]"
-		}
-	}
-}
-```
 
-<a name="cancelCurrentRide"/>
 ## Uber.cancelCurrentRide
 The Ride Request endpoint allows cancellation of the user's current trip.
 
@@ -1493,24 +321,7 @@ The Ride Request endpoint allows cancellation of the user's current trip.
 |------------|-------|----------
 | accessToken| credentials| The access token obtained from Uber API.
 
-#### Request example
-```json
-{	"accessToken": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"null"
-		}
-	}
-}
-```
 
-<a name="getRideEstimate"/>
 ## Uber.getRideEstimate
 The Request Estimate endpoint allows a ride to be estimated given the desired product, start, and end locations.
 
@@ -1526,81 +337,7 @@ The Request Estimate endpoint allows a ride to be estimated given the desired pr
 | endPlaceId    | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is acceptable. Either this or endLatitude and endLongitude may be specified.
 | seatCount     | String| Optional: The number of seats required for uberPOOL. Default and maximum value is 2.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"productId": "...",
-	"startLatitude": "...",
-	"startLongitude": "...",
-	"startPlaceId": "...",
-	"endLatitude": "...",
-	"endLongitude": "...",
-	"endPlaceId": "...",
-	"seatCount": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'price': {
-    'surge_confirmation_href': 'https:\/\/api.uber.com\/v1\/surge-confirmations\/7d604f5e',
-    'high_estimate': 11,
-    'surge_confirmation_id': '7d604f5e',
-    'minimum': 5,
-    'low_estimate': 8,
-    'fare_breakdown': [
-      {
-        'low_amount': 1.25,
-        'high_amount': 1.25,
-        'display_amount': '1.25',
-        'display_name': 'Base Fare'
-      },
-      {
-        'low_amount': 1.92,
-        'high_amount': 2.57,
-        'display_amount': '1.92-2.57',
-        'display_name': 'Distance'
-      },
-      {
-        'low_amount': 2.50,
-        'high_amount': 3.50,
-        'display_amount': '2.50-3.50',
-        'display_name': 'Surge x1.5'
-      },
-      {
-        'low_amount': 1.25,
-        'high_amount': 1.25,
-        'display_amount': '1.25',
-        'display_name': 'Booking Fee'
-      },
-      {
-        'low_amount': 1.36,
-        'high_amount': 1.81,
-        'display_amount': '1.36-1.81',
-        'display_name': 'Time'
-      }
-    ],
-    'surge_multiplier': 1.5,
-    'display': '$8-11',
-    'currency_code': 'USD'
-  },
-  'trip': {
-    'distance_unit': 'mile',
-    'duration_estimate': 480,
-    'distance_estimate': 1.95
-  },
-  'pickup_estimate': 2
-}"
-		}
-	}
-}
-```
 
-<a name="updateRide"/>
 ## Uber.updateRide
 The Ride Request endpoint allows updating an ongoing request’s destination using the Ride Request endpoint.
 
@@ -1614,30 +351,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination usi
 | endNickname | String| Optional: The final or destination nickname label.
 | endPlaceId  | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is accepted. Either this or endLatitude and end_Longitude must be specified.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"requestId": "...",
-	"endLatitude": "...",
-	"endLongitude": "...",
-	"endAddress": "...",
-	"endNickname": "...",
-	"endPlaceId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"[empty]"
-		}
-	}
-}
-```
 
-<a name="cancelRide"/>
 ## Uber.cancelRide
 The Ride Request endpoint allows cancellation of an ongoing Request on behalf of a rider.
 
@@ -1646,25 +360,7 @@ The Ride Request endpoint allows cancellation of an ongoing Request on behalf of
 | accessToken| credentials| The access token obtained from Uber API.
 | requestId | String| Unique identifier representing a Request.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"requestId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"[empty]"
-		}
-	}
-}
-```
 
-<a name="getRideMap"/>
 ## Uber.getRideMap
 The Ride Request endpoint getting a map with a visual representation of a Request.
 
@@ -1673,28 +369,7 @@ The Ride Request endpoint getting a map with a visual representation of a Reques
 | accessToken| credentials| The access token obtained from Uber API.
 | requestId | String| Unique identifier representing a Request.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"requestId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'request_id':'b5512127-a134-4bf4-b1ba-fe9f48f56d9d',
-  'href':'https://trip.uber.com/abc123'
-}"
-		}
-	}
-}
-```
 
-<a name="getReceipt"/>
 ## Uber.getReceipt
 The Ride Request endpoint allows getting the receipt information of the completed request.
 
@@ -1703,70 +378,4 @@ The Ride Request endpoint allows getting the receipt information of the complete
 | accessToken| credentials| The access token obtained from Uber API.
 | requestId | String| Unique identifier representing a Request.
 
-#### Request example
-```json
-{	"accessToken": "...",
-	"requestId": "..."
-}
-```
-#### Response example
-```json
-{
-	"callback":"success",
-	"contextWrites":{
-		"#":{
-			"to":"{
-  'request_id': 'b5512127-a134-4bf4-b1ba-fe9f48f56d9d',
-  'charges': [
-    {
-      'name': 'Base Fare',
-      'amount': '2.20',
-      'type': 'base_fare'
-    },
-    {
-      'name': 'Distance',
-      'amount': '2.75',
-      'type': 'distance',
-    },
-    {
-      'name': 'Time',
-      'amount': '3.57',
-      'type': 'time',
-    }
-  ],
-  'surge_charge' : {
-    'name': 'Surge x1.5',
-    'amount': '4.26',
-    'type': 'surge',
-  },
-  'charge_adjustments' : [
-    {
-      'name': 'Promotion',
-      'amount': '-2.43',
-      'type': 'promotion',
-    },
-    {
-      'name': 'Booking Fee',
-      'amount': '1.00',
-      'type': 'booking_fee',
-    },
-    {
-      'name': 'Rounding Down',
-      'amount': '0.78',
-      'type': 'rounding_down',
-    },
-  ],
-  'normal_fare': '$8.52',
-  'subtotal': '$12.78',
-  'total_charged': '$5.92',
-  'total_owed': null,
-  'currency_code': 'USD',
-  'duration': '00:11:35',
-  'distance': '1.49',
-  'distance_label': 'miles',
-}"
-		}
-	}
-}
-```
 
