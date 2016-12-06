@@ -1,5 +1,5 @@
 # Uber Package
-The mission of the Uber API is to make it easy for developers to unlock the power of our logistical network that runs across cities.
+Request an Uber or Uber delivery all from within your app.
 * Domain: uber.com
 * Credentials: accessToken
 
