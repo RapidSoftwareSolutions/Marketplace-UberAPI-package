@@ -11,6 +11,7 @@
     },
     "blocks": [{
             "name": "requestDelivery",
+            "description": "The Delivery endpoint allows a delivery to be requested given the delivery information and quote ID.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -251,6 +252,7 @@
                 }]
         }, {
             "name": "getDelivery",
+            "description": "Get the real time status of an ongoing delivery that was created using the Delivery endpoint.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -276,6 +278,7 @@
                 }]
         }, {
             "name": "cancelDelivery",
+            "description": "Cancels an existing delivery.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -301,6 +304,7 @@
                 }]
         }, {
             "name": "getDeliveries",
+            "description": "Get a list of all deliveries, ordered chronologically by time of creation.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -336,6 +340,7 @@
                 }]
         }, {
             "name": "getQuote",
+            "description": "Generate a delivery quote, given a pickup and dropoff location. On-demand and scheduled delivery quotes will be returned.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -436,6 +441,7 @@
                 }]
         }, {
             "name": "getUser",
+            "description": "The User Profile endpoint returns information about the Uber user that has authorized with the application.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -456,6 +462,7 @@
                 }]
         }, {
             "name": "getUserActivity",
+            "description": "The User Activity endpoint returns a limited amount of data about a user’s lifetime activity with Uber. The response will include pickup and dropoff times, the city the trips took place in, the distance of past requests, and information about which products were requested.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -486,6 +493,7 @@
                 }]
         }, {
             "name": "getProductDetails",
+            "description": "The Products Detail endpoint returns information about a specific Uber product. The response includes the display name and other details about the product.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -511,6 +519,7 @@
                 }]
         }, {
             "name": "getCurrentRide",
+            "description": "The Ride Request endpoint allows retrieving real-time details for an ongoing trip.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -531,6 +540,7 @@
                 }]
         }, {
             "name": "getRide",
+            "description": "The Ride Request endpoint allows retrieving the status of an ongoing or completed trip that was created by your app.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -556,6 +566,7 @@
                 }]
         }, {
             "name": "getProductsByLocation",
+            "description": "The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order. Some products, such as uberEATS, are not returned by this endpoint.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -586,6 +597,7 @@
                 }]
         }, {
             "name": "getProductsPrices",
+            "description": "The Price Estimates endpoint returns an estimated price range for each product offered at a given location. The price estimate is provided as a formatted string with the full price range and the localized currency symbol.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -631,6 +643,7 @@
                 }]
         }, {
             "name": "getProductsTimeEstimates",
+            "description": "The Time Estimates endpoint returns ETAs for all products currently available at a given location, with the ETA for each product expressed as integers in seconds.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -666,6 +679,7 @@
                 }]
         }, {
             "name": "getUserAddress",
+            "description": "The Places endpoint allows retrieving the home and work addresses from an Uber user's profile.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -691,6 +705,7 @@
                 }]
         }, {
             "name": "updateUserAddress",
+            "description": "The Places endpoint allows updating the home and work addresses from an Uber user's profile.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -721,6 +736,7 @@
                 }]
         }, {
             "name": "getUserPaymentMethods",
+            "description": "The Payment Methods endpoint allows retrieving the list of the user’s available payment methods.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -741,6 +757,7 @@
                 }]
         }, {
             "name": "createReminder",
+            "description": "The Reminders endpoint allows developers to set a reminder for a future trip.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -811,6 +828,7 @@
                 }]
         }, {
             "name": "getReminder",
+            "description": "The Reminders endpoint allows you to get the status of an existing ride reminder.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -836,6 +854,7 @@
                 }]
         }, {
             "name": "updateReminder",
+            "description": "The Reminders endpoint allows you to update an existing reminder.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -911,6 +930,7 @@
                 }]
         }, {
             "name": "deleteReminder",
+            "description": "The Reminders endpoint allows you to remove any reminder in the pending state from being sent.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -936,6 +956,7 @@
                 }]
         }, {
             "name": "requestRide",
+            "description": "The Ride Request endpoint allows a ride to be requested on behalf of an Uber user.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -1041,6 +1062,7 @@
                 }]
         }, {
             "name": "updateCurrentRide",
+            "description": "The Ride Request endpoint allows updating an ongoing request’s destination.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -1086,6 +1108,7 @@
                 }]
         }, {
             "name": "cancelCurrentRide",
+            "description": "The Ride Request endpoint allows cancellation of the user's current trip.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -1106,6 +1129,7 @@
                 }]
         }, {
             "name": "getRideEstimate",
+            "description": "The Request Estimate endpoint allows a ride to be estimated given the desired product, start, and end locations.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -1166,6 +1190,7 @@
                 }]
         }, {
             "name": "updateRide",
+            "description": "The Ride Request endpoint allows updating an ongoing request’s destination using the Ride Request endpoint.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -1216,6 +1241,7 @@
                 }]
         }, {
             "name": "cancelRide",
+            "description": "The Ride Request endpoint allows cancellation of an ongoing Request on behalf of a rider.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -1241,6 +1267,7 @@
                 }]
         }, {
             "name": "getRideMap",
+            "description": "The Ride Request endpoint getting a map with a visual representation of a Request.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
@@ -1266,6 +1293,7 @@
                 }]
         }, {
             "name": "getReceipt",
+            "description": "The Ride Request endpoint allows getting the receipt information of the completed request.",
             "args": [{
                     "name": "accessToken",
                     "type": "credentials",
