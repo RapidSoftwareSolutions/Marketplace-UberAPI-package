@@ -1,0 +1,923 @@
+{
+    "package": "UberRide",
+    "tagline": "Uber Ride API Wrapper",
+    "description": "Request an Uber or Uber delivery all from within your app.",
+    "image": "http://logo.clearbit.com/uber.com",
+    "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-UberRide-package",
+    "keywords": ["API", "car", "delivery", "driving", "ecommerce", "ride", "transportation"],
+    "accounts": {
+        "domain": "uber.com",
+        "String": ["clientId", "clientSecret"]
+    },
+    "blocks": [
+        {
+            "name": "getAccessToken",
+            "description": "Generate Access Token.",
+            "args": [{
+                    "name": "clientId",
+                    "type": "credentials",
+                    "info": "The Client ID obtained from Uber API.",
+                    "required": true
+                }, {
+                    "name": "clientSecret",
+                    "type": "credentials",
+                    "info": "The Client Secret obtained from Uber API.",
+                    "required": true
+                }, {
+                    "name": "code",
+                    "type": "String",
+                    "info": "The authorization code obtained from Uber API.",
+                    "required": true
+                }, {
+                    "name": "redirectUri",
+                    "type": "String",
+                    "info": "The URI we will redirect back to after an authorization by the resource owner. The base of the URI must match the redirect_uri used during the registration of your application.",
+                    "required": true
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getUser",
+            "description": "The User Profile endpoint returns information about the Uber user that has authorized with the application.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getUserActivity",
+            "description": "The User Activity endpoint returns a limited amount of data about a user’s lifetime activity with Uber. The response will include pickup and dropoff times, the city the trips took place in, the distance of past requests, and information about which products were requested.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "offset",
+                    "type": "String",
+                    "info": "Offset the list of returned results by this amount. Default is zero.",
+                    "required": false
+                }, {
+                    "name": "limit",
+                    "type": "String",
+                    "info": "Number of items to retrieve. Default is 5, maximum is 50.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getProductDetails",
+            "description": "The Products Detail endpoint returns information about a specific Uber product. The response includes the display name and other details about the product.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "productId",
+                    "type": "String",
+                    "info": "Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getCurrentRide",
+            "description": "The Ride Request endpoint allows retrieving real-time details for an ongoing trip.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getRide",
+            "description": "The Ride Request endpoint allows retrieving the status of an ongoing or completed trip that was created by your app.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "requestId",
+                    "type": "String",
+                    "info": "Unique identifier representing a Request.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getProductsByLocation",
+            "description": "The Products endpoint returns information about the Uber products offered at a given location. The response includes the display name and other details about each product, and lists the products in the proper display order. Some products, such as uberEATS, are not returned by this endpoint.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "latitude",
+                    "type": "String",
+                    "info": "Latitude component of location.",
+                    "required": true
+                }, {
+                    "name": "longitude",
+                    "type": "String",
+                    "info": "Longitude component of location.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getProductsPrices",
+            "description": "The Price Estimates endpoint returns an estimated price range for each product offered at a given location. The price estimate is provided as a formatted string with the full price range and the localized currency symbol.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "startLatitude",
+                    "type": "String",
+                    "info": "Latitude component of start location.",
+                    "required": true
+                }, {
+                    "name": "startLongitude",
+                    "type": "String",
+                    "info": "Longitude component of start location.",
+                    "required": true
+                }, {
+                    "name": "endLatitude",
+                    "type": "String",
+                    "info": "Latitude component of end location.",
+                    "required": true
+                }, {
+                    "name": "endLongitude",
+                    "type": "String",
+                    "info": "Longitude component of end location.",
+                    "required": true
+                }, {
+                    "name": "seatCount",
+                    "type": "String",
+                    "info": "The number of seats required for uberPOOL. Default and maximum value is 2.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getProductsTimeEstimates",
+            "description": "The Time Estimates endpoint returns ETAs for all products currently available at a given location, with the ETA for each product expressed as integers in seconds.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "startLatitude",
+                    "type": "String",
+                    "info": "Latitude component.",
+                    "required": true
+                }, {
+                    "name": "startLongitude",
+                    "type": "String",
+                    "info": "Longitude component.",
+                    "required": true
+                }, {
+                    "name": "productId",
+                    "type": "String",
+                    "info": "Unique identifier representing a specific product for a given latitude & longitude.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getUserAddress",
+            "description": "The Places endpoint allows retrieving the home and work addresses from an Uber user's profile.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "placeName",
+                    "type": "String",
+                    "info": "The name of the place to retrieve. Only home and work are acceptable.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "updateUserAddress",
+            "description": "The Places endpoint allows updating the home and work addresses from an Uber user's profile.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "placeName",
+                    "type": "String",
+                    "info": "The name of the place to retrieve. Only home and work are acceptable.",
+                    "required": true
+                }, {
+                    "name": "address",
+                    "type": "String",
+                    "info": "The address of the place that should be tied to the given placeName.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getUserPaymentMethods",
+            "description": "The Payment Methods endpoint allows retrieving the list of the user’s available payment methods.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "createReminder",
+            "description": "The Reminders endpoint allows developers to set a reminder for a future trip.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token. This endpoint only supports server_token.",
+                    "required": true
+                }, {
+                    "name": "reminderTime",
+                    "type": "String",
+                    "info": "Unix UTC timestamp of when the reminder will occur.",
+                    "required": true
+                }, {
+                    "name": "phoneNumber",
+                    "type": "String",
+                    "info": "Phone number of the individual to remind. Must be in the E.164 format.",
+                    "required": true
+                }, {
+                    "name": "eventTime",
+                    "type": "String",
+                    "info": "Unix UTC timestamp of the event time.",
+                    "required": true
+                }, {
+                    "name": "eventName",
+                    "type": "String",
+                    "info": "Formatted name of the event, which appears in the reminder notification. Alphanumeric up to 50 characters. Defaults to \u201cYour event\u201d if no name is provided.",
+                    "required": false
+                }, {
+                    "name": "eventLocation",
+                    "type": "String",
+                    "info": "Location of the event, which appears in the Uber app destination field. This does not need to be the entire address string since we rely on the event lat\/long to set the destination pin, i.e., \u201cCoit Tower\u201d is sufficient instead of \"Coit Tower, 1 Telegraph Hill Blvd, San Francisco, CA 94133\".",
+                    "required": false
+                }, {
+                    "name": "eventLatitude",
+                    "type": "String",
+                    "info": "Latitude of the event location. Required to set destination pin.",
+                    "required": false
+                }, {
+                    "name": "eventLongitude",
+                    "type": "String",
+                    "info": "Longitude of the event location. Required to set destination pin.",
+                    "required": false
+                }, {
+                    "name": "eventProductId",
+                    "type": "String",
+                    "info": "Product ID of the Uber product to request. This overrides the product selected by the latitude \/ longitude pair. Required to set destination pin.",
+                    "required": false
+                }, {
+                    "name": "tripBrandingLinkText",
+                    "type": "String",
+                    "info": "Call-to-action text for the deeplink to your app. Used for trip branding and personalization.",
+                    "required": false
+                }, {
+                    "name": "tripBrandingPartnerDeeplink",
+                    "type": "String",
+                    "info": "Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getReminder",
+            "description": "The Reminders endpoint allows you to get the status of an existing ride reminder.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token. This endpoint only supports server_token.",
+                    "required": true
+                }, {
+                    "name": "reminderId",
+                    "type": "String",
+                    "info": "The reminder ID.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "updateReminder",
+            "description": "The Reminders endpoint allows you to update an existing reminder.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token. This endpoint only supports server_token.",
+                    "required": true
+                }, {
+                    "name": "reminderId",
+                    "type": "String",
+                    "info": "The reminder ID.",
+                    "required": true
+                }, {
+                    "name": "reminderTime",
+                    "type": "String",
+                    "info": "Unix UTC timestamp of when the reminder will occur.",
+                    "required": true
+                }, {
+                    "name": "phoneNumber",
+                    "type": "String",
+                    "info": "Phone number of the individual to remind. Must be in the E.164 format.",
+                    "required": true
+                }, {
+                    "name": "eventTime",
+                    "type": "String",
+                    "info": "Unix UTC timestamp of the event time.",
+                    "required": true
+                }, {
+                    "name": "eventName",
+                    "type": "String",
+                    "info": "Formatted name of the event, which appears in the reminder notification. Alphanumeric up to 50 characters. Defaults to \u201cYour event\u201d if no name is provided.",
+                    "required": false
+                }, {
+                    "name": "eventLocation",
+                    "type": "String",
+                    "info": "Location of the event, which appears in the Uber app destination field. This does not need to be the entire address string since we rely on the event lat\/long to set the destination pin, i.e., \u201cCoit Tower\u201d is sufficient instead of \"Coit Tower, 1 Telegraph Hill Blvd, San Francisco, CA 94133\".",
+                    "required": false
+                }, {
+                    "name": "eventLatitude",
+                    "type": "String",
+                    "info": "Latitude of the event location. Required to set destination pin.",
+                    "required": false
+                }, {
+                    "name": "eventLongitude",
+                    "type": "String",
+                    "info": "Longitude of the event location. Required to set destination pin.",
+                    "required": false
+                }, {
+                    "name": "eventProductId",
+                    "type": "String",
+                    "info": "Product ID of the Uber product to request. This overrides the product selected by the latitude \/ longitude pair. Required to set destination pin.",
+                    "required": false
+                }, {
+                    "name": "tripBrandingLinkText",
+                    "type": "String",
+                    "info": "Call-to-action text for the deeplink to your app. Used for trip branding and personalization.",
+                    "required": false
+                }, {
+                    "name": "tripBrandingPartnerDeeplink",
+                    "type": "String",
+                    "info": "Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "deleteReminder",
+            "description": "The Reminders endpoint allows you to remove any reminder in the pending state from being sent.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token. This endpoint only supports server_token.",
+                    "required": true
+                }, {
+                    "name": "reminderId",
+                    "type": "String",
+                    "info": "The reminder ID.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "requestRide",
+            "description": "The Ride Request endpoint allows a ride to be requested on behalf of an Uber user.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "startLatitude",
+                    "type": "String",
+                    "info": "The beginning or \u201cpickup\u201d latitude. Either this or startPlaceId must be specified.",
+                    "required": true
+                }, {
+                    "name": "startLongitude",
+                    "type": "String",
+                    "info": "The beginning or \u201cpickup\u201d longitude. Either this or startPlaceId must be specified.",
+                    "required": true
+                }, {
+                    "name": "endLatitude",
+                    "type": "String",
+                    "info": "The final or destination latitude. Either this or endPlaceId may be specified. If requesting POOL, this parameter is required.",
+                    "required": true
+                }, {
+                    "name": "endLongitude",
+                    "type": "String",
+                    "info": "The final or destination longitude. Either this or endPlaceId may be specified. If requesting POOL, this parameter is required.",
+                    "required": true
+                }, {
+                    "name": "startPlace_id",
+                    "type": "String",
+                    "info": "The beginning or \u201cpickup\u201d place ID. This is the name of an Uber saved place. Only \u201chome\u201d or \u201cwork\u201d is acceptable. Either this or startLatitude and startLongitude must be specified.",
+                    "required": false
+                }, {
+                    "name": "endPlace_id",
+                    "type": "String",
+                    "info": "The final or destination place ID. This is the name of an Uber saved place. Only \u201chome\u201d or \u201cwork\u201d is acceptable. Either this or endLatitude and endLongitude may be specified.",
+                    "required": false
+                }, {
+                    "name": "startNickname",
+                    "type": "String",
+                    "info": "The beginning or \u201cpickup\u201d nickname label.",
+                    "required": false
+                }, {
+                    "name": "endNickname",
+                    "type": "String",
+                    "info": "The final or destination nickname label.",
+                    "required": false
+                }, {
+                    "name": "startAddress",
+                    "type": "String",
+                    "info": "The beginning or \u201cpickup\u201d address.",
+                    "required": false
+                }, {
+                    "name": "endAddress",
+                    "type": "String",
+                    "info": "The final or destination address.",
+                    "required": false
+                }, {
+                    "name": "productId",
+                    "type": "String",
+                    "info": "The unique ID of the product being requested. If none is provided, it will default to the cheapest product for the given location.",
+                    "required": false
+                }, {
+                    "name": "surgeConfirmationId",
+                    "type": "String",
+                    "info": "The unique identifier of the surge session for a user. Required when returned from a 409 Conflict response on previous POST attempt.",
+                    "required": false
+                }, {
+                    "name": "paymentMethodId",
+                    "type": "String",
+                    "info": "The unique identifier of the payment method selected by a user. If set, the trip will be requested using this payment method. If not set, the trip will be requested using the user\u2019s last used payment method.",
+                    "required": false
+                }, {
+                    "name": "seatCount",
+                    "type": "String",
+                    "info": "The number of seats required for uberPOOL. Default and maximum value is 2.",
+                    "required": false
+                }, {
+                    "name": "fareId",
+                    "type": "String",
+                    "info": "The key for the upfront price of an uberPOOL ride. Required if we want to use a previously retrieved price estimate for POOL. If it is missed, we will automatically issue a new upfront price for the ride request.",
+                    "required": false
+                }, {
+                    "name": "expenseCode",
+                    "type": "String",
+                    "info": "An alphanumeric identifier for expense reporting policies. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.",
+                    "required": false
+                }, {
+                    "name": "expenseMemo",
+                    "type": "String",
+                    "info": "A free text field to describe the purpose of the trip for expense reporting. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "updateCurrentRide",
+            "description": "The Ride Request endpoint allows updating an ongoing request’s destination.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "endLatitude",
+                    "type": "String",
+                    "info": "The final or destination latitude. Either this or endPlaceId must be specified.",
+                    "required": false
+                }, {
+                    "name": "endLongitude",
+                    "type": "String",
+                    "info": "The final or destination longitude. Either this or endPlaceId must be specified.",
+                    "required": false
+                }, {
+                    "name": "endAddress",
+                    "type": "String",
+                    "info": "The final or destination address.",
+                    "required": false
+                }, {
+                    "name": "endNickname",
+                    "type": "String",
+                    "info": "The final or destination nickname label.",
+                    "required": false
+                }, {
+                    "name": "endPlaceId",
+                    "type": "String",
+                    "info": "The final or destination place ID. This is the name of an Uber saved place. Only \u201chome\u201d or \u201cwork\u201d is accepted. Either this or endLatitude and endLongitude must be specified.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "cancelCurrentRide",
+            "description": "The Ride Request endpoint allows cancellation of the user's current trip.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getRideEstimate",
+            "description": "The Request Estimate endpoint allows a ride to be estimated given the desired product, start, and end locations.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "productId",
+                    "type": "String",
+                    "info": "The unique ID of the product being requested. If none is provided, it will default to the cheapest product for the given location.",
+                    "required": false
+                }, {
+                    "name": "startLatitude",
+                    "type": "String",
+                    "info": "The beginning or \"pickup\" latitude. Either this or startPlaceId must be specified.",
+                    "required": false
+                }, {
+                    "name": "startLongitude",
+                    "type": "String",
+                    "info": "The beginning or \"pickup\" longitude. Either this or startPlaceId must be specified.",
+                    "required": false
+                }, {
+                    "name": "startPlaceId",
+                    "type": "String",
+                    "info": "The beginning or \u201cpickup\u201d place ID. This is the name of an Uber saved place. Only \u201chome\u201d or \u201cwork\u201d is acceptable. Either this or startLatitude and startLongitude must be specified.",
+                    "required": false
+                }, {
+                    "name": "endLatitude",
+                    "type": "String",
+                    "info": "The final or destination latitude. If not included, only the pickup ETA and details of surge pricing will be included.",
+                    "required": false
+                }, {
+                    "name": "endLongitude",
+                    "type": "String",
+                    "info": "The final or destination longitude. If not included, only the pickup ETA and details of surge pricing will be included.",
+                    "required": false
+                }, {
+                    "name": "endPlaceId",
+                    "type": "String",
+                    "info": "The final or destination place ID. This is the name of an Uber saved place. Only \u201chome\u201d or \u201cwork\u201d is acceptable. Either this or endLatitude and endLongitude may be specified.",
+                    "required": false
+                }, {
+                    "name": "seatCount",
+                    "type": "String",
+                    "info": "The number of seats required for uberPOOL. Default and maximum value is 2.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "updateRide",
+            "description": "The Ride Request endpoint allows updating an ongoing request’s destination using the Ride Request endpoint.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "requestId",
+                    "type": "String",
+                    "info": "Unique identifier representing a Request.",
+                    "required": true
+                }, {
+                    "name": "endLatitude",
+                    "type": "String",
+                    "info": "The final or destination latitude. Either this or endPlaceId must be specified.",
+                    "required": false
+                }, {
+                    "name": "endLongitude",
+                    "type": "String",
+                    "info": "The final or destination latitude. Either this or endPlaceId must be specified.",
+                    "required": false
+                }, {
+                    "name": "endAddress",
+                    "type": "String",
+                    "info": "The final or destination address.",
+                    "required": false
+                }, {
+                    "name": "endNickname",
+                    "type": "String",
+                    "info": "The final or destination nickname label.",
+                    "required": false
+                }, {
+                    "name": "endPlaceId",
+                    "type": "String",
+                    "info": "The final or destination place ID. This is the name of an Uber saved place. Only \u201chome\u201d or \u201cwork\u201d is accepted. Either this or endLatitude and end_Longitude must be specified.",
+                    "required": false
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "cancelRide",
+            "description": "The Ride Request endpoint allows cancellation of an ongoing Request on behalf of a rider.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "requestId",
+                    "type": "String",
+                    "info": "Unique identifier representing a Request.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getRideMap",
+            "description": "The Ride Request endpoint getting a map with a visual representation of a Request.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "requestId",
+                    "type": "String",
+                    "info": "Unique identifier representing a Request.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }, {
+            "name": "getReceipt",
+            "description": "The Ride Request endpoint allows getting the receipt information of the completed request.",
+            "args": [{
+                    "name": "accessToken",
+                    "type": "String",
+                    "info": "The valid access token.",
+                    "required": true
+                }, {
+                    "name": "requestId",
+                    "type": "String",
+                    "info": "Unique identifier representing a Request.",
+                    "required": true
+                }, {
+                    "name": "sandbox",
+                    "type": "String",
+                    "info": "UberAPI Sandbox: True || False",
+                    "required": false
+                }],
+            "callbacks": [{
+                    "name": "error",
+                    "info": "Error"
+                }, {
+                    "name": "success",
+                    "info": "Success"
+                }]
+        }]
+}
