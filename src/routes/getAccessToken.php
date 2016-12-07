@@ -59,9 +59,9 @@ $app->post('/api/UberRide/getAccessToken', function ($request, $response, $args)
 
     try {
 
-        $resp = $client->get( $query_str, 
+        $resp = $client->post( $query_str, 
             [
-                'query' => $query
+                'form_params' => $query
             ]);
         $responseBody = $resp->getBody()->getContents();
         $code = $resp->getStatusCode();
