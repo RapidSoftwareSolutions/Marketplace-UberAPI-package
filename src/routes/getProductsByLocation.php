@@ -29,12 +29,10 @@ $app->post('/api/UberRide/getProductsByLocation', function ($request, $response,
     if(empty($post_data['args']['accessToken'])) {
         $error[] = 'accessToken';
     }
-    if(empty($post_data['args']['latitude'])) {
-        $error[] = 'latitude';
+    if(empty($post_data['args']['coordinates'])) {
+        $error[] = 'coordinates';
     }
-    if(empty($post_data['args']['longitude'])) {
-        $error[] = 'longitude';
-    }
+
     
     if(!empty($error)) {
         $result['callback'] = 'error';
@@ -45,10 +43,15 @@ $app->post('/api/UberRide/getProductsByLocation', function ($request, $response,
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
-    $headers['Content-Type'] = 'application/json'; 
-    
-    $query['latitude'] = $post_data['args']['latitude'];
-    $query['longitude'] = $post_data['args']['longitude'];
+    $headers['Content-Type'] = 'application/json';
+
+    $query['latitude'] = explode(",",$post_data['args']['coordinates'])[0];
+    $query['longitude'] = explode(",",$post_data['args']['coordinates'])[1];
+
+    if(!empty($post_data['args']['latitude']) && !empty($post_data['args']['longitude'])){
+        $query['latitude'] = $post_data['args']['latitude'];
+        $query['longitude'] = $post_data['args']['longitude'];
+    }
 
     if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
         $query_str = 'https://sandbox-api.uber.com/v1/products';

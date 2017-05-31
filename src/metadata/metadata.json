@@ -175,14 +175,9 @@
                     "info": "The valid access token.",
                     "required": true
                 }, {
-                    "name": "latitude",
-                    "type": "String",
-                    "info": "Latitude component of location.",
-                    "required": true
-                }, {
-                    "name": "longitude",
-                    "type": "String",
-                    "info": "Longitude component of location.",
+                    "name": "coordinates",
+                    "type": "Map",
+                    "info": "Coordinates of location.",
                     "required": true
                 }, {
                     "name": "sandbox",
