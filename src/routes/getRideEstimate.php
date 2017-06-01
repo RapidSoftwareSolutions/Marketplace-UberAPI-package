@@ -45,21 +45,33 @@ $app->post('/api/UberRide/getRideEstimate', function ($request, $response, $args
     if(!empty($post_data['args']['productId'])) {
         $body['product_id'] = $post_data['args']['productId'];
     }
-    if(!empty($post_data['args']['startLatitude'])) {
-        $body['start_latitude'] = $post_data['args']['startLatitude'];
+
+    if(!empty($post_data['args']['startCoordinates'])) {
+        $body['start_latitude'] = explode(",",$post_data['args']['startCoordinates'])[0];
+        $body['start_longitude'] = explode(",",$post_data['args']['startCoordinates'])[1];
     }
-    if(!empty($post_data['args']['startLongitude'])) {
-        $body['start_longitude'] = $post_data['args']['startLongitude'];
+
+    if(!empty($post_data['args']['startLatitude']) && !empty($post_data['args']['startLongitude'])){
+        $body['start_latitude'] = $post_data['args']['eventLatitude'];
+        $body['start_longitude'] = $post_data['args']['eventLongitude'];
     }
+
+
     if(!empty($post_data['args']['startPlaceId'])) {
         $body['start_place_id'] = $post_data['args']['startPlaceId'];
     }
-    if(!empty($post_data['args']['endLatitude'])) {
-        $body['end_latitude'] = $post_data['args']['endLatitude'];
+
+    if(!empty($post_data['args']['endCoordinates'])) {
+        $body['end_latitude'] = explode(",",$post_data['args']['endCoordinates'])[0];
+        $body['end_longitude'] = explode(",",$post_data['args']['endCoordinates'])[1];
     }
-    if(!empty($post_data['args']['endLongitude'])) {
+
+    if(!empty($post_data['args']['endLatitude']) && !empty($post_data['args']['endLongitude'])){
+        $body['end_latitude'] = $post_data['args']['endLatitude'];
         $body['end_longitude'] = $post_data['args']['endLongitude'];
     }
+
+
     if(!empty($post_data['args']['endPlaceId'])) {
         $body['end_place_id'] = $post_data['args']['endPlaceId'];
     }
@@ -128,4 +140,5 @@ $app->post('/api/UberRide/getRideEstimate', function ($request, $response, $args
 
     return $response->withHeader('Content-type', 'application/json')->withStatus(200)->withJson($result);
 });
+
 

@@ -29,11 +29,8 @@ $app->post('/api/UberRide/getProductsTimeEstimates', function ($request, $respon
     if(empty($post_data['args']['accessToken'])) {
         $error[] = 'accessToken';
     }
-    if(empty($post_data['args']['startLatitude'])) {
-        $error[] = 'startLatitude';
-    }
-    if(empty($post_data['args']['startLongitude'])) {
-        $error[] = 'startLongitude';
+    if(empty($post_data['args']['startCoordinates']) && (empty($post_data['args']['startLatitude']) || empty($post_data['args']['startLongitude']))) {
+        $error[] = 'startCoordinates';
     }
     
     if(!empty($error)) {
@@ -45,10 +42,16 @@ $app->post('/api/UberRide/getProductsTimeEstimates', function ($request, $respon
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
-    $headers['Content-Type'] = 'application/json'; 
-    
-    $query['start_latitude'] = $post_data['args']['startLatitude'];
-    $query['start_longitude'] = $post_data['args']['startLongitude'];
+    $headers['Content-Type'] = 'application/json';
+
+    $query['start_latitude'] = explode(",",$post_data['args']['startCoordinates'])[0];
+    $query['start_longitude'] = explode(",",$post_data['args']['startCoordinates'])[1];
+
+    if(!empty($post_data['args']['startLatitude']) && !empty($post_data['args']['startLongitude'])){
+        $query['start_latitude'] = $post_data['args']['startLatitude'];
+        $query['start_longitude'] = $post_data['args']['startLongitude'];
+    }
+
     if(!empty($post_data['args']['productId'])) {
         $query['product_id'] = $post_data['args']['productId'];
     }

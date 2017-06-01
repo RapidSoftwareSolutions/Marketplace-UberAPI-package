@@ -29,18 +29,13 @@ $app->post('/api/UberRide/getProductsPrices', function ($request, $response, $ar
     if(empty($post_data['args']['accessToken'])) {
         $error[] = 'accessToken';
     }
-    if(empty($post_data['args']['startLatitude'])) {
-        $error[] = 'startLatitude';
+    if(empty($post_data['args']['startCoordinates']) && (empty($post_data['args']['startLatitude']) || empty($post_data['args']['startLongitude']))) {
+        $error[] = 'startCoordinates';
     }
-    if(empty($post_data['args']['startLongitude'])) {
-        $error[] = 'startLongitude';
+    if(empty($post_data['args']['endCoordinates']) && (empty($post_data['args']['endLatitude']) || empty($post_data['args']['endLongitude']))) {
+        $error[] = 'endCoordinates';
     }
-    if(empty($post_data['args']['endLatitude'])) {
-        $error[] = 'endLatitude';
-    }
-    if(empty($post_data['args']['endLongitude'])) {
-        $error[] = 'endLongitude';
-    }
+
     
     if(!empty($error)) {
         $result['callback'] = 'error';
@@ -51,12 +46,28 @@ $app->post('/api/UberRide/getProductsPrices', function ($request, $response, $ar
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
-    $headers['Content-Type'] = 'application/json'; 
-    
-    $query['start_latitude'] = $post_data['args']['startLatitude'];
-    $query['start_longitude'] = $post_data['args']['startLongitude'];
-    $query['end_latitude'] = $post_data['args']['endLatitude'];
-    $query['end_longitude'] = $post_data['args']['endLongitude'];
+    $headers['Content-Type'] = 'application/json';
+
+
+
+    $query['start_latitude'] = explode(",",$post_data['args']['startCoordinates'])[0];
+    $query['start_longitude'] = explode(",",$post_data['args']['startCoordinates'])[1];
+
+    if(!empty($post_data['args']['startLatitude']) && !empty($post_data['args']['startLongitude'])){
+        $query['start_latitude'] = $post_data['args']['startLatitude'];
+        $query['start_longitude'] = $post_data['args']['startLongitude'];
+    }
+
+    $query['end_latitude'] = explode(",",$post_data['args']['endCoordinates'])[0];
+    $query['end_longitude'] = explode(",",$post_data['args']['endCoordinates'])[1];
+
+    if(!empty($post_data['args']['endLatitude']) && !empty($post_data['args']['endLongitude'])){
+        $query['end_latitude'] = $post_data['args']['endLatitude'];
+        $query['end_longitude'] = $post_data['args']['endLongitude'];
+    }
+
+
+
     if(!empty($post_data['args']['seatCount'])) {
         $query['seat_count'] = $post_data['args']['seatCount'];
     }

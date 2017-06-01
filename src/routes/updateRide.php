@@ -45,12 +45,17 @@ $app->post('/api/UberRide/updateRide', function ($request, $response, $args) {
     $headers['Content-Type'] = 'application/json'; 
     
     $body = [];
-    if(!empty($post_data['args']['endLatitude'])) {
-        $body['end_latitude'] = $post_data['args']['endLatitude'];
+
+    if(!empty($post_data['args']['endCoordinates'])) {
+        $body['end_latitude'] = explode(",",$post_data['args']['endCoordinates'])[0];
+        $body['end_longitude'] = explode(",",$post_data['args']['endCoordinates'])[1];
     }
-    if(!empty($post_data['args']['endLongitude'])) {
+
+    if(!empty($post_data['args']['endLatitude']) && !empty($post_data['args']['endLongitude'])){
+        $body['end_latitude'] = $post_data['args']['endLatitude'];
         $body['end_longitude'] = $post_data['args']['endLongitude'];
     }
+
     if(!empty($post_data['args']['endAddress'])) {
         $body['end_address'] = $post_data['args']['endAddress'];
     }

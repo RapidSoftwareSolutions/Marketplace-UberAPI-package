@@ -8,6 +8,16 @@ Request an Uber or Uber delivery all from within your app.
 1. Sign in or Log in
 2. Register an UberRide app.
 
+## Custom datatypes:
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]```
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+
+
 
 ## UberRide.getAccessToken
 Generate Access Token.
@@ -69,8 +79,8 @@ The Products endpoint returns information about the Uber products offered at a g
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| The valid access token.
-| latitude   | String| Latitude component of location.
-| longitude  | String| Longitude component of location.
+| coordinates   | Map| Latitude and  longitude component of location.
+
 
 
 ## UberRide.getProductsPrices
@@ -79,10 +89,8 @@ The Price Estimates endpoint returns an estimated price range for each product o
 | Field         | Type  | Description
 |---------------|-------|----------
 | accessToken   | String| The valid access token.
-| startLatitude | String| Latitude component of start location.
-| startLongitude| String| Longitude component of start location.
-| endLatitude   | String| Latitude component of end location.
-| endLongitude  | String| Longitude component of end location.
+| startCoordinates | Map| Latitude and longitude component of start location.
+| endCoordinates| Map| Latitude and longitude component of end location.
 | seatCount     | String| Optional: The number of seats required for uberPOOL. Default and maximum value is 2.
 
 
@@ -92,8 +100,7 @@ The Time Estimates endpoint returns ETAs for all products currently available at
 | Field         | Type  | Description
 |---------------|-------|----------
 | accessToken   | String| The valid access token.
-| startLatitude | String| Latitude component.
-| startLongitude| String| Longitude component.
+| startCoordinates | Map| Latitude and longitude component of start location.
 | productId     | String| Optional: Unique identifier representing a specific product for a given latitude & longitude.
 
 

@@ -201,26 +201,16 @@
                     "info": "The valid access token.",
                     "required": true
                 }, {
-                    "name": "startLatitude",
-                    "type": "String",
-                    "info": "Latitude component of start location.",
+                    "name": "startCoordinates",
+                    "type": "Map",
+                    "info": "Latitude and longitude component of start location.",
                     "required": true
                 }, {
-                    "name": "startLongitude",
-                    "type": "String",
-                    "info": "Longitude component of start location.",
+                    "name": "endCoordinates",
+                    "type": "Map",
+                    "info": "Latitude and longitude component of end location.",
                     "required": true
-                }, {
-                    "name": "endLatitude",
-                    "type": "String",
-                    "info": "Latitude component of end location.",
-                    "required": true
-                }, {
-                    "name": "endLongitude",
-                    "type": "String",
-                    "info": "Longitude component of end location.",
-                    "required": true
-                }, {
+                 }, {
                     "name": "seatCount",
                     "type": "String",
                     "info": "The number of seats required for uberPOOL. Default and maximum value is 2.",
@@ -247,15 +237,10 @@
                     "info": "The valid access token.",
                     "required": true
                 }, {
-                    "name": "startLatitude",
-                    "type": "String",
-                    "info": "Latitude component.",
-                    "required": true
-                }, {
-                    "name": "startLongitude",
-                    "type": "String",
-                    "info": "Longitude component.",
-                    "required": true
+                "name": "startCoordinates",
+                "type": "Map",
+                "info": "Latitude and longitude component of start location.",
+                "required": true
                 }, {
                     "name": "productId",
                     "type": "String",
@@ -386,14 +371,9 @@
                     "info": "Location of the event, which appears in the Uber app destination field. This does not need to be the entire address string since we rely on the event lat\/long to set the destination pin, i.e., \u201cCoit Tower\u201d is sufficient instead of \"Coit Tower, 1 Telegraph Hill Blvd, San Francisco, CA 94133\".",
                     "required": false
                 }, {
-                    "name": "eventLatitude",
-                    "type": "String",
-                    "info": "Latitude of the event location. Required to set destination pin.",
-                    "required": false
-                }, {
-                    "name": "eventLongitude",
-                    "type": "String",
-                    "info": "Longitude of the event location. Required to set destination pin.",
+                    "name": "eventCoordinates",
+                    "type": "Map",
+                    "info": "Latitude and longitude of the event location. Required to set destination pin.",
                     "required": false
                 }, {
                     "name": "eventProductId",
@@ -737,32 +717,26 @@
                     "type": "String",
                     "info": "The unique ID of the product being requested. If none is provided, it will default to the cheapest product for the given location.",
                     "required": false
-                }, {
-                    "name": "startLatitude",
+                },
+                {
+                    "name": "startCoordinates",
                     "type": "String",
-                    "info": "The beginning or \"pickup\" latitude. Either this or startPlaceId must be specified.",
+                    "info": "The beginning or \"pickup\" latitude and longitude. Either this or startPlaceId must be specified.",
                     "required": false
-                }, {
-                    "name": "startLongitude",
-                    "type": "String",
-                    "info": "The beginning or \"pickup\" longitude. Either this or startPlaceId must be specified.",
-                    "required": false
-                }, {
+                }
+            , {
                     "name": "startPlaceId",
                     "type": "String",
                     "info": "The beginning or \u201cpickup\u201d place ID. This is the name of an Uber saved place. Only \u201chome\u201d or \u201cwork\u201d is acceptable. Either this or startLatitude and startLongitude must be specified.",
                     "required": false
-                }, {
-                    "name": "endLatitude",
+                },
+                {
+                    "name": "endCoordinates",
                     "type": "String",
-                    "info": "The final or destination latitude. If not included, only the pickup ETA and details of surge pricing will be included.",
+                    "info": "The final latitude and longitude. Either this or startPlaceId must be specified.",
                     "required": false
-                }, {
-                    "name": "endLongitude",
-                    "type": "String",
-                    "info": "The final or destination longitude. If not included, only the pickup ETA and details of surge pricing will be included.",
-                    "required": false
-                }, {
+                },
+                {
                     "name": "endPlaceId",
                     "type": "String",
                     "info": "The final or destination place ID. This is the name of an Uber saved place. Only \u201chome\u201d or \u201cwork\u201d is acceptable. Either this or endLatitude and endLongitude may be specified.",
@@ -798,15 +772,11 @@
                     "type": "String",
                     "info": "Unique identifier representing a Request.",
                     "required": true
-                }, {
-                    "name": "endLatitude",
-                    "type": "String",
-                    "info": "The final or destination latitude. Either this or endPlaceId must be specified.",
-                    "required": false
-                }, {
-                    "name": "endLongitude",
-                    "type": "String",
-                    "info": "The final or destination latitude. Either this or endPlaceId must be specified.",
+                },
+                {
+                    "name": "endCoordinates",
+                    "type": "Map",
+                    "info": "The final or destination latitude and longitude. Either this or endPlaceId must be specified.",
                     "required": false
                 }, {
                     "name": "endAddress",

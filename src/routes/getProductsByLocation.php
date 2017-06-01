@@ -29,7 +29,7 @@ $app->post('/api/UberRide/getProductsByLocation', function ($request, $response,
     if(empty($post_data['args']['accessToken'])) {
         $error[] = 'accessToken';
     }
-    if(empty($post_data['args']['coordinates'])) {
+    if(empty($post_data['args']['coordinates']) && (empty($post_data['args']['latitude']) || empty($post_data['args']['longitude']))) {
         $error[] = 'coordinates';
     }
 

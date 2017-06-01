@@ -51,8 +51,8 @@ $app->post('/api/UberRide/requestRide', function ($request, $response, $args) {
     }
     
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
-    $headers['Content-Type'] = 'application/json'; 
-    
+    $headers['Content-Type'] = 'application/json';
+
     $body['start_latitude'] = $post_data['args']['startLatitude'];
     $body['start_longitude'] = $post_data['args']['startLongitude'];
     $body['end_latitude'] = $post_data['args']['endLatitude'];

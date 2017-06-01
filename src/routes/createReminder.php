@@ -64,12 +64,19 @@ $app->post('/api/UberRide/createReminder', function ($request, $response, $args)
     if(!empty($post_data['args']['eventLocation'])) {
         $body['event']['location'] = $post_data['args']['eventLocation'];
     }
-    if(!empty($post_data['args']['eventLatitude'])) {
-        $body['event']['latitude'] = $post_data['args']['eventLatitude'];
+
+
+    if(!empty($post_data['args']['eventCoordinates'])) {
+        $body['event']['latitude'] = explode(",",$post_data['args']['eventCoordinates'])[0];
+        $body['event']['longitude'] = explode(",",$post_data['args']['eventCoordinates'])[1];
     }
-    if(!empty($post_data['args']['eventLongitude'])) {
+
+    if(!empty($post_data['args']['eventLatitude']) && !empty($post_data['args']['eventLongitude'])){
+        $body['event']['latitude'] = $post_data['args']['eventLatitude'];
         $body['event']['longitude'] = $post_data['args']['eventLongitude'];
     }
+
+
     if(!empty($post_data['args']['eventProductId'])) {
         $body['event']['product_id'] = $post_data['args']['eventProductId'];
     }
