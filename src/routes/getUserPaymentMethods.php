@@ -43,9 +43,9 @@ $app->post('/api/UberRide/getUserPaymentMethods', function ($request, $response,
     
 
     if(isset($post_data['args']['sandbox']) && $post_data['args']['sandbox'] == 1) {
-        $query_str = 'https://sandbox-api.uber.com/v1/payment-methods';
+        $query_str = 'https://sandbox-api.uber.com/v1.2/payment-methods';
     } else {
-        $query_str = 'https://api.uber.com/v1/payment-methods';
+        $query_str = 'https://api.uber.com/v1.2/payment-methods';
     }
     
     $client = $this->httpClient;

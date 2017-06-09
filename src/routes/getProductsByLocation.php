@@ -45,8 +45,10 @@ $app->post('/api/UberRide/getProductsByLocation', function ($request, $response,
     $headers['Authorization'] = "Bearer " . $post_data['args']['accessToken'];
     $headers['Content-Type'] = 'application/json';
 
-    $query['latitude'] = explode(",",$post_data['args']['coordinates'])[0];
-    $query['longitude'] = explode(",",$post_data['args']['coordinates'])[1];
+    if(!empty($post_data['args']['coordinates'])){
+        $query['latitude'] = explode(",",$post_data['args']['coordinates'])[0];
+        $query['longitude'] = explode(",",$post_data['args']['coordinates'])[1];
+    }
 
     if(!empty($post_data['args']['latitude']) && !empty($post_data['args']['longitude'])){
         $query['latitude'] = $post_data['args']['latitude'];
