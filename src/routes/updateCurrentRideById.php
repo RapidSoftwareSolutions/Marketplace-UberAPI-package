@@ -1,6 +1,6 @@
 <?php
 
-$app->post('/api/UberRide/updateCurrentRide', function ($request, $response, $args) {
+$app->post('/api/UberRide/updateCurrentRideById', function ($request, $response, $args) {
     $settings =  $this->settings;
     
     $data = $request->getBody();
@@ -29,13 +29,10 @@ $app->post('/api/UberRide/updateCurrentRide', function ($request, $response, $ar
     if(empty($post_data['args']['accessToken'])) {
         $error[] = 'accessToken';
     }
-    if(empty($post_data['args']['endLatitude'])) {
-        $error[] = 'endLatitude';
+    if(empty($post_data['args']['endPlaceId'])) {
+        $error[] = 'endPlaceId';
     }
-    if(empty($post_data['args']['endLongitude'])) {
-        $error[] = 'endLongitude';
-    }
-
+    
     if(!empty($error)) {
         $result['callback'] = 'error';
         $result['contextWrites']['to']['status_code'] = "REQUIRED_FIELDS";
@@ -48,12 +45,7 @@ $app->post('/api/UberRide/updateCurrentRide', function ($request, $response, $ar
     $headers['Content-Type'] = 'application/json'; 
     
     $body = [];
-    if(!empty($post_data['args']['endLatitude'])) {
-        $body['end_latitude'] = $post_data['args']['endLatitude'];
-    }
-    if(!empty($post_data['args']['endLongitude'])) {
-        $body['end_longitude'] = $post_data['args']['endLongitude'];
-    }
+    
     if(!empty($post_data['args']['endAddress'])) {
         $body['end_address'] = $post_data['args']['endAddress'];
     }

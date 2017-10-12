@@ -1,5 +1,7 @@
 <?php
 $routes = [
+    'updateCurrentRideById',
+    'requestRideById',
     'getAccessToken',
     'getUser',
     'getUserActivity',
