@@ -52,7 +52,7 @@
                 "name": "sandbox",
                 "type": "Select",
                 "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -83,8 +83,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -110,8 +110,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -132,8 +132,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -159,8 +159,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -186,8 +186,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -224,8 +224,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -256,8 +256,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -284,8 +284,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -317,8 +317,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -339,8 +339,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -406,8 +406,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -433,8 +433,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -510,8 +510,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -537,8 +537,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -635,8 +635,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -725,8 +725,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -767,8 +767,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -806,8 +806,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -828,8 +828,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -886,8 +886,8 @@
                 }, {
                     "name": "sandbox",
                     "type": "Select",
-                    "options": ["true", "false"],
-                    "info": "UberAPI Sandbox: True || False",
+                    "options": ["1"],
+                    "info": "UberAPI Sandbox: 1 to select sandbox",
                     "required": false
                 }
             ],
@@ -936,8 +936,8 @@
                 }, {
                     "name": "sandbox",
                     "type": "Select",
-                    "options": ["true", "false"],
-                    "info": "UberAPI Sandbox: True || False",
+                    "options": ["1"],
+                    "info": "UberAPI Sandbox: 1 to select sandbox",
                     "required": false
                 }
             ],
@@ -964,8 +964,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -991,8 +991,8 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "options": ["1"],
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{
@@ -1019,7 +1019,7 @@
                 "name": "sandbox",
                 "type": "Select",
                 "options": ["true", "false"],
-                "info": "UberAPI Sandbox: True || False",
+                "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
             "callbacks": [{

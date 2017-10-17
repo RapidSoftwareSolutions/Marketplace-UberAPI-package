@@ -35,7 +35,7 @@ The User Profile endpoint returns information about the Uber user that has autho
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| The valid access token.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 
@@ -47,7 +47,7 @@ The User Activity endpoint returns a limited amount of data about a user’s lif
 | accessToken| String| The valid access token.
 | offset     | Number| Optional: Offset the list of returned results by this amount. Default is zero.
 | limit      | Number| Optional: Number of items to retrieve. Default is 5, maximum is 50.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getProductDetails
@@ -57,7 +57,7 @@ The Products Detail endpoint returns information about a specific Uber product. 
 |------------|-------|----------
 | accessToken| String| The valid access token.
 | productId  | String| Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getCurrentRide
@@ -66,7 +66,7 @@ The Ride Request endpoint allows retrieving real-time details for an ongoing tri
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| The valid access token.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getRide
@@ -76,7 +76,7 @@ The Ride Request endpoint allows retrieving the status of an ongoing or complete
 |------------|-------|----------
 | accessToken| String| The valid access token.
 | requestId  | String| Unique identifier representing a Request.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getProductsByLocation
@@ -86,7 +86,7 @@ The Products endpoint returns information about the Uber products offered at a g
 |------------|-------|----------
 | accessToken| String| The valid access token.
 | coordinates   | Map| Latitude and  longitude component of location.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 
@@ -99,7 +99,7 @@ The Price Estimates endpoint returns an estimated price range for each product o
 | startCoordinates | Map| Latitude and longitude component of start location.
 | endCoordinates| Map| Latitude and longitude component of end location.
 | seatCount     | String| Optional: The number of seats required for uberPOOL. Default and maximum value is 2.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getProductsTimeEstimates
@@ -110,7 +110,7 @@ The Time Estimates endpoint returns ETAs for all products currently available at
 | accessToken   | String| The valid access token.
 | startCoordinates | Map| Latitude and longitude component of start location.
 | productId     | String| Optional: Unique identifier representing a specific product for a given latitude & longitude.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getUserAddress
@@ -120,7 +120,7 @@ The Places endpoint allows retrieving the home and work addresses from an Uber u
 |------------|-------|----------
 | accessToken| String| The valid access token.
 | placeName  | String| The name of the place to retrieve. Only home and work are acceptable.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.updateUserAddress
@@ -131,7 +131,7 @@ The Places endpoint allows updating the home and work addresses from an Uber use
 | accessToken| String| The valid access token.
 | placeName  | String| The name of the place to retrieve. Only home and work are acceptable.
 | address    | String| The address of the place that should be tied to the given placeName.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getUserPaymentMethods
@@ -140,7 +140,7 @@ The Payment Methods endpoint allows retrieving the list of the user’s availabl
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| The valid access token.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.createReminder
@@ -159,7 +159,7 @@ The Reminders endpoint allows developers to set a reminder for a future trip.
 | eventProductId             | String| Optional: Product ID of the Uber product to request. This overrides the product selected by the latitude / longitude pair. Required to set destination pin.
 | tripBrandingLinkText       | String| Optional: Call-to-action text for the deeplink to your app. Used for trip branding and personalization.
 | tripBrandingPartnerDeeplink| String| Optional: Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getReminder
@@ -169,7 +169,7 @@ The Reminders endpoint allows you to get the status of an existing ride reminder
 |------------|-------|----------
 | accessToken| String| The valid access token. This endpoint only supports server_token.
 | reminderId | String| The reminder ID.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.updateReminder
@@ -189,7 +189,7 @@ The Reminders endpoint allows you to update an existing reminder.
 | eventProductId             | String| Optional: Product ID of the Uber product to request. This overrides the product selected by the latitude / longitude pair. Required to set destination pin.
 | tripBrandingLinkText       | String| Optional: Call-to-action text for the deeplink to your app. Used for trip branding and personalization.
 | tripBrandingPartnerDeeplink| String| Optional: Deeplink URL to a page in your app where your users can view relevant information and perform actions that will enhance the post-trip experience. Used for trip branding and personalization.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.deleteReminder
@@ -199,7 +199,7 @@ The Reminders endpoint allows you to remove any reminder in the pending state fr
 |----------------------------|-------|----------
 | accessToken                | String| The valid access token. This endpoint only supports server_token.
 | reminderId                 | String| The reminder ID.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.requestRide
@@ -223,7 +223,7 @@ The Ride Request endpoint allows a ride to be requested on behalf of an Uber use
 | fareId             | String| Optional: The key for the upfront price of an uberPOOL ride. Required if we want to use a previously retrieved price estimate for POOL. If it is missed, we will automatically issue a new upfront price for the ride request.
 | expenseCode        | String| Optional: An alphanumeric identifier for expense reporting policies. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.
 | expenseMemo        | String| Optional: A free text field to describe the purpose of the trip for expense reporting. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 ## UberRide.requestRideById
 The Ride Request endpoint allows a ride to be requested on behalf of an Uber user using place Ids.
@@ -244,7 +244,7 @@ The Ride Request endpoint allows a ride to be requested on behalf of an Uber use
 | fareId             | String| Optional: The key for the upfront price of an uberPOOL ride. Required if we want to use a previously retrieved price estimate for POOL. If it is missed, we will automatically issue a new upfront price for the ride request.
 | expenseCode        | String| Optional: An alphanumeric identifier for expense reporting policies. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.
 | expenseMemo        | String| Optional: A free text field to describe the purpose of the trip for expense reporting. This value will appear in the trip receipt and any configured expense-reporting integrations like Uber For Business or Business Profiles.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.updateCurrentRide
@@ -257,7 +257,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination.
 | endLongitude| String| The final or destination longitude. Either this or endPlaceId must be specified.
 | endAddress  | String| Optional: The final or destination address.
 | endNickname | String| Optional: The final or destination nickname label.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 ## UberRide.updateCurrentRideById
 The Ride Request endpoint allows updating an ongoing request’s destination using place Id.
@@ -268,7 +268,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination usi
 | endAddress  | String| Optional: The final or destination address.
 | endNickname | String| Optional: The final or destination nickname label.
 | endPlaceId  | String| The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is accepted. Either this or endLatitude and endLongitude must be specified.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.cancelCurrentRide
@@ -277,7 +277,7 @@ The Ride Request endpoint allows cancellation of the user's current trip.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| The valid access token.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getRideEstimate
@@ -294,7 +294,7 @@ The Request Estimate endpoint allows a ride to be estimated given the desired pr
 | endLongitude  | String| Optional: The final or destination longitude. If not included, only the pickup ETA and details of surge pricing will be included.
 | endPlaceId    | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is acceptable. Either this or endLatitude and endLongitude may be specified.
 | seatCount     | String| Optional: The number of seats required for uberPOOL. Default and maximum value is 2.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.updateRide
@@ -309,7 +309,7 @@ The Ride Request endpoint allows updating an ongoing request’s destination usi
 | endAddress  | String| Optional: The final or destination address.
 | endNickname | String| Optional: The final or destination nickname label.
 | endPlaceId  | String| Optional: The final or destination place ID. This is the name of an Uber saved place. Only “home” or “work” is accepted. Either this or endLatitude and end_Longitude must be specified.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.cancelRide
@@ -319,7 +319,7 @@ The Ride Request endpoint allows cancellation of an ongoing Request on behalf of
 |------------|-------|----------
 | accessToken| String| The valid access token.
 | requestId | String| Unique identifier representing a Request.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getRideMap
@@ -329,7 +329,7 @@ The Ride Request endpoint getting a map with a visual representation of a Reques
 |------------|-------|----------
 | accessToken| String| The valid access token.
 | requestId | String| Unique identifier representing a Request.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
 ## UberRide.getReceipt
@@ -339,6 +339,6 @@ The Ride Request endpoint allows getting the receipt information of the complete
 |------------|-------|----------
 | accessToken| String| The valid access token.
 | requestId | String| Unique identifier representing a Request.
-| sandbox | Boolean | UberAPI Sandbox: True or False
+| sandbox | Boolean | UberAPI Sandbox: 1 to select sandbox
 
 
