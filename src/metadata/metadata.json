@@ -51,7 +51,7 @@
             }, {
                 "name": "sandbox",
                 "type": "Select",
-                "options": ["true", "false"],
+                "options": ["1"],
                 "info": "UberAPI Sandbox: 1 to select sandbox",
                 "required": false
             }],
